@@ -1,11 +1,30 @@
 body {
-  width: 100vw;
-  min-height: 100vh;
-  
+  margin: 0;
 }
 
 .App {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgb(189, 189, 189);
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  height: 125px;
+  background-color: black;
+}
+
+main {
+  display: flex;
+  margin-inline: 100px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
   height: 100%;
-  background-color: bisque;
+}
+
+footer {
+  height: 75px;
+  background-color: black;
 }
