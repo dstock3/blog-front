@@ -1,3 +1,5 @@
+/* Base Elements */
+
 body {
   margin: 0;
 }
@@ -18,9 +20,8 @@ header {
 
 main {
   display: flex;
+  justify-content: space-between;
   margin-inline: 100px;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
   height: 100%;
 }
 
@@ -28,6 +29,21 @@ footer {
   height: 75px;
   background-color: black;
 }
+
+/* Blog section */
+
+.article {
+  margin-right: 5%;
+  width: 70%;
+  background-color: antiquewhite;
+
+}
+
+.sidebar {
+  width: 20%;
+  background-color: antiquewhite;
+}
+
 
 @media only screen and (max-width: 900px) {
   main {
