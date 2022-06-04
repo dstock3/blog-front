@@ -10,11 +10,11 @@ body {
   justify-content: space-between;
   background-color: rgb(189, 189, 189);
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 header {
-  height: 125px;
+  min-height: 10vh;
   background-color: black;
 }
 
@@ -22,31 +22,47 @@ main {
   display: flex;
   justify-content: space-between;
   margin-inline: 100px;
-  height: 100%;
+  min-height: 80vh;
 }
 
 footer {
-  height: 75px;
+  min-height: 10vh;
   background-color: black;
 }
 
 /* Blog section */
 
 .article {
-  margin-right: 5%;
-  width: 70%;
+  width: 75%;
+  min-height: fit-content;
   background-color: antiquewhite;
 
 }
 
 .sidebar {
-  width: 20%;
+  width: 22%;
+  min-height: fit-content;
   background-color: antiquewhite;
 }
 
 
 @media only screen and (max-width: 900px) {
+  .App {
+    justify-content: flex-start;
+  }
+
   main {
+    flex-direction: column;
+    align-items: center;
     margin-inline: 0;
+  }
+
+  .article {
+    width: 95%;
+  }
+
+  .sidebar {
+    margin-bottom: 15px;
+    width: 95%;
   }
 }
