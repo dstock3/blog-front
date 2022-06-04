@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import Article from './Article'
+import Sidebar from './Sidebar'
 
 const Main = () => {
     /* 
@@ -29,8 +31,8 @@ const Main = () => {
 
     return (
         <main className="blog">
-            <div className="sidebar"></div>
-            <div className="article"></div>
+            <Sidebar />
+            <Article />
         </main>
     );
 }
