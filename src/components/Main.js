@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Article from './Article'
 import Sidebar from './Sidebar'
+import Data from '../sampleData.json'
 
 const Main = () => {
     /* 
