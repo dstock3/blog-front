@@ -2,6 +2,8 @@
 
 body {
   margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(168, 204, 249);
 }
 
 .App {
@@ -35,8 +37,7 @@ footer {
 .article {
   width: 75%;
   min-height: fit-content;
-  background-color: antiquewhite;
-
+  background-color: rgb(74, 64, 161);
 }
 
 .sidebar {
@@ -45,7 +46,7 @@ footer {
   align-items: center;
   width: 22%;
   min-height: fit-content;
-  background-color: antiquewhite;
+  background-color: rgb(74, 64, 161);
 }
 
 .profile {
@@ -79,7 +80,6 @@ footer {
 
 .profile-name {
   margin-left: 15px;
-
 }
 
 .profile-desc {
@@ -94,8 +94,6 @@ footer {
   margin-inline: 10px;
 }
 
-
-
 @media only screen and (max-width: 900px) {
   .App {
     justify-content: flex-start;
@@ -103,6 +101,7 @@ footer {
 
   main {
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     margin-inline: 0;
   }
@@ -114,5 +113,14 @@ footer {
   .sidebar {
     margin-bottom: 15px;
     width: 95%;
+  }
+
+  .profile-pic {
+    width: 75px;
+    height: 75px;
+  }
+
+  .profile-info {
+    width: 75%;
   }
 }
