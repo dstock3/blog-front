@@ -40,11 +40,32 @@ footer {
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 22%;
   min-height: fit-content;
   background-color: antiquewhite;
 }
 
+.profile {
+  height: 20%;
+  width: 95%;
+  display: flex;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.archive {
+  height: 75%;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
 
 @media only screen and (max-width: 900px) {
   .App {

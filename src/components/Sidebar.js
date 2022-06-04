@@ -1,5 +1,5 @@
-import Profile from './profile'
-import Archive from './archive'
+import Profile from './Profile'
+import Archive from './Archive'
 
 const Sidebar = () => {
     return (
