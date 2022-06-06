@@ -1,7 +1,9 @@
 {
     "user": {
         "profile-name": "username",
-        "profile-desc": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur"
+        "profile-desc": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur",
+        "theme-pref": "black",
+        "layout-pref": "default"
     },
     "articles": {
 		"article1": {
