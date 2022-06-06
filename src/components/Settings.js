@@ -2,21 +2,32 @@ import React, { useEffect } from 'react'
 
 const Settings = () => {
     useEffect(()=> {
-        const settings = document.getElementsByClassName("settings")[0];
-        settings.addEventListener("click", function() {
-            if (settings.classList.contains("hidden")) {
-                settings.classList.remove("hidden")
-                settings.classList.add("visible")
+        const settingsMenu = document.getElementsByClassName("settings-dropdown")[0];
+        const settingsIcon = document.getElementsByClassName("settings-icon")[0];
+
+        settingsIcon.addEventListener("click", function() {
+            if (settingsMenu.classList.contains("hidden")) {
+                settingsMenu.classList.remove("hidden")
+                settingsMenu.classList.add("visible")
             } else {
-                settings.classList.remove("visible")
-                settings.classList.add("hidden")
+                settingsMenu.classList.remove("visible")
+                settingsMenu.classList.add("hidden")
             }
         })
-
     }, [])
 
     return (
-        <div className="settings hidden">Settings</div>
+        <>
+            <div className="settings-icon">Settings</div>
+            <div className="settings-dropdown hidden">
+                <ul>
+                    <li>Option 1</li>
+                    <li>Option 2</li>
+                    <li>Option 3</li>
+                    <li>Option 4</li>
+                </ul>
+            </div>
+        </>
     );
 }
 

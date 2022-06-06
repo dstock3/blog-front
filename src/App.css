@@ -23,9 +23,16 @@ header {
   align-items: center;
 }
 
-.settings {
+.settings-dropdown {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.settings-icon {
   margin-right: 115px;
   cursor: pointer;
+
 }
 
 main {
@@ -38,6 +45,10 @@ main {
 footer {
   min-height: 10vh;
   background-color: black;
+}
+
+.hidden {
+  visibility: collapse;
 }
 
 /* Blog section */
