@@ -50,6 +50,9 @@ footer {
 .hidden {
   visibility: collapse;
 }
+.visible {
+  visibility: visible;
+}
 
 /* Blog section */
 

@@ -4,7 +4,6 @@ const Settings = () => {
     useEffect(()=> {
         const settingsMenu = document.getElementsByClassName("settings-dropdown")[0];
         const settingsIcon = document.getElementsByClassName("settings-icon")[0];
-
         settingsIcon.addEventListener("click", function() {
             if (settingsMenu.classList.contains("hidden")) {
                 settingsMenu.classList.remove("hidden")
@@ -14,6 +13,7 @@ const Settings = () => {
                 settingsMenu.classList.add("hidden")
             }
         })
+
     }, [])
 
     return (
