@@ -18,6 +18,14 @@ body {
 header {
   min-height: 10vh;
   background-color: black;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.settings {
+  margin-right: 115px;
+  cursor: pointer;
 }
 
 main {
