@@ -10,8 +10,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: rgb(189, 189, 189);
-  width: 100vw;
+  background-color: rgb(49, 49, 49);
+  max-width: 100vw;
   min-height: 100vh;
 }
 
@@ -21,6 +21,7 @@ header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  border-bottom: 2px solid rgb(168, 204, 249);
 }
 
 main {
@@ -33,6 +34,7 @@ main {
 footer {
   min-height: 10vh;
   background-color: black;
+  border-top: 2px solid rgb(168, 204, 249);
 }
 
 .hidden {
@@ -46,7 +48,7 @@ footer {
 /* Settings */
 
 .settings-icon {
-  margin-right: 130px;
+  margin-right: 135px;
   cursor: pointer;
 }
 
@@ -54,6 +56,7 @@ footer {
   position: absolute;
   top: 10vh;
   right:115px;
+  width: 100px;
   background-color: black;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -64,7 +67,6 @@ footer {
 
 .options-list {
   height: fit-content;
-  width: 100px;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -75,7 +77,6 @@ footer {
 .option-item {
   cursor: pointer;
 }
-
 
 /* Blog section */
 
