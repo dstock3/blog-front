@@ -1,9 +1,13 @@
 const Article = ({article}) => {
     return (
-        <div className="article">
-            <h1 className="article-name">{article["title"]}</h1>
-            <article>{article["content"]}</article>
-        </div>
+        <article>
+            <div className="article-head">
+                <h1 className="article-name">{article["title"]}</h1>
+                <div className="date-posted">{article["date"]}</div>
+            </div>
+            
+            <div className="article-content">{article["content"]}</div>
+        </article>
     );
 }
 

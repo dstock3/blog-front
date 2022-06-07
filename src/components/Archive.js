@@ -3,7 +3,10 @@ const Archive = ({articles}) => {
         <div className="archive">
             <ul className="archive-list">
                 {Object.values(articles).map((article, index) => {
-                    return <li key={index}>{article["title"]}</li>
+                    return (
+                    <li key={index}>
+                        <a href="#">{article["title"]}</a>
+                    </li>)
                 })}
             </ul>
         </div>
