@@ -17,11 +17,11 @@ const Settings = () => {
         <>
             <div onClick={toggleStatus} className="settings-icon">Settings</div>
             <div className={"settings-dropdown " + optionsStatus}>
-                <ul>
-                    <li>Option 1</li>
-                    <li>Option 2</li>
-                    <li>Option 3</li>
-                    <li>Option 4</li>
+                <ul className="options-list">
+                    <li className="option-item">Option 1</li>
+                    <li className="option-item">Option 2</li>
+                    <li className="option-item">Option 3</li>
+                    <li className="option-item">Option 4</li>
                 </ul>
             </div>
         </>
