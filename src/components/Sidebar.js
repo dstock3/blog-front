@@ -1,11 +1,11 @@
 import Profile from './Profile'
 import Archive from './Archive'
 
-const Sidebar = () => {
+const Sidebar = ({articles, userInfo}) => {
     return (
         <div className="sidebar">
-            <Profile />
-            <Archive />
+            <Profile userInfo={userInfo} />
+            <Archive articles={articles} />
         </div>
     );
 }

@@ -1,14 +1,12 @@
 import React from 'react'
 import Article from './Article'
 import Sidebar from './Sidebar'
-import Data from '../sampleData.json'
 
-const Main = () => {
-
+const Main = ({articles, userInfo}) => {
     return (
         <main className="blog">
-            <Sidebar />
-            <Article />
+            <Sidebar userInfo={userInfo} articles={articles}/>
+            <Article article={articles["0"]}/>
         </main>
     );
 }

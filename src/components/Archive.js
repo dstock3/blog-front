@@ -1,12 +1,10 @@
-const Archive = () => {
+const Archive = ({articles}) => {
     return (
         <div className="archive">
             <ul className="archive-list">
-            {/*
-                {articles.map((article, index) => {
-                    return <li key={index}>{article.title}</li>
+                {Object.values(articles).map((article, index) => {
+                    return <li key={index}>{article["title"]}</li>
                 })}
-            */}
             </ul>
         </div>
     );

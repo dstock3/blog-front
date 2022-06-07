@@ -1,8 +1,8 @@
-const Article = () => {
+const Article = ({article}) => {
     return (
         <div className="article">
-            <h1 className="article-name">Article Name</h1>
-            <article>Article body</article>
+            <h1 className="article-name">{article["title"]}</h1>
+            <article>{article["content"]}</article>
         </div>
     );
 }
