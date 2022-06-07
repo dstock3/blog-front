@@ -80,10 +80,19 @@ footer {
 
 /* Blog section */
 
-article {
+.articles-container {
   width: 75%;
   min-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+article {
+  width: 100%;
   background-color: rgb(74, 64, 161);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .article-head {
@@ -175,6 +184,10 @@ article {
   }
 
   article {
+    width: 100%;
+  }
+
+  .articles-container {
     width: 95%;
     margin-bottom: 15px;
   }
