@@ -1,25 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 
 const Settings = () => {
-    useEffect(()=> {
-        const settingsMenu = document.getElementsByClassName("settings-dropdown")[0];
-        const settingsIcon = document.getElementsByClassName("settings-icon")[0];
-        settingsIcon.addEventListener("click", function() {
-            if (settingsMenu.classList.contains("hidden")) {
-                settingsMenu.classList.remove("hidden")
-                settingsMenu.classList.add("visible")
-            } else {
-                settingsMenu.classList.remove("visible")
-                settingsMenu.classList.add("hidden")
-            }
-        })
+    const [optionsStatus, setOptionsStatus] = useState("hidden")
+    
+    const toggleStatus = () => {
+        if (optionsStatus === "hidden") {
+            setOptionsStatus("visible")
+        }
+        if (optionsStatus === "visible") {
+            setOptionsStatus("hidden")
+        }
 
-    }, [])
+    }
 
     return (
         <>
-            <div className="settings-icon">Settings</div>
-            <div className="settings-dropdown hidden">
+            <div onClick={toggleStatus} className="settings-icon">Settings</div>
+            <div className={"settings-dropdown " + optionsStatus}>
                 <ul>
                     <li>Option 1</li>
                     <li>Option 2</li>
