@@ -3,25 +3,21 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: rgb(168, 204, 249);
 }
 
 .App {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: rgb(49, 49, 49);
   max-width: 100vw;
   min-height: 100vh;
 }
 
 header {
   min-height: 10vh;
-  background-color: black;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  border-bottom: 2px solid rgb(168, 204, 249);
 }
 
 main {
@@ -33,8 +29,6 @@ main {
 
 footer {
   min-height: 10vh;
-  background-color: black;
-  border-top: 2px solid rgb(168, 204, 249);
 }
 
 .hidden {
@@ -60,9 +54,6 @@ footer {
   background-color: black;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  border-bottom: 2px solid rgb(168, 204, 249);
-  border-left: 2px solid rgb(168, 204, 249);
-  border-right: 2px solid rgb(168, 204, 249);
 }
 
 .options-list {
@@ -78,6 +69,26 @@ footer {
   cursor: pointer;
 }
 
+/* Themes */
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
+.dark-accent {
+  background-color: rgb(91, 91, 91);
+}
+
+.light {
+  background-color: white;
+  color: black;
+}
+
+.light-accent {
+  background-color: rgb(209, 209, 209);
+}
+
 /* Blog section */
 
 .articles-container {
@@ -85,14 +96,15 @@ footer {
   min-height: fit-content;
   display: flex;
   flex-direction: column;
+  margin-top: 15px;
   margin-bottom: 25px;
 }
 
 article {
   width: 100%;
-  background-color: rgb(74, 64, 161);
   padding-bottom: 15px;
   margin-bottom: 25px;
+  border-radius: 5px;
 }
 
 .article-head {
@@ -100,7 +112,6 @@ article {
   flex-direction: column;
   margin-inline: 25px;
   margin-bottom: 15px;
-  border-bottom: 1px solid rgb(168, 204, 249);
 }
 
 .date-posted {
@@ -121,11 +132,13 @@ article {
   align-items: center;
   width: 22%;
   min-height: fit-content;
-  background-color: rgb(74, 64, 161);
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
 }
 
 .profile {
-  height: 20%;
+  height: 150px;
   margin-top: 10px;
   width: 95%;
   display: flex;
@@ -166,8 +179,8 @@ article {
 .profile-pic {
   border-radius: 50%;
   border: 2px solid black;
-  width: 30%;
-  height: 75%;
+  width: 100px;
+  height: 100px;
   margin-inline: 10px;
 }
 

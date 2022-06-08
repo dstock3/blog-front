@@ -1,9 +1,9 @@
 import Settings from "./Settings";
 
-const Header = () => {
+const Header = ({theme}) => {
     return (
-        <header>
-            <Settings />
+        <header className={theme.main}>
+            <Settings theme={theme} />
 
             
         </header>

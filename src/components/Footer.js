@@ -1,6 +1,6 @@
-const Footer = () => {
+const Footer = ({theme}) => {
     return (
-        <footer>
+        <footer className={theme.main}>
 
             
         </footer>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Settings = () => {
+const Settings = ({theme}) => {
     const [optionsStatus, setOptionsStatus] = useState("hidden")
     
     const toggleStatus = () => {
@@ -16,7 +16,7 @@ const Settings = () => {
     return (
         <>
             <div onClick={toggleStatus} className="settings-icon">Settings</div>
-            <div className={"settings-dropdown " + optionsStatus}>
+            <div className={"settings-dropdown " + optionsStatus + " " + theme.main}>
                 <ul className="options-list">
                     <li className="option-item">Option 1</li>
                     <li className="option-item">Option 2</li>

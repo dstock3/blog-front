@@ -8,6 +8,7 @@ import Data from './sampleData.json'
 const App = () => {
   const [userInfo, setUserInfo] = useState(Data.user)
   const [articles, setArticles] = useState(Data.articles)
+  const [theme, setTheme] = useState({"main": Data.user["theme-pref"], "accent": (Data.user["theme-pref"] + "-accent")})
 
   /* 
   useEffect(()=> {
@@ -32,10 +33,10 @@ const App = () => {
   }, []) 
   */
   return (
-    <div className="App">
-      <Header />
-      <Main userInfo={userInfo} articles={articles} />
-      <Footer />
+    <div className={"App " + theme.accent}>
+      <Header theme={theme} />
+      <Main userInfo={userInfo} articles={articles} theme={theme} />
+      <Footer theme={theme} />
     </div>
   );
 }
