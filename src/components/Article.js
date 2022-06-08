@@ -1,6 +1,6 @@
-const Article = ({article, theme}) => {
+const Article = ({article, theme, layout}) => {
     return (
-        <article className={theme.main}>
+        <article className={theme.main + " " + layout.child}>
             <div className="article-head">
                 <h1 className="article-name">{article["title"]}</h1>
                 <div className="date-posted">{article["date"]}</div>

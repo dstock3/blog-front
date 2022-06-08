@@ -9,7 +9,13 @@ const App = () => {
   const [userInfo, setUserInfo] = useState(Data.user)
   const [articles, setArticles] = useState(Data.articles)
   const [theme, setTheme] = useState({"main": Data.user["theme-pref"], "accent": (Data.user["theme-pref"] + "-accent")})
-  const [layout, setLayout] = useState(Data.user["layout-pref"])
+  const [layout, setLayout] = useState({"main": Data.user["layout-pref"], "child": (Data.user["layout-pref"] + "-child")})
+  
+  useEffect(() => {
+    document.title = Data.user["blog-title"]
+
+  }, [])
+
   /* 
   useEffect(()=> {
     let apiCall = ``

@@ -107,7 +107,10 @@ footer {
 
 .card {
   display: flex;
+}
 
+.card-child {
+  margin-right: 15px
 }
 
 /* Blog section */
