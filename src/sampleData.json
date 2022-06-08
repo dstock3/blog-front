@@ -2,8 +2,8 @@
     "user": {
         "profile-name": "username",
         "profile-desc": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur",
-        "theme-pref": "dark",
-        "layout-pref": "default"
+        "theme-pref": "artic",
+        "layout-pref": "basic"
     },
     "articles": {
 		"0": {

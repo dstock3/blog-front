@@ -89,6 +89,15 @@ footer {
   background-color: rgb(209, 209, 209);
 }
 
+.artic {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 81, 255);
+}
+
+.artic-accent {
+  background-color: rgb(86, 185, 215);
+}
+
 /* Blog section */
 
 .articles-container {
