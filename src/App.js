@@ -9,7 +9,7 @@ const App = () => {
   const [userInfo, setUserInfo] = useState(Data.user)
   const [articles, setArticles] = useState(Data.articles)
   const [theme, setTheme] = useState({"main": Data.user["theme-pref"], "accent": (Data.user["theme-pref"] + "-accent")})
-
+  const [layout, setLayout] = useState(Data.user["layout-pref"])
   /* 
   useEffect(()=> {
     let apiCall = ``
@@ -35,7 +35,7 @@ const App = () => {
   return (
     <div className={"App " + theme.accent}>
       <Header theme={theme} />
-      <Main userInfo={userInfo} articles={articles} theme={theme} />
+      <Main userInfo={userInfo} articles={articles} theme={theme} layout={layout} />
       <Footer theme={theme} />
     </div>
   );
