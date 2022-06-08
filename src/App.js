@@ -40,7 +40,7 @@ const App = () => {
   */
   return (
     <div className={"App " + theme.accent}>
-      <Header theme={theme} />
+      <Header theme={theme} title={userInfo["blog-title"]} />
       <Main userInfo={userInfo} articles={articles} theme={theme} layout={layout} />
       <Footer theme={theme} />
     </div>

@@ -16,7 +16,7 @@ body {
 header {
   min-height: 10vh;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -114,6 +114,10 @@ footer {
 }
 
 /* Blog section */
+
+.title {
+  margin-left: 7%;
+}
 
 .articles-container {
   width: 75%;
