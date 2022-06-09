@@ -67,7 +67,7 @@ const RouteSwitch = () => {
                                 <Footer theme={theme} />
                             </div>
                         } />
-                        <Route path="/user" element={
+                        <Route path={"/" + userInfo["profile-name"]} element={
                             <div className={"App " + theme.accent}>
                                 <Header theme={theme} title={userInfo["blog-title"]} />
                                 <User userInfo={userInfo} theme={theme} />
