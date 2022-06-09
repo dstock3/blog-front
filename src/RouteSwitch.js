@@ -54,17 +54,17 @@ const RouteSwitch = () => {
                             </div>
                         } />
                         <Route path="/register" element={
-                            <div className={"App " + theme.accent}>
-                                <Header theme={theme} title={userInfo["blog-title"]} />
+                            <div className={"App dark-accent"}>
+                                <Header theme={{"main": "dark", "accent": "dark-accent"}} title={"BlogDog - Simple CMS"} />
                                 <Register />
-                                <Footer theme={theme} />
+                                <Footer theme={{"main": "dark", "accent": "dark-accent"}} />
                             </div>
                         } />
                         <Route path="/login" element={
-                            <div className={"App " + theme.accent}>
-                                <Header theme={theme} title={userInfo["blog-title"]} />
+                            <div className={"App dark-accent"}>
+                                <Header theme={{"main": "dark", "accent": "dark-accent"}} title={"BlogDog - Simple CMS"} />
                                 <Login />
-                                <Footer theme={theme} />
+                                <Footer theme={{"main": "dark", "accent": "dark-accent"}} />
                             </div>
                         } />
                         <Route path={"/" + userInfo["profile-name"]} element={
