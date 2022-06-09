@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Header from './components/Header'
 import Main from './components/Main';
 import User from './components/User';
+import Register from './components/Register';
+import Login from './components/Login';
 import Footer from './components/Footer'
 import './App.css';
 import Data from './sampleData.json'
@@ -51,7 +53,20 @@ const RouteSwitch = () => {
                                 <Footer theme={theme} />
                             </div>
                         } />
-
+                        <Route path="/register" element={
+                            <div className={"App " + theme.accent}>
+                                <Header theme={theme} title={userInfo["blog-title"]} />
+                                <Register />
+                                <Footer theme={theme} />
+                            </div>
+                        } />
+                        <Route path="/login" element={
+                            <div className={"App " + theme.accent}>
+                                <Header theme={theme} title={userInfo["blog-title"]} />
+                                <Login />
+                                <Footer theme={theme} />
+                            </div>
+                        } />
                         <Route path="/user" element={
                             <div className={"App " + theme.accent}>
                                 <Header theme={theme} title={userInfo["blog-title"]} />
