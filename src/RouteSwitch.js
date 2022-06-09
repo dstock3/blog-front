@@ -16,7 +16,8 @@ const RouteSwitch = () => {
     const [layout, setLayout] = useState({"main": Data.user["layout-pref"], "child": (Data.user["layout-pref"] + "-child")})
     
     useEffect(() => {
-      document.title = Data.user["blog-title"]
+        //Will need to employ after api call once set up
+        document.title = Data.user["blog-title"]
   
     }, [])
   
