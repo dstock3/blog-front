@@ -4,7 +4,7 @@ import Archive from './Archive'
 const Sidebar = ({articles, userInfo, theme}) => {
     return (
         <div className={"sidebar " + theme.main}>
-            <Profile userInfo={userInfo} />
+            <Profile mode={"prof-side"} userInfo={userInfo} />
             <Archive articles={articles} />
         </div>
     );

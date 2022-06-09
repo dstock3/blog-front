@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Header from './components/Header'
 import Main from './components/Main';
+import User from './components/User';
 import Footer from './components/Footer'
 import './App.css';
 import Data from './sampleData.json'
@@ -54,7 +55,7 @@ const RouteSwitch = () => {
                         <Route path="/user" element={
                             <div className={"App " + theme.accent}>
                                 <Header theme={theme} title={userInfo["blog-title"]} />
-
+                                <User userInfo={userInfo} theme={theme} />
                                 <Footer theme={theme} />
                             </div>
                         } />

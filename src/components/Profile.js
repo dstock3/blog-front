@@ -1,6 +1,6 @@
-const Profile = ({userInfo}) => {
+const Profile = ({userInfo, mode}) => {
     return (
-        <div className="profile">
+        <div className={"profile " + mode}>
             <div className="profile-pic">
                 <img></img>
             </div>
