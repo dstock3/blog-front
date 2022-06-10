@@ -5,13 +5,14 @@ import Main from './components/Main';
 import User from './components/User';
 import Register from './components/Register';
 import Login from './components/Login';
-import Footer from './components/Footer'
+import Compose from './components/Compose';
+import Footer from './components/Footer';
 import './App.css';
 import Data from './sampleData.json'
 
 const RouteSwitch = () => {
     //States will need to be updated via api call. Should be set as false by default.
-    const [userInfo, setUserInfo] = useState(false)
+    const [userInfo, setUserInfo] = useState(Data.user)
     const [articles, setArticles] = useState(Data.articles)
     const [theme, setTheme] = useState({"main": Data.user["theme-pref"], "accent": (Data.user["theme-pref"] + "-accent")})
     const [layout, setLayout] = useState({"main": Data.user["layout-pref"], "child": (Data.user["layout-pref"] + "-child")})
@@ -73,6 +74,13 @@ const RouteSwitch = () => {
                             <div className={"App " + theme.accent}>
                                 <Header theme={theme} title={userInfo["blog-title"]} />
                                 <User userInfo={userInfo} theme={theme} />
+                                <Footer theme={theme} />
+                            </div>
+                        } />
+                        <Route path={"/" + userInfo["profile-name"] + "/compose"} element={
+                            <div className={"App " + theme.accent}>
+                                <Header theme={theme} title={userInfo["blog-title"]} />
+                                <Compose userInfo={userInfo} theme={theme} articles={articles} />
                                 <Footer theme={theme} />
                             </div>
                         } />
