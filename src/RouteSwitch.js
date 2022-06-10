@@ -52,7 +52,7 @@ const RouteSwitch = () => {
                         <Route path="/" element={
                             <div className={"App " + theme.accent}>
                                 <Header theme={theme} title={userInfo["blog-title"]} />
-                                <Main userInfo={userInfo} articles={articles} theme={theme} layout={layout} />
+                                <Main userInfo={userInfo} index={false} articles={articles} theme={theme} layout={layout} />
                                 <Footer theme={theme} />
                             </div>
                         } />
@@ -84,6 +84,15 @@ const RouteSwitch = () => {
                                 <Footer theme={theme} />
                             </div>
                         } />
+                        {Object.values(articles).map((val, index) => 
+                            <Route key={index} path={"/" + userInfo["profile-name"] + "/" + index} element={
+                                <div className={"App " + theme.accent}>
+                                    <Header theme={theme} title={userInfo["blog-title"]} />
+                                    <Main userInfo={userInfo} index={index} articles={articles} theme={theme} layout={layout} />
+                                    <Footer theme={theme} />
+                                </div>
+                            } />
+                        )}
                 </Routes>
         </BrowserRouter>
     )

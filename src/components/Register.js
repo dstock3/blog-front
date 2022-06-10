@@ -5,7 +5,7 @@ const Register = () => {
         <div className="register">
             
             <form className="registerForm" action="" method="POST">
-                
+                <h2>Register</h2>
                 <div className="user-register-container">
                     <label for="username">Username: </label>
                     <input type="text" name="username"></input>
