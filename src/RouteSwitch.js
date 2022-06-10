@@ -11,7 +11,7 @@ import Data from './sampleData.json'
 
 const RouteSwitch = () => {
     //States will need to be updated via api call. Should be set as false by default.
-    const [userInfo, setUserInfo] = useState(Data.user)
+    const [userInfo, setUserInfo] = useState(false)
     const [articles, setArticles] = useState(Data.articles)
     const [theme, setTheme] = useState({"main": Data.user["theme-pref"], "accent": (Data.user["theme-pref"] + "-accent")})
     const [layout, setLayout] = useState({"main": Data.user["layout-pref"], "child": (Data.user["layout-pref"] + "-child")})

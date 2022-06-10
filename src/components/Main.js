@@ -1,6 +1,7 @@
 import React from 'react'
 import Article from './Article'
 import Sidebar from './Sidebar'
+import { Link } from 'react-router-dom'
 
 const Main = ({articles, userInfo, theme, layout}) => {
     if (userInfo) {
@@ -20,12 +21,18 @@ const Main = ({articles, userInfo, theme, layout}) => {
             <main className="prompt-container">
                 <div className="register-prompt">
                     <div>You aren't logged in. Would you like to create a profile?</div>
-                    <div><a href="#">Register</a></div>
+
+                    <Link to = {{pathname: '/register'}}>
+                        Register
+                    </Link>
                 </div>
 
                 <div className="login-prompt">
                     <div>Already have a login?</div>
-                    <div><a href="#">Sign In</a></div>
+
+                    <Link to = {{pathname: '/login'}}>
+                        Sign In
+                    </Link>
                 </div>
             </main>
         )
