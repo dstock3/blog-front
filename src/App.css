@@ -173,6 +173,11 @@ article {
   align-items: center;
 }
 
+.compose-option {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .archive {
   height: 75%;
   margin-top: 5px;

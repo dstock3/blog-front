@@ -1,6 +1,9 @@
+import { Link } from 'react-router-dom'
+
 const Register = () => {
     return (
         <div className="register">
+            
             <form className="registerForm" action="" method="POST">
                 
                 <div className="user-register-container">
@@ -16,9 +19,14 @@ const Register = () => {
                     <input type="password" name="confirmPassword"></input>
                 </div>
                 
-                <button className="submit-btn">Login</button>
+                <button className="submit-btn">Register</button>
             </form>
-
+            <div className="prompt-container">
+                <div className="login-prompt">Already Have a Profile?</div>
+                <Link to = {{pathname: '/login'}}>
+                    Sign In
+                </Link>
+            </div>
         </div>
     );
 }

@@ -6,6 +6,8 @@ const Compose = ({userInfo, articles, theme}) => {
         return (
             <main className={"compose-page" + theme.main}>
                 <Sidebar userInfo={userInfo} articles={articles} theme={theme} />
+
+                
     
                 
             </main>
@@ -14,9 +16,7 @@ const Compose = ({userInfo, articles, theme}) => {
         return (
             <Prompt />
         )
-
     }
-
 }
 
 export default Compose;
