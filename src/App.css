@@ -119,6 +119,10 @@ footer {
   margin-left: 7%;
 }
 
+.title a {
+  text-decoration: none;
+}
+
 .articles-container {
   width: 75%;
   min-height: fit-content;
