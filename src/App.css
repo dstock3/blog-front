@@ -5,6 +5,10 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -25,10 +29,6 @@ main {
   justify-content: space-between;
   margin-inline: 100px;
   min-height: 80vh;
-}
-
-footer {
-  min-height: 10vh;
 }
 
 .hidden {
@@ -217,6 +217,27 @@ article {
   width: 100px;
   height: 100px;
   margin-inline: 10px;
+}
+
+/* Footer */
+
+footer {
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.attribution {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
 }
 
 @media only screen and (max-width: 900px) {
