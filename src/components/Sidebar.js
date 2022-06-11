@@ -13,7 +13,7 @@ const Sidebar = ({articles, userInfo, theme}) => {
                 </Link>
             </div>
 
-            <Archive articles={articles} />
+            <Archive userInfo={userInfo} articles={articles} />
         </div>
     );
 }

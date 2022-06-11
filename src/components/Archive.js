@@ -1,11 +1,15 @@
-const Archive = ({articles}) => {
+import { Link } from "react-router-dom";
+
+const Archive = ({userInfo, articles}) => {
     return (
         <div className="archive">
             <ul className="archive-list">
                 {Object.values(articles).map((article, index) => {
                     return (
                     <li key={index}>
-                        <a href="#">{article["title"]}</a>
+                        <Link to = {'/' + userInfo["profile-name"] + '/' + index}>
+                            {article["title"]}
+                        </Link>
                     </li>)
                 })}
             </ul>

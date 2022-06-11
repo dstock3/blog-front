@@ -9,7 +9,7 @@ const Main = ({articles, index, userInfo, theme, layout}) => {
             <main className="blog">
                 <Sidebar userInfo={userInfo} articles={articles} theme={theme} />
                 {index ?
-                    <div className="article-container">
+                    <div className={"articles-container " + layout.main}>
                         <Article article={articles[index]} theme={theme} layout={layout} />
                     </div> :
                     <div className={"articles-container " + layout.main}>
