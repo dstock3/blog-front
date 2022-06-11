@@ -290,6 +290,7 @@ footer {
     justify-content: flex-start;
     align-items: center;
     margin-inline: 0;
+    margin-top: 15px;
   }
 
   article {
@@ -341,5 +342,19 @@ footer {
     right: 7.5vw;
     width: 85vw;
 
+  }
+
+  .attribution {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  footer {
+    margin-top: 15px;
+  }
+
+  .social-links {
+    margin-bottom: 15px;
+    width: 50%;
   }
 }
