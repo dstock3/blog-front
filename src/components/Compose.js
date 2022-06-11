@@ -4,21 +4,21 @@ import Sidebar from './Sidebar'
 const Compose = ({userInfo, articles, theme}) => {
     if (userInfo) {
         return (
-            <main className={"compose-page" + theme.main}>
+            <main className={"compose-page " + theme.main}>
                 <Sidebar userInfo={userInfo} articles={articles} theme={theme} />
 
-                <form action="" method="POST">
-                    <div className="compose-title-container">
-                        <label for="title">Title:</label>
-                        <input type="text" for="title"></input>
+                <form className="composeForm" action="" method="POST">
+                    <div className="compose-subcontainer compose-title">
+                        <label className="compose-label" for="title">Title:</label>
+                        <input className="compose-title-input" type="text" for="title"></input>
                     </div>
 
-                    <div className="compose-body-container">
-                        <label for="content">Content:</label>
-                        <textarea type="text" for="content"></textarea>
+                    <div className="compose-subcontainer compose-body">
+                        <label className="compose-label"for="content">Content:</label>
+                        <textarea className="compose-content-input" type="text" for="content" rows="25"></textarea>
                     </div>
 
-                    <div className="compose-options">
+                    <div className="compose-subcontainer compose-options">
                         <button className="submit-btn">Submit</button>
                     </div>
                 </form>
