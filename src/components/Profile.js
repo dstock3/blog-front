@@ -8,9 +8,12 @@ const Profile = ({userInfo, mode}) => {
             </div>
             <div className="profile-info">
                 <h2 className="profile-name">
-                    <Link to = {{pathname: '/' + userInfo["profile-name"]}}>
-                        {userInfo["profile-name"]}
-                    </Link>
+                    {mode === "prof-side" ?
+                        <Link to = {{pathname: '/' + userInfo["profile-name"]}}>
+                            {userInfo["profile-name"]}
+                        </Link> :
+                        userInfo["profile-name"]
+                    }
                 </h2>
 
                 <div className="profile-desc">{userInfo["profile-desc"]}</div>
