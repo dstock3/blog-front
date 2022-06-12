@@ -264,6 +264,22 @@ textarea {
   resize: none;
 }
 
+/* Register */
+
+.register {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-register-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.reg-label {
+  margin-bottom: 15px;
+}
 
 /* Footer */
 

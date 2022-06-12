@@ -9,7 +9,7 @@ const Header = ({theme, title}) => {
         if (theme) {
             setThisTheme(theme.main)
         }
-    }, [])
+    }, [theme])
     
     return (
         <header className={thisTheme}>
