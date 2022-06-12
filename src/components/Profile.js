@@ -15,7 +15,6 @@ const Profile = ({userInfo, mode}) => {
                         userInfo["profile-name"]
                     }
                 </h2>
-
                 <div className="profile-desc">{userInfo["profile-desc"]}</div>
             </div>
         </div>
