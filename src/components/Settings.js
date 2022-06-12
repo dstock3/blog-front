@@ -10,7 +10,6 @@ const Settings = ({theme}) => {
         if (optionsStatus === "visible") {
             setOptionsStatus("hidden")
         }
-
     }
 
     return (

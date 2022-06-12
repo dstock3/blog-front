@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 const Register = () => {
     return (
         <div className="register">
-            
             <form className="registerForm" action="" method="POST">
                 <h2>Register</h2>
                 <div className="user-register-container">
@@ -23,9 +22,7 @@ const Register = () => {
             </form>
             <div className="prompt-container">
                 <div className="login-prompt">Already Have a Profile?</div>
-                <Link to = {{pathname: '/login'}}>
-                    Sign In
-                </Link>
+                <Link to = {{pathname: '/login'}}>Sign In</Link>
             </div>
         </div>
     );

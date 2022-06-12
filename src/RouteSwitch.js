@@ -50,7 +50,6 @@ const RouteSwitch = () => {
         <BrowserRouter>
                 <Routes>
                         {/* Index */}
-
                         <Route path="/" element={
                             <div className={"App " + theme.accent}>
                                 <Header theme={theme} title={userInfo["blog-title"]} />
@@ -60,7 +59,6 @@ const RouteSwitch = () => {
                         } />
                         
                         {/* Register */}
-
                         <Route path="/register" element={
                             <div className={"App dark-accent"}>
                                 <Header theme={{"main": "dark", "accent": "dark-accent"}} title={"BlogDog - Simple CMS"} />
@@ -70,7 +68,6 @@ const RouteSwitch = () => {
                         } />
 
                         {/* Login */}
-
                         <Route path="/login" element={
                             <div className={"App dark-accent"}>
                                 <Header theme={{"main": "dark", "accent": "dark-accent"}} title={"BlogDog - Simple CMS"} />
@@ -80,7 +77,6 @@ const RouteSwitch = () => {
                         } />
 
                         {/* User Profile */}
-
                         <Route path={"/" + userInfo["profile-name"]} element={
                             <div className={"App " + theme.accent}>
                                 <Header theme={theme} title={userInfo["blog-title"]} />
@@ -90,7 +86,6 @@ const RouteSwitch = () => {
                         } />
 
                         {/* Compose */}
-
                         <Route path={"/" + userInfo["profile-name"] + "/compose"} element={
                             <div className={"App " + theme.accent}>
                                 <Header theme={theme} title={userInfo["blog-title"]} />
@@ -100,7 +95,6 @@ const RouteSwitch = () => {
                         } />
 
                         {/* Articles */}
-                        
                         {Object.values(articles).map((val, index) => 
                             <Route key={index} path={"/" + userInfo["profile-name"] + "/" + index} element={
                                 <div className={"App " + theme.accent}>

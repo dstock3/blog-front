@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Profile = ({userInfo, mode}) => {
     return (
-        <div className={"profile " + mode}>
+        <div className="profile" id={mode}> 
             <div className="profile-pic">
                 <img></img>
             </div>

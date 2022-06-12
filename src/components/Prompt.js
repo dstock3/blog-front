@@ -4,19 +4,17 @@ const Prompt = () => {
     return (
         <main className="prompt-container">
             <div className="register-prompt">
-                <div>You aren't logged in. Would you like to create a profile?</div>
+                <div className="prompt-message">
+                    You aren't logged in. Would you like to create a profile?
+                </div>
 
-                <Link to = {{pathname: '/register'}}>
-                    Register
-                </Link>
+                <Link to = {{pathname: '/register'}}>Register</Link>
             </div>
 
             <div className="login-prompt">
-                <div>Already have a login?</div>
+                <div className="prompt-message">Already have a login?</div>
 
-                <Link to = {{pathname: '/login'}}>
-                    Sign In
-                </Link>
+                <Link to = {{pathname: '/login'}}>Sign In</Link>
             </div>
         </main>
     );
