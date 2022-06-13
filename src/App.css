@@ -111,6 +111,7 @@ main {
 .card-child {
   margin-right: 15px;
   max-width: 40%;
+  height: fit-content;
 }
 
 /* Blog section */
