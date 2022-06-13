@@ -4,7 +4,7 @@ const Profile = ({userInfo, mode}) => {
     return (
         <div className="profile" id={mode}> 
             <div className="profile-pic">
-                <img></img>
+                <img src={userInfo["profile-pic"]} alt={"profile-pic for" + userInfo["profile-name"]}></img>
             </div>
             <div className="profile-info">
                 <h2 className="profile-name">
