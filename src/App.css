@@ -155,7 +155,6 @@ article {
 
 .article-content {
   margin-inline: 25px;
-  margin-bottom: 15px;
 }
 
 .sidebar {
@@ -224,6 +223,18 @@ article {
   width: 100px;
   height: 100px;
   margin-inline: 10px;
+}
+
+.img-container {
+  height: 33%;
+  float: left;
+  margin-left: 25px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.article-img {
+  height: 100%;
 }
 
 /* Compose */ 
