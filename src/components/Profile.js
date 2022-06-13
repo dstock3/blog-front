@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const Profile = ({userInfo, mode}) => {
     return (
         <div className="profile" id={mode}> 
-            <div className="profile-pic">
-                <img src={userInfo["profile-pic"]} alt={"profile-pic for" + userInfo["profile-name"]}></img>
+            <div className="profile-pic-container">
+                <img className="profile-pic" src={userInfo["profile-pic"]} alt={"profile-pic for " + userInfo["profile-name"]}></img>
             </div>
             <div className="profile-info">
                 <h2 className="profile-name">

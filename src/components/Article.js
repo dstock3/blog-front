@@ -8,6 +8,7 @@ const Article = ({article, theme, layout}) => {
             {article["img"] ?
                 <div className="img-container">
                     <img className="article-img" src={article["img"]} alt={article["img-desc"]}></img>
+                    <div className="article-img-caption">{article["img-desc"]}</div>
                 </div> :
                 null
             }

@@ -171,7 +171,7 @@ article {
 .profile {
   height: 150px;
   margin-top: 10px;
-  width: 95%;
+  width: 90%;
   display: flex;
   border: 1px solid black;
   border-radius: 5px;
@@ -217,24 +217,33 @@ article {
   margin-left: 15px;
 }
 
-.profile-pic {
+.profile-pic-container {
   border-radius: 50%;
   width: 100px;
   height: 100px;
-  margin-inline: 10px;
+  margin-left: 10px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .img-container {
-  height: 33%;
+  height: 200px;
   float: left;
   margin-left: 25px;
-  margin-right: 10px;
-  margin-bottom: 5px;
+  margin-right: 15px;
+  padding-bottom: 25px
 }
 
 .article-img {
   height: 100%;
+}
+
+.article-img-caption {
+  font-size: .75em;
+  
+  
 }
 
 /* Compose */ 
@@ -367,7 +376,7 @@ footer {
     margin-bottom: 10px;
   }
 
-  .profile-pic {
+  .profile-pic-container {
     width: 75px;
     height: 75px;
   }
