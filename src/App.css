@@ -408,4 +408,14 @@ footer {
     margin-bottom: 15px;
     width: 50%;
   }
+
+  .img-container {
+    width: 85%;
+    margin-bottom: 15px;
+  }
+
+  .article-img {
+    width: 100%;
+  }
+
 }
