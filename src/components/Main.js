@@ -10,7 +10,7 @@ const Main = ({articles, index, userInfo, theme, layout}) => {
                 <Sidebar userInfo={userInfo} articles={articles} theme={theme} />
                 {index ?
                     <div className={"articles-container " + layout.main}>
-                        <Article article={articles[index]} theme={theme} layout={layout} />
+                        <Article article={articles[index]} theme={theme} layout={{"main": "basic", "child": "basic-child"}} />
                     </div> :
                     <div className={"articles-container " + layout.main}>
                         {Object.values(articles).map((article, artIndex) =>

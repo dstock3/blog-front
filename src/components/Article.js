@@ -1,4 +1,6 @@
-const Article = ({article, theme, layout}) => {
+const Article = ({article, theme, layout, option}) => {
+
+
     return (
         <article className={theme.main + " " + layout.child}>
             <div className="article-head">
