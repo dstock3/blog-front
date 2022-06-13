@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 
-const Register = () => {
+const Register = ({theme}) => {
     return (
-        <div className="register">
+        <div className={"register " + theme.main}>
             <form className="registerForm" action="" method="POST">
                 <h2>Register</h2>
                 <div className="user-register-container">
