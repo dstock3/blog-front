@@ -3,7 +3,7 @@
         "profile-name": "username",
         "profile-desc": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur",
         "theme-pref": "dark",
-        "layout-pref": "basic",
+        "layout-pref": "card",
         "blog-title": "Tempora Incidunt"
     },
     "articles": {
