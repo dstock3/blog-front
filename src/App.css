@@ -155,34 +155,6 @@ textarea {
   resize: none;
 }
 
-/* Register */
-
-.register {
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-  padding: 15px;
-}
-
-.user-register-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.reg-label {
-  margin-top: 5px;
-  margin-bottom: 15px;
-}
-
-.prompt-container {
-  margin-top: 15px;
-}
-
-.reg-btn {
-  margin-top: 15px;
-}
-
 /* Footer */
 
 footer {
@@ -207,31 +179,6 @@ footer {
 @media only screen and (max-width: 900px) {
   .App {
     justify-content: flex-start;
-  }
-
-  main {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin-inline: 0;
-  }
-
-  article {
-    width: 100%;
-  }
-
-  .card-child {
-    min-width: 100%;
-  }
-  
-  .articles-container {
-    width: 95%;
-    margin-bottom: 15px;
-  }
-
-  .article-content {
-    margin-bottom: 15px;
-
   }
 
   .settings-icon {
