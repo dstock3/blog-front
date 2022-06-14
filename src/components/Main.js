@@ -2,6 +2,7 @@ import React from 'react'
 import Article from './Article'
 import Prompt from './Prompt';
 import Sidebar from './Sidebar'
+import '../style/main.css'
 
 const Main = ({articles, index, userInfo, theme, layout}) => {
     if (userInfo) {

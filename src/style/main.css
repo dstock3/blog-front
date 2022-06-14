@@ -1,0 +1,57 @@
+.title {
+    margin-left: 7%;
+}
+  
+.title a {
+    text-decoration: none;
+}
+  
+.articles-container {
+    width: 75%;
+    min-height: fit-content;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+  
+article {
+    width: 100%;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+  
+.article-head {
+    display: flex;
+    flex-direction: column;
+    margin-inline: 25px;
+    margin-bottom: 15px;
+}
+  
+.date-posted {
+    font-size: .75em;
+}
+  
+.article-name {
+    margin-block-end: 0.25em;
+}
+  
+.article-content {
+    margin-inline: 25px;
+}
+  
+.img-container {
+    height: 200px;
+    float: left;
+    margin-left: 25px;
+    margin-right: 15px;
+    padding-bottom: 25px;
+}
+  
+.article-img {
+    height: 100%;
+}
+  
+.article-img-caption {
+    font-size: .75em;
+}
+  
