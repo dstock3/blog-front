@@ -184,7 +184,6 @@ article {
 }
 
 .archive {
-  height: 75%;
   margin-top: 5px;
   width: 95%;
   display: flex;
@@ -201,8 +200,6 @@ article {
 .profile-info {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  border-radius: 5px;
   width: 60%;
   height: 95%;
 }
@@ -242,8 +239,6 @@ article {
 
 .article-img-caption {
   font-size: .75em;
-  
-  
 }
 
 /* Compose */ 
