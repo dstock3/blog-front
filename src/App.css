@@ -294,32 +294,6 @@ footer {
 
   }
 
-  .sidebar {
-    margin-bottom: 15px;
-    width: 95%;
-  }
-
-  .profile {
-    margin-bottom: 10px;
-  }
-
-  .profile-pic-container {
-    width: 75px;
-    height: 75px;
-  }
-
-  .profile-info {
-    width: 75%;
-  }
-
-  .profile-desc {
-    margin-bottom: 10px;
-  }
-
-  .archive {
-    margin-bottom: 15px;
-  }
-
   .settings-icon {
     margin-right: 5%;
   }
