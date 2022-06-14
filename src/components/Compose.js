@@ -1,5 +1,6 @@
 import Prompt from './Prompt';
-import Sidebar from './Sidebar'
+import Sidebar from './Sidebar';
+import '../style/compose.css'
 
 const Compose = ({userInfo, articles, theme}) => {
     if (userInfo) {

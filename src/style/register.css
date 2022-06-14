@@ -23,3 +23,10 @@
 .reg-btn {
     margin-top: 15px;
 }
+
+@media only screen and (max-width: 900px) {
+    .register {
+        width: 85%;
+    }
+
+}

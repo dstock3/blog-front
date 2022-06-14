@@ -55,14 +55,7 @@ article {
     font-size: .75em;
 }
 
-@media only screen and (max-width: 900px) {
-    main {
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        margin-inline: 0;
-    }
-        
+@media only screen and (max-width: 900px) {        
     article {
         width: 100%;
     }

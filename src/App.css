@@ -114,47 +114,6 @@ main {
   height: fit-content;
 }
 
-/* Compose */ 
-
-.composeForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: fit-content;
-  width: 75%;
-  padding-bottom: 15px;
-  margin-bottom: 25px;
-  border-radius: 5px;
-}
-
-.compose-subcontainer {
-  display: flex;
-  flex-direction: column;
-  width: 90%
-}
-
-.compose-options {
-  margin-top: 15px;
-  align-items: flex-end;
-}
-
-.compose-title {
-  margin-bottom: 15px;
-}
-
-.compose-label {
-  font-size: 1.25em;
-  margin-bottom: 15px;
-}
-
-.submit-btn {
-  font-size: 1.25em;
-}
-
-textarea {
-  resize: none;
-}
-
 /* Footer */
 
 footer {
@@ -180,6 +139,13 @@ footer {
   .App {
     justify-content: flex-start;
   }
+  
+  main {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-inline: 0;
+}
 
   .settings-icon {
     margin-right: 5%;
