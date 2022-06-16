@@ -6,7 +6,7 @@ const User = ({userInfo, articles, theme}) => {
     return (
         <div className={"user " + theme.main}>
             <Profile mode={"prof-main"} userInfo={userInfo} />
-            <Archive userInfo={userInfo} articles={articles} />
+            <Archive mode={"archive-main"} userInfo={userInfo} articles={articles} />
         </div>
     );
 }
