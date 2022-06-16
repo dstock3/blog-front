@@ -2,13 +2,16 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 85%;
-    padding: 15px;
+    min-height: 75vh;
 }
 
 #prof-main {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    height: fit-content;
     justify-content: center;
 }
 
