@@ -40,5 +40,9 @@
 }
 
 .archive-head {
-    margin-left: 40px;
+    align-self: center;
+}
+
+.main-archive-list {
+    align-self: center;
 }
