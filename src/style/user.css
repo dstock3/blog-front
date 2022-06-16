@@ -1,0 +1,28 @@
+.user {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    padding: 15px;
+}
+
+#prof-main {
+    justify-content: center;
+}
+
+.user > div {
+    width: 95%;
+}
+
+.main-pic-container {
+    height: 200px;
+    width: 200px;
+    margin-right: 25px;
+}
+
+.main-pic {
+    height: 100%;
+    width: 100%;
+}

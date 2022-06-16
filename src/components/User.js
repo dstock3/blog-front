@@ -1,5 +1,6 @@
 import Archive from "./Archive";
 import Profile from "./Profile";
+import '../style/user.css'
 
 const User = ({userInfo, articles, theme}) => {
     return (
