@@ -25,6 +25,10 @@ const Profile = ({userInfo, mode}) => {
                     }
                 </h2>
                 <div className="profile-desc">{userInfo["profile-desc"]}</div>
+                {mode === "prof-main" ?
+                    <div className="date-joined">Member since {userInfo["date-joined"]}</div> :
+                    null
+                }
             </div>
         </div>
     );
