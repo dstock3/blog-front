@@ -15,7 +15,7 @@ const Main = ({articles, index, userInfo, theme, layout}) => {
                     </div> :
                     <div className={"articles-container " + layout.main}>
                         {Object.values(articles).map((article, artIndex) =>
-                            <Article key={artIndex} article={articles[artIndex]} theme={theme} layout={layout} />
+                            <Article key={artIndex} article={articles[artIndex]} theme={theme} layout={layout} limit={true} />
                         )}
                     </div>
                 }

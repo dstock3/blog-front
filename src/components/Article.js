@@ -1,4 +1,15 @@
-const Article = ({article, theme, layout}) => {
+import { useEffect, useState } from "react";
+
+const Article = ({article, theme, layout, limit}) => {
+    const [abstract, setAbstract] = useState(article["content"])
+
+    useEffect(()=> {
+        if (article["content"].length > 350) {
+            let dif = article["content"].length - 350;
+            setAbstract(article["content"].substring(0, article["content"].length - dif))
+        }
+    }, [])
+
     return (
         <article className={theme.main + " " + layout.child}>
             <div className="article-head">
@@ -17,7 +28,12 @@ const Article = ({article, theme, layout}) => {
                 </div> :
                 null
             }
-            <div className="article-content">{article["content"]}</div>
+            {limit ?
+                article["content"].length < 350 ?
+                    <div className="article-content">{article["content"]}</div> :
+                    <div className="article-content">{abstract}...</div> :
+                <div className="article-content">{article["content"]}</div>
+            }
         </article>
     );
 }
