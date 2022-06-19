@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const Article = ({article, theme, layout, limit}) => {
+const Article = ({article, userInfo, theme, layout, limit, index}) => {
     const [abstract, setAbstract] = useState(article["content"])
 
     useEffect(()=> {
-        if (article["content"].length > 350) {
-            let dif = article["content"].length - 350;
+        if (article["content"].length > 400) {
+            let dif = article["content"].length - 400;
             setAbstract(article["content"].substring(0, article["content"].length - dif))
         }
     }, [])
@@ -29,9 +30,12 @@ const Article = ({article, theme, layout, limit}) => {
                 null
             }
             {limit ?
-                article["content"].length < 350 ?
+                article["content"].length < 400 ?
                     <div className="article-content">{article["content"]}</div> :
-                    <div className="article-content">{abstract}...</div> :
+                    <div className="article-content">
+                        {abstract}...
+                        <span> <Link to ={"/" + userInfo["profile-name"] + "/" + index}>Read More</Link></span>
+                    </div> :
                 <div className="article-content">{article["content"]}</div>
             }
         </article>
