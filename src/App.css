@@ -68,6 +68,10 @@ main {
   cursor: pointer;
 }
 
+.read-more {
+  margin-bottom: 15px;
+}
+
 /* Themes */
 
 .dark {

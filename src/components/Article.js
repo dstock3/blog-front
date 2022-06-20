@@ -34,11 +34,11 @@ const Article = ({article, userInfo, theme, layout, limit, index}) => {
                     <div className="article-content">{article["content"]}</div> :
                     <div className="article-content">
                         {abstract}...
-                        <span> 
+                        <div className="read-more"> 
                             <Link to ={"/" + userInfo["profile-name"] + "/" + index}>
                                 Read More
                             </Link>
-                        </span>
+                        </div>
                     </div> :
                 <div className="article-content">{article["content"]}</div>
             }

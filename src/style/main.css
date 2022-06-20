@@ -56,6 +56,10 @@ article {
     font-size: .75em;
 }
 
+.read-more {
+    margin-top: 15px;
+}
+
 @media only screen and (max-width: 900px) {        
     article {
         width: 100%;
