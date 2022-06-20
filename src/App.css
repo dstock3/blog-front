@@ -20,6 +20,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 2px 5px 10px rgba(22, 22, 22, 0.857);
 }
 
 main {
@@ -121,6 +122,7 @@ main {
   margin-right: 15px;
   max-width: 25%;
   height: fit-content;
+  box-shadow: 2px 5px 10px rgba(22, 22, 22, 0.857);
 }
 
 .img-card-view {
