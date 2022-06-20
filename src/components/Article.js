@@ -34,7 +34,11 @@ const Article = ({article, userInfo, theme, layout, limit, index}) => {
                     <div className="article-content">{article["content"]}</div> :
                     <div className="article-content">
                         {abstract}...
-                        <span> <Link to ={"/" + userInfo["profile-name"] + "/" + index}>Read More</Link></span>
+                        <span> 
+                            <Link to ={"/" + userInfo["profile-name"] + "/" + index}>
+                                Read More
+                            </Link>
+                        </span>
                     </div> :
                 <div className="article-content">{article["content"]}</div>
             }
