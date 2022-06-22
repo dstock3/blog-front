@@ -5,14 +5,14 @@ const Register = ({theme}) => {
     return (
         <div className={"register " + theme.main}>
             <form className="registerForm" action="" method="POST">
-                <h2>Register</h2>
+                <h2 className="form-head">Register</h2>
                 <div className="user-register-container">
-                    <label className="reg-label" for="username">Username: </label>
+                    <label className="reg-label" htmlFor="username">Username: </label>
                     <input type="text" name="username"></input>
                 </div>
 
                 <div className="user-register-container">
-                    <label className="reg-label" for="password">Password: </label>
+                    <label className="reg-label" htmlFor="password">Password: </label>
                     <input type="password" name="password"></input>
                 </div>
 

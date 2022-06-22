@@ -7,12 +7,12 @@ const Login = () => {
             <form className="loginForm" action="" method="POST">
                 <h2 className="form-head">Login</h2>
                 <div className="user-login-container">
-                    <label className="log-label" for="username">Username: </label>
+                    <label className="log-label" htmlFor="username">Username: </label>
                     <input type="text" name="username"></input>
                 </div>
 
                 <div className="user-password-container">
-                    <label className="log-label" for="password">Password: </label>
+                    <label className="log-label" htmlFor="password">Password: </label>
                     <input type="password" name="password"></input>
                 </div>
 
