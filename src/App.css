@@ -170,7 +170,7 @@ footer {
     justify-content: flex-start;
     align-items: center;
     margin-inline: 0;
-}
+  }
 
   .settings-icon {
     margin-right: 5%;
@@ -180,7 +180,6 @@ footer {
     position: absolute;
     right: 7.5vw;
     width: 85vw;
-
   }
 
   .attribution {
