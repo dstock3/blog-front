@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Comment from "./Comment";
 
 const Article = ({article, userInfo, theme, layout, limit, index}) => {
     const [abstract, setAbstract] = useState(article["content"])
@@ -42,18 +43,14 @@ const Article = ({article, userInfo, theme, layout, limit, index}) => {
                     </div> :
                 <>
                     <div className="article-content">{article["content"]}</div>
-                    <ul className="comments-container">
+                    {article["comments"] ?
+                        <ul className="comments-container">
                         {Object.keys(article["comments"]).map((keyName, index) =>
-                                    <li className="comment" key={index}>
-                                        <div className="comment-username">
-                                            {keyName}
-                                        </div>
-                                        <div className="comment-content">
-                                            {article["comments"][keyName]}
-                                        </div> 
-                                    </li>
+                                <Comment key={index} username={keyName} content={article["comments"][keyName]} />
                             )}
-                    </ul>
+                        </ul> : 
+                        null
+                    }
                 </>
             }
         </article>
