@@ -60,6 +60,20 @@ article {
     margin-top: 15px;
 }
 
+.comments-container {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.comment {
+    margin-bottom: 15px;
+}
+
+.comment-username {
+    font-weight: bold
+}
+
 @media only screen and (max-width: 900px) {        
     article {
         width: 100%;
