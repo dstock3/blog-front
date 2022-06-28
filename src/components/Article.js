@@ -40,7 +40,21 @@ const Article = ({article, userInfo, theme, layout, limit, index}) => {
                             </Link>
                         </div>
                     </div> :
-                <div className="article-content">{article["content"]}</div>
+                <>
+                    <div className="article-content">{article["content"]}</div>
+                    <ul className="comments-container">
+                        {Object.keys(article["comments"]).map((keyName, index) =>
+                                    <li className="comment" key={index}>
+                                        <div className="comment-username">
+                                            {keyName}
+                                        </div>
+                                        <div className="comment-content">
+                                            {article["comments"][keyName]}
+                                        </div> 
+                                    </li>
+                            )}
+                    </ul>
+                </>
             }
         </article>
     );
