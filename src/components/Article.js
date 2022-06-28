@@ -42,9 +42,12 @@ const Article = ({article, userInfo, theme, layout, limit, index}) => {
                         </div>
                     </div> :
                 <>
-                    <div className="article-content">{article["content"]}</div>
+                    <div className="article-content">
+                        {article["content"]}
+                    </div>
                     {article["comments"] ?
                         <ul className="comments-container">
+                        <h3 className="comment-head">Comments</h3>
                         {Object.keys(article["comments"]).map((keyName, index) =>
                                 <Comment key={index} username={keyName} content={article["comments"][keyName]} />
                             )}
