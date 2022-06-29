@@ -47,6 +47,7 @@ const Article = ({article, userInfo, theme, layout, limit, index}) => {
                     <div className="article-content">
                         {article["content"]}
                     </div>
+                    <CommentForm userInfo={userInfo} theme={theme} />
                     {article["comments"] ?
                         <ul className={"comments-container " + theme.accent}>
                         <h3 className="comment-head">Comments</h3>
@@ -56,7 +57,6 @@ const Article = ({article, userInfo, theme, layout, limit, index}) => {
                         </ul> : 
                         null
                     }
-                    <CommentForm userInfo={userInfo} theme={theme} />
                 </>
             }
         </article>
