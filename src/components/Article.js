@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Comment from "./Comment";
+import CommentForm from "./CommentForm";
 
 const Article = ({article, userInfo, theme, layout, limit, index}) => {
     const [abstract, setAbstract] = useState(article["content"])
@@ -55,6 +56,7 @@ const Article = ({article, userInfo, theme, layout, limit, index}) => {
                         </ul> : 
                         null
                     }
+                    <CommentForm userInfo={userInfo} theme={theme} />
                 </>
             }
         </article>
