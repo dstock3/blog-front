@@ -18,6 +18,7 @@ const Article = ({article, userInfo, theme, layout, limit, index}) => {
                 <h1 className="article-name">{article["title"]}</h1>
                 <div className="date-posted">{article["date"]}</div>
             </div>
+
             {article["img"] ?
                 layout.main === "card" ?
                     <div className="img-container img-card-view">
@@ -46,7 +47,7 @@ const Article = ({article, userInfo, theme, layout, limit, index}) => {
                         {article["content"]}
                     </div>
                     {article["comments"] ?
-                        <ul className="comments-container">
+                        <ul className={"comments-container " + theme.accent}>
                         <h3 className="comment-head">Comments</h3>
                         {Object.keys(article["comments"]).map((keyName, index) =>
                                 <Comment key={index} username={keyName} content={article["comments"][keyName]} />
