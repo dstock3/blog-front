@@ -7,7 +7,7 @@ const Header = ({theme, title}) => {
 
     useEffect(()=> {
         if (theme) {
-            setThisTheme(theme.main)
+            setThisTheme(theme)
         }
     }, [theme])
     

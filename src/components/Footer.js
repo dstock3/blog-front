@@ -1,6 +1,6 @@
 const Footer = ({theme}) => {
     return (
-        <footer className={theme.main}>
+        <footer className={theme}>
             <div className="attribution">
                 BlogDog CMS was created by David Stockdale.
             </div>

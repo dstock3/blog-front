@@ -14,7 +14,7 @@ const Article = ({article, userInfo, theme, layout, limit, index}) => {
     }, [])
 
     return (
-        <article className={theme.main + " " + layout.child}>
+        <article className={theme + " " + layout.child}>
             <div className="article-head">
                 <h1 className="article-name">{article["title"]}</h1>
                 <div className="date-posted">{article["date"]}</div>
@@ -49,7 +49,7 @@ const Article = ({article, userInfo, theme, layout, limit, index}) => {
                     </div>
                     <CommentForm userInfo={userInfo} theme={theme} />
                     {article["comments"] ?
-                        <ul className={"comments-container " + theme.accent}>
+                        <ul className={"comments-container " + theme + "-accent"}>
                         <h3 className="comment-head">Comments</h3>
                         {Object.keys(article["comments"]).map((keyName, index) =>
                                 <Comment key={index} username={keyName} content={article["comments"][keyName]} />
