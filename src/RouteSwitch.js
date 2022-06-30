@@ -50,65 +50,78 @@ const RouteSwitch = () => {
     return (
         <BrowserRouter>
                 <Routes>
-                        {/* Index */}
-                        <Route path="/" element={
-                            <div className={"App " + theme + "-accent"}>
-                                <Header theme={theme} title={userInfo["blog-title"]} />
-                                <Main home={true} userInfo={userInfo} index={false} articles={articles} theme={theme} layout={layout} />
-                                <Footer theme={theme} />
-                            </div>
-                        } />
-                        
-                        {/* Register */}
-                        <Route path="/register" element={
-                            <div className={"App dark-accent"}>
-                                <Header theme={"dark"} title={"BlogDog - Simple CMS"} />
-                                <Register theme={"dark"} />
-                                <Footer theme={"dark"} />
-                            </div>
-                        } />
+                    {/* Home */}
+                    {/*
+                    <Route path={"/" + users[keyName]["profile-name"]}  element={
+                        <div className={"App " + users[keyName]["theme-pref"] + "-accent"}>
+                            <Header theme={users[keyName]["theme-pref"]} title={users[keyName]["blog-title"]} />
+                            <Main home={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["theme-pref"]} layout={users[keyName]["layout-pref"]} />
+                            <Footer theme={users[keyName]["theme-pref"]} />
+                        </div>
+                    } />
+                    */}
 
-                        {/* Login */}
-                        <Route path="/login" element={
-                            <div className={"App dark-accent"}>
-                                <Header theme={{"main": "dark", "accent": "dark-accent"}} title={"BlogDog - Simple CMS"} />
-                                <Login theme={{"main": "dark", "accent": "dark-accent"}} />
-                                <Footer theme={{"main": "dark", "accent": "dark-accent"}} />
+                    {/* Landing Pages for Each User */}
+                    {Object.keys(users).map((keyName, index) =>
+                        <Route path={"/" + users[keyName]["profile-name"]}  element={
+                            <div className={"App " + users[keyName]["theme-pref"] + "-accent"}>
+                                <Header theme={users[keyName]["theme-pref"]} title={users[keyName]["blog-title"]} />
+                                <Main home={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["theme-pref"]} layout={users[keyName]["layout-pref"]} />
+                                <Footer theme={users[keyName]["theme-pref"]} />
                             </div>
                         } />
+                    )}
 
-                        {/* User Profiles */}
-                        {Object.keys(users).map((keyName, index) =>
-                            <Route key={index} path={"/" + users[keyName]["profile-name"]} element={
+                    {/* Register */}
+                    <Route path="/register" element={
+                        <div className={"App dark-accent"}>
+                            <Header theme={"dark"} title={"BlogDog - Simple CMS"} />
+                            <Register />
+                            <Footer theme={"dark"} />
+                        </div>
+                    } />
+
+                    {/* Login */}
+                    <Route path="/login" element={
+                        <div className={"App dark-accent"}>
+                            <Header theme={"dark"} title={"BlogDog - Simple CMS"} />
+                            <Login />
+                            <Footer theme={"dark"} />
+                        </div>
+                    } />
+
+                    {/* User Profile Pages */}
+                    {Object.keys(users).map((keyName, index) =>
+                        <Route key={index} path={"/" + users[keyName]["profile-name"] + "/profile"} element={
+                            <div className={"App " + users[keyName]["theme-pref"] + "-accent"}>
+                                <Header theme={users[keyName]["theme-pref"]} title={users[keyName]["blog-title"]} />
+                                <User userInfo={users[keyName]} articles={articles} theme={users[keyName]["theme-pref"]} />
+                                <Footer theme={users[keyName]["theme-pref"]} />
+                            </div>
+                        } />
+                    )}
+
+                    {/* Compose */}
+                    <Route path={"/compose"} element={
+                        <div className={"App " + theme.accent}>
+                            <Header theme={theme} title={userInfo["blog-title"]} />
+                            <Compose userInfo={userInfo} theme={theme} articles={articles} />
+                            <Footer theme={theme} />
+                        </div>
+                    } />
+
+                    {/* Articles for Each User */}
+                    {Object.keys(users).map((keyName, index) =>
+                        Object.values(articles).map((val, thisIndex) =>
+                            <Route key={thisIndex} path={"/" + users[keyName]["profile-name"] + "/" + thisIndex} element={
                                 <div className={"App " + users[keyName]["theme-pref"] + "-accent"}>
                                     <Header theme={users[keyName]["theme-pref"]} title={users[keyName]["blog-title"]} />
-                                    <User userInfo={users[keyName]} articles={articles} theme={users[keyName]["theme-pref"]} />
+                                    <Main userInfo={users[keyName]} home={false} index={thisIndex} articles={users[keyName]["articles"]} theme={users[keyName]["theme-pref"]} layout={users[keyName]["layout-pref"]} />
                                     <Footer theme={users[keyName]["theme-pref"]} />
                                 </div>
-                            } />
-                        )}
-
-                        {/* Compose */}
-                        <Route path={"/" + userInfo["profile-name"] + "/compose"} element={
-                            <div className={"App " + theme.accent}>
-                                <Header theme={theme} title={userInfo["blog-title"]} />
-                                <Compose userInfo={userInfo} theme={theme} articles={articles} />
-                                <Footer theme={theme} />
-                            </div>
-                        } />
-
-                        {/* Articles for Each User */}
-                        {Object.keys(users).map((keyName, index) =>
-                            Object.values(articles).map((val, thisIndex) =>
-                                <Route key={thisIndex} path={"/" + users[keyName]["profile-name"] + "/" + thisIndex} element={
-                                    <div className={"App " + users[keyName]["theme-pref"] + "-accent"}>
-                                        <Header theme={users[keyName]["theme-pref"]} title={users[keyName]["blog-title"]} />
-                                        <Main userInfo={users[keyName]} home={false} index={thisIndex} articles={users[keyName]["articles"]} theme={users[keyName]["theme-pref"]} layout={users[keyName]["layout-pref"]} />
-                                        <Footer theme={users[keyName]["theme-pref"]} />
-                                    </div>
-                                } /> 
-                            )
-                        )}
+                            } /> 
+                        )
+                    )}
                 </Routes>
         </BrowserRouter>
     )

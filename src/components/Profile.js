@@ -18,7 +18,7 @@ const Profile = ({userInfo, mode}) => {
             <div className={"profile-info " + thisClass.profInfo}>
                 <h2 className="profile-name">
                     {mode === "prof-side" ?
-                        <Link to = {{pathname: '/' + userInfo["profile-name"]}}>
+                        <Link to = {{pathname: '/' + userInfo["profile-name"] + "/profile"}}>
                             {userInfo["profile-name"]}
                         </Link> :
                         userInfo["profile-name"]

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import '../style/login.css'
 
-const Login = ({theme}) => {
+const Login = () => {
     return (
-        <div className={"register " + theme.main}>
+        <div className={"register dark"}>
             <form className="loginForm" action="" method="POST">
                 <h2 className="form-head">Login</h2>
                 <div className="user-login-container">
