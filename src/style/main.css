@@ -62,9 +62,9 @@ article {
 
 .comments-container {
     margin: auto;
-    width: 75%;
+    width: 85%;
     border-radius: 5px;
-    margin-top: 5%;
+    margin-top: 15px;
     display: flex;
     flex-direction: column;
     list-style: none;
@@ -83,6 +83,42 @@ article {
 .comment-username {
     font-weight: bold;
     margin-right: 5px;
+}
+
+.comment-form {
+    margin: auto;
+    width: 85%;
+    border-radius: 5px;
+    margin-top: 2%;
+}
+
+.comment-subcontainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-label {
+    margin-top: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.comment-input {
+    margin-inline: 15px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.comment-btn-subcontainer {
+    margin-inline: 15px;
+    display: flex;
+    justify-content: flex-end;
+   
+}
+
+.comment-btn {
+    width: 75px;
+    margin-bottom: 15px;
 }
 
 @media only screen and (max-width: 900px) {        
