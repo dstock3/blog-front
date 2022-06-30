@@ -5,10 +5,10 @@ import '../style/compose.css'
 const Compose = ({userInfo, articles, theme}) => {
     if (userInfo) {
         return (
-            <main className={"compose-page " + theme.main}>
+            <main className={"compose-page " }>
                 <Sidebar userInfo={userInfo} articles={articles} theme={theme} />
 
-                <form className="composeForm" action="" method="POST">
+                <form className={"composeForm " + theme.main} action="" method="POST">
                     <div className="compose-subcontainer compose-title">
                         <label className="compose-label" for="title">Title:</label>
                         <input className="compose-title-input" type="text" for="title"></input>
