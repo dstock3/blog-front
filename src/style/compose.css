@@ -38,3 +38,11 @@
 textarea {
     resize: none;
 }
+
+@media only screen and (max-width: 900px) {
+    .composeForm {
+        margin-bottom: 15px;
+        width: 95%;
+    }
+
+}
