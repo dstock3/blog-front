@@ -13,20 +13,20 @@ import Home from './components/Home';
 
 const RouteSwitch = () => {
     //States will need to be updated via api call. Should be set as false by default.
-    const [allUsers, setAllUsers] = useState(Data.users)
     const [userInfo, setUserInfo] = useState(Data.users.user)
     const [articles, setArticles] = useState(Data.users.user["articles"])
     const [theme, setTheme] = useState(Data.users.user["theme-pref"])
     const [layout, setLayout] = useState({"main": Data.users.user["layout-pref"], "child": (Data.users.user["layout-pref"] + "-child")})
     const [users, setUsers] = useState(Data.users)
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-    
+
+
     useEffect(() => {
         //Will need to employ after api call once set up
         document.title = Data.users.user["blog-title"]
   
     }, [])
-  
+
     /* 
     useEffect(()=> {
       let apiCall = ``
@@ -58,12 +58,12 @@ const RouteSwitch = () => {
                         isLoggedIn ?
                             <div className={"App dark-accent"}>
                                 <Header theme="dark" title="BlogDog - Simple CMS" />
-                                <Home theme="dark" users={allUsers} />
+                                <Home theme="dark" users={users} />
                                 <Footer theme="dark" />
                             </div> :
                             <div className={"App dark-accent"}>
                                 <Header theme="dark" title="BlogDog - Simple CMS" />
-                                <Home theme="dark" users={allUsers} />
+                                <Home theme="dark" users={users} />
                                 <Footer theme="dark" />
                             </div>    
                     } />

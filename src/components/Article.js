@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
 
-const Article = ({article, userInfo, theme, layout, limit, index}) => {
+const Article = ({article, userInfo, theme, layout, limit, index, author}) => {
     const [abstract, setAbstract] = useState(article["content"])
 
     useEffect(()=> {
@@ -17,6 +17,12 @@ const Article = ({article, userInfo, theme, layout, limit, index}) => {
         <article className={theme + " " + layout.child}>
             <div className="article-head">
                 <h1 className="article-name">{article["title"]}</h1>
+                {author ?
+                    <div className="article-author">
+                        <Link to ={"/" + userInfo["profile-name"]}>
+                            {author}
+                        </Link>
+                    </div> : null}
                 <div className="date-posted">{article["date"]}</div>
             </div>
 
