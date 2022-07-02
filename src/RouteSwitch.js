@@ -13,6 +13,7 @@ import Home from './components/Home';
 
 const RouteSwitch = () => {
     //States will need to be updated via api call. Should be set as false by default.
+    const [allUsers, setAllUsers] = useState(Data.users)
     const [userInfo, setUserInfo] = useState(Data.users.user)
     const [articles, setArticles] = useState(Data.users.user["articles"])
     const [theme, setTheme] = useState(Data.users.user["theme-pref"])
@@ -57,12 +58,12 @@ const RouteSwitch = () => {
                         isLoggedIn ?
                             <div className={"App dark-accent"}>
                                 <Header theme="dark" title="BlogDog - Simple CMS" />
-                                <Home />
+                                <Home theme="dark" users={allUsers} />
                                 <Footer theme="dark" />
                             </div> :
                             <div className={"App dark-accent"}>
                                 <Header theme="dark" title="BlogDog - Simple CMS" />
-                                <Home />
+                                <Home theme="dark" users={allUsers} />
                                 <Footer theme="dark" />
                             </div>    
                     } />

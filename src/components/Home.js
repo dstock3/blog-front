@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const Home = () => {
-  return (
-    <main className="home">
+const Home = ({theme, users}) => {
+    const [articles, setArticles] = useState(null)
 
-    </main>
-  )
+    useEffect(() => {
+        
+
+    }, [users])
+
+    return (
+        <main className={"home " + theme}>
+
+        </main>
+    )
 }
 
 export default Home
