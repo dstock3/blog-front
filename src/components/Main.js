@@ -4,12 +4,12 @@ import Prompt from './Prompt';
 import Sidebar from './Sidebar'
 import '../style/main.css'
 
-const Main = ({home, articles, index, userInfo, theme, layout}) => {
+const Main = ({landing, articles, index, userInfo, theme, layout}) => {
     if (userInfo) {
         return (
             <main className="blog">
                 <Sidebar userInfo={userInfo} articles={articles} theme={theme} />
-                {!home ?
+                {!landing ?
                     <div className={"articles-container " + layout.main}>
                         <Article userInfo={userInfo} article={articles[index]} theme={theme} layout={{"main": "basic", "child": "basic-child"}} />
                     </div> :

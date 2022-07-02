@@ -9,6 +9,7 @@ import Compose from './components/Compose';
 import Footer from './components/Footer';
 import './App.css';
 import Data from './sampleData.json'
+import Home from './components/Home';
 
 const RouteSwitch = () => {
     //States will need to be updated via api call. Should be set as false by default.
@@ -17,6 +18,7 @@ const RouteSwitch = () => {
     const [theme, setTheme] = useState(Data.users.user["theme-pref"])
     const [layout, setLayout] = useState({"main": Data.users.user["layout-pref"], "child": (Data.users.user["layout-pref"] + "-child")})
     const [users, setUsers] = useState(Data.users)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     
     useEffect(() => {
         //Will need to employ after api call once set up
@@ -51,22 +53,26 @@ const RouteSwitch = () => {
         <BrowserRouter>
                 <Routes>
                     {/* Home */}
-                    {/*
-                    <Route path={"/" + users[keyName]["profile-name"]}  element={
-                        <div className={"App " + users[keyName]["theme-pref"] + "-accent"}>
-                            <Header theme={users[keyName]["theme-pref"]} title={users[keyName]["blog-title"]} />
-                            <Main home={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["theme-pref"]} layout={users[keyName]["layout-pref"]} />
-                            <Footer theme={users[keyName]["theme-pref"]} />
-                        </div>
+                    <Route path={"/"}  element={
+                        isLoggedIn ?
+                            <div className={"App dark-accent"}>
+                                <Header theme="dark" title="BlogDog - Simple CMS" />
+                                <Home />
+                                <Footer theme="dark" />
+                            </div> :
+                            <div className={"App dark-accent"}>
+                                <Header theme="dark" title="BlogDog - Simple CMS" />
+                                <Home />
+                                <Footer theme="dark" />
+                            </div>    
                     } />
-                    */}
-
+                    
                     {/* Landing Pages for Each User */}
                     {Object.keys(users).map((keyName, index) =>
                         <Route path={"/" + users[keyName]["profile-name"]}  element={
                             <div className={"App " + users[keyName]["theme-pref"] + "-accent"}>
                                 <Header theme={users[keyName]["theme-pref"]} title={users[keyName]["blog-title"]} />
-                                <Main home={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["theme-pref"]} layout={users[keyName]["layout-pref"]} />
+                                <Main landing={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["theme-pref"]} layout={users[keyName]["layout-pref"]} />
                                 <Footer theme={users[keyName]["theme-pref"]} />
                             </div>
                         } />
@@ -116,7 +122,7 @@ const RouteSwitch = () => {
                             <Route key={thisIndex} path={"/" + users[keyName]["profile-name"] + "/" + thisIndex} element={
                                 <div className={"App " + users[keyName]["theme-pref"] + "-accent"}>
                                     <Header theme={users[keyName]["theme-pref"]} title={users[keyName]["blog-title"]} />
-                                    <Main userInfo={users[keyName]} home={false} index={thisIndex} articles={users[keyName]["articles"]} theme={users[keyName]["theme-pref"]} layout={users[keyName]["layout-pref"]} />
+                                    <Main userInfo={users[keyName]} landing={false} index={thisIndex} articles={users[keyName]["articles"]} theme={users[keyName]["theme-pref"]} layout={users[keyName]["layout-pref"]} />
                                     <Footer theme={users[keyName]["theme-pref"]} />
                                 </div>
                             } /> 
