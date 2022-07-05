@@ -8,23 +8,19 @@ import Login from './components/Login';
 import Compose from './components/Compose';
 import Footer from './components/Footer';
 import './App.css';
-import Data from './sampleData.json'
 import Home from './components/Home';
 
 const RouteSwitch = () => {
-    //States will need to be updated via api call. Should be set as false by default.
-    const [userInfo, setUserInfo] = useState(Data.users.user)
-    const [articles, setArticles] = useState(Data.users.user["articles"])
-    const [theme, setTheme] = useState(Data.users.user["theme-pref"])
-    const [layout, setLayout] = useState({"main": Data.users.user["layout-pref"], "child": (Data.users.user["layout-pref"] + "-child")})
-    const [users, setUsers] = useState(Data.users)
+    const [userInfo, setUserInfo] = useState(false)
+    const [articles, setArticles] = useState(false)
+    const [theme, setTheme] = useState(false)
+    const [layout, setLayout] = useState(false)
+    const [users, setUsers] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-
     useEffect(() => {
-        //Will need to employ after api call once set up
         document.title = "BlogDog - Simple CMS"
-  
+        
     }, [])
 
     
@@ -39,14 +35,11 @@ const RouteSwitch = () => {
         )
         .then(
             function(data) {
-                console.log(data["users"][0]["themePref"])
                 setUserInfo(data["users"][0])
                 setUsers(data["users"])
                 setTheme(data["users"][0]["themePref"])
                 setArticles(data["users"][0]["articles"])
                 setLayout({"main": data["users"][0]["layoutPref"], "child": (data["users"][0]["layoutPref"] + "-child")})
-                
-  
             }
         )
         .catch(
@@ -55,6 +48,11 @@ const RouteSwitch = () => {
             }
         )
     }, []) 
+
+    useEffect(() => {
+        
+        
+    }, [users])
     
 
     return (

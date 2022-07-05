@@ -5,11 +5,16 @@
     border-radius: 5px;
     padding: 15px;
     box-shadow: 2px 5px 10px rgba(22, 22, 22, 0.857);
+    width: 650px;
 }
   
 .user-register-container {
     display: flex;
     flex-direction: column;
+}
+
+.user-register-dropdowns, .user-pw-container {
+    margin-top: 15px;
 }
   
 .reg-label {
@@ -23,6 +28,10 @@
   
 .reg-btn {
     margin-top: 15px;
+}
+
+#drop-one, #pw-one {
+    margin-right: 15px;
 }
 
 @media only screen and (max-width: 900px) {
