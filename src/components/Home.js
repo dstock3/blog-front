@@ -28,7 +28,7 @@ const Home = ({theme, users}) => {
             <main className={"home " + theme + "-accent"}>
                 <div className={"articles-container basic"}>
                     {articleList.map((val, artIndex) => (
-                         <Article key={artIndex} index={val["ind"]} author={val["author"]["profile-name"]} userInfo={val["author"]} article={val["article"]} theme={theme} layout={"basic"} limit={true} />
+                         <Article key={artIndex} index={val["ind"]} author={val["author"]["profileName"]} userInfo={val["author"]} article={val["article"]} theme={theme} layout={"basic"} limit={true} />
                     ))}
                 </div>
             </main>

@@ -13,20 +13,20 @@ const Profile = ({userInfo, mode}) => {
     return (
         <div className="profile" id={mode}> 
             <div className={"profile-pic-container " + thisClass.picContainer}>
-                <img className={"profile-pic " + thisClass.pic} src={userInfo["profile-pic"]} alt={"profile-pic for " + userInfo["profile-name"]}></img>
+                <img className={"profile-pic " + thisClass.pic} src={userInfo["profilePic"]} alt={"profile-pic for " + userInfo["profileName"]}></img>
             </div>
             <div className={"profile-info " + thisClass.profInfo}>
                 <h2 className="profile-name">
                     {mode === "prof-side" ?
-                        <Link to = {{pathname: '/' + userInfo["profile-name"] + "/profile"}}>
-                            {userInfo["profile-name"]}
+                        <Link to = {{pathname: '/' + userInfo["profileName"] + "/profile"}}>
+                            {userInfo["profileName"]}
                         </Link> :
                         userInfo["profile-name"]
                     }
                 </h2>
                 <div className="profile-desc">{userInfo["profile-desc"]}</div>
                 {mode === "prof-main" ?
-                    <div className="date-joined">Member since {userInfo["date-joined"]}</div> :
+                    <div className="date-joined">Member since {userInfo["dateJoined"]}</div> :
                     null
                 }
             </div>

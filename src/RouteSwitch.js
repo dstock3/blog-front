@@ -80,7 +80,7 @@ const RouteSwitch = () => {
                         <Route path={"/" + users[keyName]["profileName"]}  element={
                             <div className={"App " + users[keyName]["themePref"] + "-accent"}>
                                 <Header theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} />
-                                <Main landing={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["layoutPref"]} layout={users[keyName]["layoutPref"]} />
+                                <Main landing={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["themePref"]} layout={users[keyName]["layoutPref"]} />
                                 <Footer theme={users[keyName]["themePref"]} />
                             </div>
                         } />
@@ -106,11 +106,11 @@ const RouteSwitch = () => {
 
                     {/* User Profile Pages */}
                     {Object.keys(users).map((keyName, index) =>
-                        <Route key={index} path={"/" + users[keyName]["profile-name"] + "/profile"} element={
-                            <div className={"App " + users[keyName]["theme-pref"] + "-accent"}>
-                                <Header theme={users[keyName]["theme-pref"]} title={users[keyName]["blog-title"]} />
-                                <User userInfo={users[keyName]} articles={articles} theme={users[keyName]["theme-pref"]} />
-                                <Footer theme={users[keyName]["theme-pref"]} />
+                        <Route key={index} path={"/" + users[keyName]["profileName"] + "/profile"} element={
+                            <div className={"App " + users[keyName]["themePref"] + "-accent"}>
+                                <Header theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} />
+                                <User userInfo={users[keyName]} articles={articles} theme={users[keyName]["themePref"]} />
+                                <Footer theme={users[keyName]["themePref"]} />
                             </div>
                         } />
                     )}
@@ -118,7 +118,7 @@ const RouteSwitch = () => {
                     {/* Compose */}
                     <Route path={"/compose"} element={
                         <div className={"App " + theme.accent}>
-                            <Header theme={theme} title={userInfo["blog-title"]} />
+                            <Header theme={theme} title={userInfo["blogTitle"]} />
                             <Compose userInfo={userInfo} theme={theme} articles={articles} />
                             <Footer theme={theme} />
                         </div>
@@ -127,11 +127,11 @@ const RouteSwitch = () => {
                     {/* Articles for Each User */}
                     {Object.keys(users).map((keyName, index) =>
                         Object.values(articles).map((val, thisIndex) =>
-                            <Route key={thisIndex} path={"/" + users[keyName]["profile-name"] + "/" + thisIndex} element={
-                                <div className={"App " + users[keyName]["theme-pref"] + "-accent"}>
-                                    <Header theme={users[keyName]["theme-pref"]} title={users[keyName]["blog-title"]} />
-                                    <Main userInfo={users[keyName]} landing={false} index={thisIndex} articles={users[keyName]["articles"]} theme={users[keyName]["theme-pref"]} layout={users[keyName]["layout-pref"]} />
-                                    <Footer theme={users[keyName]["theme-pref"]} />
+                            <Route key={thisIndex} path={"/" + users[keyName]["profileName"] + "/" + thisIndex} element={
+                                <div className={"App " + users[keyName]["themePref"] + "-accent"}>
+                                    <Header theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} />
+                                    <Main userInfo={users[keyName]} landing={false} index={thisIndex} articles={users[keyName]["articles"]} theme={users[keyName]["themePref"]} layout={users[keyName]["themePref"]} />
+                                    <Footer theme={users[keyName]["themePref"]} />
                                 </div>
                             } /> 
                         )

@@ -19,7 +19,7 @@ const Article = ({article, userInfo, theme, layout, limit, index, author}) => {
                 <h1 className="article-name">{article["title"]}</h1>
                 {author ?
                     <div className="article-author">
-                        <Link to ={"/" + userInfo["profile-name"]}>
+                        <Link to ={"/" + userInfo["profileName"]}>
                             {author}
                         </Link>
                     </div> : null}
@@ -44,7 +44,7 @@ const Article = ({article, userInfo, theme, layout, limit, index, author}) => {
                     <div className="article-content">
                         {abstract}...
                         <div className="read-more"> 
-                            <Link to ={"/" + userInfo["profile-name"] + "/" + index}>
+                            <Link to ={"/" + userInfo["profileName"] + "/" + index}>
                                 Read More
                             </Link>
                         </div>
