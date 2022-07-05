@@ -5,8 +5,8 @@ const CommentForm = ({userInfo, theme}) => {
         return (
             <form className={"comment-form " + theme + "-accent"} action="" method="POST">
                 <div className="comment-subcontainer comment-prompt">
-                    <label className="comment-label" for="comment">Leave a Comment Below:</label>
-                    <textarea className="comment-input" type="text" for="comment"></textarea>
+                    <label className="comment-label" htmlFor="comment">Leave a Comment Below:</label>
+                    <textarea className="comment-input" type="text" htmlFor="comment"></textarea>
                 </div>
                 <div className="comment-btn-subcontainer">
                     <button className="comment-btn">Submit</button>

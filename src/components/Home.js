@@ -8,7 +8,6 @@ const Home = ({theme, users}) => {
             const randomIndex = Math.floor(Math.random() * (i + 1));
             [articleList[i], articleList[randomIndex]] = [articleList[randomIndex], articleList[i]];
         }
-    
     }
 
     useEffect(()=> {

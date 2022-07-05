@@ -23,13 +23,13 @@ const RouteSwitch = () => {
 
     useEffect(() => {
         //Will need to employ after api call once set up
-        document.title = Data.users.user["blog-title"]
+        document.title = "BlogDog - Simple CMS"
   
     }, [])
 
-    /* 
+    
     useEffect(()=> {
-      let apiCall = ``
+      let apiCall = 'https://stormy-waters-34046.herokuapp.com/'
   
       fetch(apiCall)
         .then(
@@ -39,6 +39,13 @@ const RouteSwitch = () => {
         )
         .then(
             function(data) {
+                console.log(data["users"][0]["themePref"])
+                setUserInfo(data["users"][0])
+                setUsers(data["users"])
+                setTheme(data["users"][0]["themePref"])
+                setArticles(data["users"][0]["articles"])
+                setLayout({"main": data["users"][0]["layoutPref"], "child": (data["users"][0]["layoutPref"] + "-child")})
+                
   
             }
         )
@@ -48,7 +55,7 @@ const RouteSwitch = () => {
             }
         )
     }, []) 
-    */
+    
 
     return (
         <BrowserRouter>
@@ -70,11 +77,11 @@ const RouteSwitch = () => {
                     
                     {/* Landing Pages for Each User */}
                     {Object.keys(users).map((keyName, index) =>
-                        <Route path={"/" + users[keyName]["profile-name"]}  element={
-                            <div className={"App " + users[keyName]["theme-pref"] + "-accent"}>
-                                <Header theme={users[keyName]["theme-pref"]} title={users[keyName]["blog-title"]} />
-                                <Main landing={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["theme-pref"]} layout={users[keyName]["layout-pref"]} />
-                                <Footer theme={users[keyName]["theme-pref"]} />
+                        <Route path={"/" + users[keyName]["profileName"]}  element={
+                            <div className={"App " + users[keyName]["themePref"] + "-accent"}>
+                                <Header theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} />
+                                <Main landing={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["layoutPref"]} layout={users[keyName]["layoutPref"]} />
+                                <Footer theme={users[keyName]["themePref"]} />
                             </div>
                         } />
                     )}
