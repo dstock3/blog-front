@@ -17,34 +17,35 @@ const Register = () => {
         e.preventDefault();
         try {
             let res = await fetch('https://stormy-waters-34046.herokuapp.com/register', {
-            method: "POST",
-            body: JSON.stringify({
-                profileName: profileName,
-                password: password,
-                confirmPassword: confirmPassword,
-                blogTitle: blogTitle,
-                profileDesc: profileDesc,
-                themePref: themePref,
-                layoutPref: layoutPref,
-                dateJoined: dateJoined
-                }),
-            });
+                method: "POST",
+                body: JSON.stringify({
+                    profileName: profileName,
+                    password: password,
+                    confirmPassword: confirmPassword,
+                    blogTitle: blogTitle,
+                    profileDesc: profileDesc,
+                    themePref: themePref,
+                    layoutPref: layoutPref,
+                    dateJoined: dateJoined
+                    }),
+                headers: { 'Content-Type': 'application/json' }
+                });
 
-            let resJson = await res.json();
+                let resJson = await res.json();
 
-            if (res.status === 200) {
-                setProfileName("");
-                setPassword("");
-                setConfirmPassword("");
-                setBlogTitle("");
-                setProfileDesc("");
-                setThemePref("");
-                setLayoutPref("");
-                setDateJoined("");
-                setMessage("User created successfully");
-              } else {
-                setMessage("Some error occured");
-              }
+                if (res.status === 200) {
+                    setProfileName("");
+                    setPassword("");
+                    setConfirmPassword("");
+                    setBlogTitle("");
+                    setProfileDesc("");
+                    setThemePref("");
+                    setLayoutPref("");
+                    setDateJoined("");
+                    setMessage("User created successfully");
+                } else {
+                    setMessage("Some error occured");
+                }
         } catch(err) {
             console.log(err);
         }
@@ -78,13 +79,20 @@ const Register = () => {
                 </div>
 
                 <div className="user-register-dropdowns">
-                    {/* Turn this into dropdown */}
-                    <label className="reg-label-drop" htmlFor="themePref">Theme Preference: </label>
-                    <input type="text" value={themePref} id="drop-one" name="themePref" onChange={(e) => setThemePref(e.target.value)}></input>
+                    <label className="reg-label-drop" htmlFor="themePref">Theme Preference: 
+                        <select id="drop-one" name="themePref" value={themePref} onChange={(e) => setThemePref(e.target.value)}>
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                            <option value="azure">Azure</option>
+                        </select>
+                    </label>
 
-                    {/* Turn this into dropdown */}
-                    <label className="reg-label-drop" htmlFor="layoutPref">Layout Preference: </label>
-                    <input type="text" value={layoutPref}  name="layoutPref" onChange={(e) => setLayoutPref(e.target.value)}></input>
+                    <label className="reg-label-drop" htmlFor="layoutPref">Layout Preference: 
+                        <select id="drop-two" name="layoutPref" value={layoutPref} onChange={(e) => setLayoutPref(e.target.value)}>
+                            <option value="basic">Basic</option>
+                            <option value="card">Card</option>
+                        </select>
+                    </label>
                 </div>
 
                 <div className="user-register-container">
