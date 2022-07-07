@@ -9,6 +9,7 @@ import Compose from './components/Compose';
 import Footer from './components/Footer';
 import './App.css';
 import Home from './components/Home';
+import Options from './components/Options';
 
 const RouteSwitch = () => {
     const [userInfo, setUserInfo] = useState(false)
@@ -97,6 +98,15 @@ const RouteSwitch = () => {
                         <div className={"App dark-accent"}>
                             <Header theme={"dark"} title={"BlogDog - Simple CMS"} />
                             <Login />
+                            <Footer theme={"dark"} />
+                        </div>
+                    } />
+
+                    {/* Options */}
+                    <Route path="/options" element={
+                        <div className={"App dark-accent"}>
+                            <Header theme={"dark"} title={"BlogDog - Simple CMS"} />
+                            <Options />
                             <Footer theme={"dark"} />
                         </div>
                     } />
