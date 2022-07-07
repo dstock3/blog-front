@@ -29,7 +29,7 @@ const Compose = ({userInfo, articles, theme}) => {
             let resJson = await res.json();
 
             if (res.status === 200) {
-                console.log(res.body)
+                console.log(resJson)
                 setTitle("")
                 setImg("")
                 setImgDesc("")
@@ -40,6 +40,7 @@ const Compose = ({userInfo, articles, theme}) => {
                 setMessage("Some error occurred")
             }
         } catch(err) {
+            setMessage("Some error occured");
             console.log(err);
         }
     }

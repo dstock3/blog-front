@@ -34,7 +34,7 @@ const Register = () => {
                 let resJson = await res.json();
 
                 if (res.status === 200) {
-                    console.log(res.body)
+                    console.log(resJson)
                     setProfileName("");
                     setPassword("");
                     setConfirmPassword("");
@@ -48,6 +48,7 @@ const Register = () => {
                     setMessage("Some error occured");
                 }
         } catch(err) {
+            setMessage("Some error occured");
             console.log(err);
         }
     }
@@ -82,7 +83,7 @@ const Register = () => {
                 <div className="user-register-dropdowns">
                     <label className="reg-label-drop" htmlFor="themePref">Theme Preference: 
                         <select id="drop-one" name="themePref" value={themePref} onChange={(e) => setThemePref(e.target.value)}>
-                            <option value="light">Light</option>
+                            <option selected value="light">Light</option>
                             <option value="dark">Dark</option>
                             <option value="azure">Azure</option>
                         </select>
