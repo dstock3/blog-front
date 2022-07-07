@@ -106,7 +106,7 @@ const RouteSwitch = () => {
                     <Route path="/options" element={
                         <div className={"App dark-accent"}>
                             <Header theme={"dark"} title={"BlogDog - Simple CMS"} />
-                            <Options />
+                            <Options userInfo={userInfo} theme={"dark"} />
                             <Footer theme={"dark"} />
                         </div>
                     } />

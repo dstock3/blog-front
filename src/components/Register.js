@@ -54,8 +54,8 @@ const Register = () => {
     }
 
     return (
-        <div onSubmit={handleSubmit} className={"register dark"}>
-            <form className="registerForm" action="" method="POST">
+        <div className={"register dark"}>
+            <form onSubmit={handleSubmit} className="registerForm" action="" method="POST">
                 <h2 className="form-head">Register</h2>
                 <div className="user-register-container">
                     <label className="reg-label" htmlFor="profileName">Username: </label>
