@@ -11,9 +11,10 @@ const Login = () => {
         e.preventDefault();
         try {
             let res = await fetch('https://stormy-waters-34046.herokuapp.com/login', {
+                mode: 'no-cors',
                 method: "POST",
                 body: JSON.stringify({
-                    username: username,
+                    profileName: username,
                     password: pw,
                 })
             })
@@ -26,6 +27,7 @@ const Login = () => {
                 setPw("")
                 setMessage("Login successful");
             } else {
+                console.log(resJson)
                 setMessage("Some error occurred")
             }
 

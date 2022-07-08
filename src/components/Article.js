@@ -54,7 +54,7 @@ const Article = ({article, userInfo, theme, layout, limit, index, author}) => {
                         {article["content"]}
                     </div>
                     <CommentForm userInfo={userInfo} theme={theme} />
-                    {article["comments"] ?
+                    {Object.keys(article["comments"]).length > 0 ?
                         <ul className={"comments-container " + theme + "-accent"}>
                         <h3 className="comment-head">Comments</h3>
                         {Object.keys(article["comments"]).map((keyName, index) =>
