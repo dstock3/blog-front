@@ -8,12 +8,6 @@ const Sidebar = ({articles, userInfo, theme}) => {
         <div className={"sidebar " + theme}>
             <Profile mode={"prof-side"} userInfo={userInfo} />
             
-            <div className="compose-option">
-                <Link to = {"/" + userInfo["profileName"] + "/compose"}>
-                    Compose New Blog
-                </Link>
-            </div>
-
             <Archive userInfo={userInfo} articles={articles} />
         </div>
     );
