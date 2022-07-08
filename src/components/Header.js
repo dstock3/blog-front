@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Settings from "./Settings";
 
-const Header = ({theme, title}) => {
+const Header = ({userInfo, theme, title}) => {
     const [thisTheme, setThisTheme] = useState("light")
 
     useEffect(()=> {
@@ -19,7 +19,7 @@ const Header = ({theme, title}) => {
                         <Link to = {{pathname: '/'}}>BlogDog - Simple CMS</Link>
                     }
                 </h1>
-            <Settings theme={theme} /> 
+            <Settings userInfo={userInfo} theme={theme} /> 
         </header>
     );
 }
