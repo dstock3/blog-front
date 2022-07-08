@@ -10,7 +10,7 @@ const Login = () => {
     const loginHandler = async (e) => {
         e.preventDefault();
         try {
-            let res = await fetch('https://stormy-waters-34046.herokuapp.com/article/compose', {
+            let res = await fetch('https://stormy-waters-34046.herokuapp.com/login', {
                 method: "POST",
                 body: JSON.stringify({
                     username: username,
@@ -36,9 +36,10 @@ const Login = () => {
     }
 
     return (
-        <div className={"register dark"}>
+        <div className={"login dark"}>
             <form onSubmit={loginHandler} className="loginForm" action="" method="POST">
                 <h2 className="form-head">Login</h2>
+                <div className="message">{message ? <p>{message}</p> : null}</div>
                 <div className="user-login-container">
                     <label className="log-label" htmlFor="username">Username: </label>
                     <input value={username} type="text" name="username" onChange={(e) => setUsername(e.target.value)}></input>
