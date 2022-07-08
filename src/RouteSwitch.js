@@ -59,6 +59,7 @@ const RouteSwitch = () => {
         <BrowserRouter>
                 <Routes>
                     {/* Home */}
+                    {/* Need to revise first condition to include user data if logged in */}
                     <Route path={"/"}  element={
                         isLoggedIn ?
                             <div className={"App dark-accent"}>

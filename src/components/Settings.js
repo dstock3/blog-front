@@ -24,8 +24,8 @@ const Settings = ({theme}) => {
                 <img src={menuIcon} alt="menu icon"></img>
             </div>
             <div className={"settings-dropdown " + optionsStatus + " " + theme.main}>
-                {/* Thus far, settings should include theme, view (card or basic), edit profile, and logout */}
                 <ul className="options-list">
+                    {/* Need to conditionally render these options based on login status */}
                     <li className="option-item">
                         <Link to ="/" onClick={() => setOptionsStatus("hidden")}>Home</Link>
                     </li>
