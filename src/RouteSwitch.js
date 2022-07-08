@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import './App.css';
 import Home from './components/Home';
 import Options from './components/Options';
+import Logout from './components/Logout';
 
 const RouteSwitch = () => {
     const [userInfo, setUserInfo] = useState(false)
@@ -99,6 +100,15 @@ const RouteSwitch = () => {
                         <div className={"App dark-accent"}>
                             <Header userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
                             <Login />
+                            <Footer theme={"dark"} />
+                        </div>
+                    } />
+
+                    {/* Logout */}
+                    <Route path="/logout" element={
+                        <div className={"App dark-accent"}>
+                            <Header userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
+                            <Logout />
                             <Footer theme={"dark"} />
                         </div>
                     } />

@@ -32,8 +32,11 @@ const Settings = ({userInfo, theme}) => {
                                 <li className="option-item">
                                     <Link to ="/" onClick={() => setOptionsStatus("hidden")}>Home</Link>
                                 </li>
+                                <li>
+                                    <Link to = "/compose" onClick={() => setOptionsStatus("hidden")}>Compose</Link>
+                                </li>
                                 <li className="option-item">
-                                <Link to ="/options" onClick={() => setOptionsStatus("hidden")}>Options</Link>
+                                    <Link to ="/options" onClick={() => setOptionsStatus("hidden")}>Options</Link>
                                 </li>
                                 <li className="option-item">
                                     <Link to ="/logout" onClick={() => setOptionsStatus("hidden")}>Logout</Link>
