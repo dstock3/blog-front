@@ -5,15 +5,34 @@ import '../style/login.css'
 const Login = () => {
     const [username, setUsername] = useState("")
     const [pw, setPw] = useState("")
+    const [message, setMessage] = useState("")
 
     const loginHandler = async (e) => {
         e.preventDefault();
-        try { 
+        try {
+            let res = await fetch('https://stormy-waters-34046.herokuapp.com/article/compose', {
+                method: "POST",
+                body: JSON.stringify({
+                    username: username,
+                    password: pw,
+                })
+            })
 
-        } catch { 
+            let resJson = await res.json();
 
+            if (res.status === 200) {
+                console.log(resJson)
+                setUsername("")
+                setPw("")
+                setMessage("Login successful");
+            } else {
+                setMessage("Some error occurred")
+            }
+
+        } catch(err) {
+            setMessage("Some error occured");
+            console.log(err);
         }
-
     }
 
     return (
@@ -30,7 +49,7 @@ const Login = () => {
                     <input value={pw} type="password" name="password" onChange={(e) => setPw(e.target.value)}></input>
                 </div>
 
-                <button className="submit-btn log-btn">Login</button>
+                <button type="submit" className="submit-btn log-btn">Login</button>
             </form>
             <div className="prompt-container">
                 <div className="reg-prompt">Don't have an Account?</div>
