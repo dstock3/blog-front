@@ -23,7 +23,7 @@ const Settings = ({userInfo, theme}) => {
             <div onClick={toggleStatus} className="settings-icon">
                 <img src={menuIcon} alt="menu icon"></img>
             </div>
-            <div className={"settings-dropdown " + optionsStatus + " " + theme.main}>
+            <div className={"settings-dropdown " + optionsStatus + " " + theme}>
                 <ul className="options-list">
                     {/* Need to conditionally render these options based on login status */}
                     {
