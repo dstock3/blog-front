@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Profile = ({userInfo, mode}) => {
+const Profile = ({userInfo, mode, isHome}) => {
     const [thisClass, setThisClass] = useState({picContainer: null, pic: null, profInfo: null})
 
     useEffect(()=> {
@@ -25,7 +25,7 @@ const Profile = ({userInfo, mode}) => {
                     }
                 </h2>
                 <div className="profile-desc">{userInfo["profile-desc"]}</div>
-                {mode === "prof-main" ?
+                {(mode === "prof-main") || (isHome) ?
                     <div className="date-joined">Member since {userInfo["dateJoined"]}</div> :
                     null
                 }

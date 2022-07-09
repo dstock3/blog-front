@@ -7,7 +7,7 @@ const Sidebar = ({articles, userInfo, theme, isHome}) => {
     if (isHome) {
         return (
             <div className={"sidebar " + theme}>
-                <Profile mode={"prof-side"} userInfo={userInfo} />
+                <Profile mode="prof-side" isHome={isHome} userInfo={userInfo} />
 
                 <Link to="/compose">Compose New Article</Link>
             </div>
@@ -15,7 +15,7 @@ const Sidebar = ({articles, userInfo, theme, isHome}) => {
     } else {
         return (
             <div className={"sidebar " + theme}>
-                <Profile mode={"prof-side"} userInfo={userInfo} />
+                <Profile mode="prof-side" userInfo={userInfo} />
                 
                 <Archive userInfo={userInfo} articles={articles} />
             </div>
