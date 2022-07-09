@@ -40,4 +40,21 @@
         width: 85%;
     }
 
+    .user-pw-container {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .user-register-dropdowns {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .user-register-dropdowns label {
+        margin-bottom: 10px;
+
+    }
+
 }

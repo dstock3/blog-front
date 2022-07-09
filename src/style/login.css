@@ -1,6 +1,5 @@
 .login {
-    margin-bottom: 7%;
-    align-self: center;
+    margin: auto;
     display: flex;
     flex-direction: column;
     width: 300px;
@@ -31,4 +30,12 @@
   
 .log-btn {
     margin-top: 15px;
+}
+
+@media only screen and (max-width: 900px) {
+    .loginForm {
+        margin-bottom: 15px;
+        width: 95%;
+    }
+
 }

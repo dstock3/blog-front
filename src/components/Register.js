@@ -10,7 +10,6 @@ const Register = () => {
     const [profileDesc, setProfileDesc] = useState("");
     const [themePref, setThemePref] = useState("");
     const [layoutPref, setLayoutPref] = useState("");
-    const [dateJoined, setDateJoined] = useState("");
     const [message, setMessage] = useState("")
 
     let handleSubmit = async (e) => {
@@ -26,7 +25,6 @@ const Register = () => {
                     profileDesc: profileDesc,
                     themePref: themePref,
                     layoutPref: layoutPref,
-                    dateJoined: dateJoined
                     }),
                 headers: { 'Content-Type': 'application/json' }
                 });
@@ -42,7 +40,6 @@ const Register = () => {
                     setProfileDesc("");
                     setThemePref("");
                     setLayoutPref("");
-                    setDateJoined("");
                     setMessage("User created successfully");
                 } else {
                     setMessage("Some error occured");
@@ -95,11 +92,6 @@ const Register = () => {
                             <option value="card">Card</option>
                         </select>
                     </label>
-                </div>
-
-                <div className="user-register-container">
-                    <label className="reg-label" htmlFor="dateJoined">Date Joined: </label>
-                    <input type="text" value={dateJoined}  name="dateJoined" onChange={(e) => setDateJoined(e.target.value)}></input>
                 </div>
 
                 <button type="submit" className="submit-btn reg-btn">Register</button>
