@@ -14,7 +14,7 @@ const Article = ({article, userInfo, theme, layout, limit, index, author}) => {
     }, [])
 
     return (
-        <article className={theme + " " + layout.child}>
+        <article className={theme + " " + layout + "-child"}>
             <div className="article-head">
                 <h1 className="article-name">{article["title"]}</h1>
                 {author ?
