@@ -175,6 +175,10 @@ footer {
   width: 10%;
 }
 
+.message {
+  text-align: center;
+}
+
 @media only screen and (max-width: 900px) {
   .App {
     justify-content: flex-start;

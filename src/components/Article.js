@@ -53,12 +53,12 @@ const Article = ({article, userInfo, theme, layout, limit, index, author}) => {
                     <div className="article-content">
                         {article["content"]}
                     </div>
-                    <CommentForm userInfo={userInfo} theme={theme} />
+                    <CommentForm userInfo={userInfo} index={index} theme={theme} />
                     {Object.keys(article["comments"]).length > 0 ?
                         <ul className={"comments-container " + theme + "-accent"}>
                         <h3 className="comment-head">Comments</h3>
-                        {Object.keys(article["comments"]).map((keyName, index) =>
-                                <Comment key={index} username={keyName} content={article["comments"][keyName]} />
+                        {Object.keys(article["comments"]).map((keyName, thisIndex) =>
+                                <Comment key={thisIndex} username={keyName} content={article["comments"][keyName]} />
                             )}
                         </ul> : 
                         null
