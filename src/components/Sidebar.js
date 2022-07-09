@@ -8,8 +8,7 @@ const Sidebar = ({articles, userInfo, theme, isHome}) => {
         return (
             <div className={"sidebar " + theme}>
                 <Profile mode="prof-side" isHome={isHome} userInfo={userInfo} />
-
-                <Link to="/compose">Compose New Article</Link>
+                <Link className="compose-link" to="/compose">Compose New Article</Link>
             </div>
         );
     } else {
