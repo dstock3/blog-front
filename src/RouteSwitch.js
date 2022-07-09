@@ -59,7 +59,7 @@ const RouteSwitch = () => {
                         userInfo ?
                             <div className={"App dark-accent"}>
                                 <Header userInfo={userInfo} theme="dark" title="BlogDog - Simple CMS" />
-                                <Home theme="dark" users={users} />
+                                <Home theme="dark" userInfo={userInfo} users={users} />
                                 <Footer theme="dark" />
                             </div> :
                             <div className={"App dark-accent"}>

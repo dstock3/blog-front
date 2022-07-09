@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Article from './Article'
-const Home = ({theme, users}) => {
+import Sidebar from './Sidebar';
+const Home = ({userInfo, theme, users}) => {
     const [articleList, setArticleList] = useState(false)
 
     function randomizeList(articleList) {
@@ -26,6 +27,7 @@ const Home = ({theme, users}) => {
     if (articleList) {
         return (
             <main className={"home " + theme + "-accent"}>
+                <Sidebar userInfo={userInfo} theme={theme} isHome={true} />
                 <div className={"articles-container basic"}>
                     {articleList.map((val, artIndex) => (
                          <Article key={artIndex} index={val["ind"]} author={val["author"]["profileName"]} userInfo={val["author"]} article={val["article"]} theme={theme} layout={"basic"} limit={true} />
