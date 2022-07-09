@@ -72,7 +72,7 @@ const Register = () => {
                     <input type="text" value={blogTitle} name="blogTitle" onChange={(e) => setBlogTitle(e.target.value)}></input>
                 </div>
 
-                <div className="user-register-container">
+                <div className="profile-desc-container">
                     <label className="reg-label" htmlFor="profileDesc">Profile Description: </label>
                     <textarea type="text" value={profileDesc} name="profileDesc" onChange={(e) => setProfileDesc(e.target.value)}></textarea>
                 </div>
@@ -99,7 +99,7 @@ const Register = () => {
             <div className="message">{message ? <p>{message}</p> : null}</div>
             <div className="prompt-container">
                 <div className="login-prompt">Already Have a Profile?</div>
-                <Link to = {{pathname: '/login'}}>Sign In</Link>
+                <Link className="login-link" to = {{pathname: '/login'}}>Sign In</Link>
             </div>
         </div>
     );

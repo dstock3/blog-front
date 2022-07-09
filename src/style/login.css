@@ -8,6 +8,10 @@
     box-shadow: 2px 5px 10px rgba(22, 22, 22, 0.857);
 }
 
+.form-head {
+    text-align: center;
+}
+
 .user-login-container {
     display: flex;
     flex-direction: column;
@@ -30,6 +34,7 @@
   
 .log-btn {
     margin-top: 15px;
+    margin-left: 77%;
 }
 
 @media only screen and (max-width: 900px) {
