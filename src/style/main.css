@@ -122,10 +122,6 @@ article {
     margin-bottom: 15px;
 }
 
-.settings-icon img {
-    width: 35px;
-}
-
 @media only screen and (max-width: 900px) {        
     article {
         width: 100%;

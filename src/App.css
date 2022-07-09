@@ -48,12 +48,16 @@ main {
 .settings-dropdown {
   position: absolute;
   top: 10vh;
-  right:100px;
+  right:95px;
   width: 115px;
   background-color: black;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   box-shadow: 1px 10px 5px rgba(22, 22, 22, 0.5);
+}
+
+.settings-icon img {
+  width: 35px;
 }
 
 .options-list {
@@ -67,6 +71,7 @@ main {
 
 .option-item {
   cursor: pointer;
+  margin-bottom: 5px;
 }
 
 .option-item a {
