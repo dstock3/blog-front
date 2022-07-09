@@ -32,7 +32,7 @@ const Settings = ({userInfo, theme}) => {
                                 <li className="option-item">
                                     <Link to ="/" onClick={() => setOptionsStatus("hidden")}>Home</Link>
                                 </li>
-                                <li>
+                                <li className="option-item">
                                     <Link to = "/compose" onClick={() => setOptionsStatus("hidden")}>Compose</Link>
                                 </li>
                                 <li className="option-item">
