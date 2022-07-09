@@ -18,7 +18,6 @@ const RouteSwitch = () => {
     const [theme, setTheme] = useState(false)
     const [layout, setLayout] = useState(false)
     const [users, setUsers] = useState(false)
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     useEffect(() => {
         document.title = "BlogDog - Simple CMS"
@@ -51,18 +50,13 @@ const RouteSwitch = () => {
         )
     }, []) 
 
-    useEffect(() => {
-        
-        
-    }, [users])
-    
     return (
         <BrowserRouter>
                 <Routes>
                     {/* Home */}
                     {/* Need to revise first condition to include user data if logged in */}
                     <Route path={"/"}  element={
-                        isLoggedIn ?
+                        userInfo ?
                             <div className={"App dark-accent"}>
                                 <Header userInfo={userInfo} theme="dark" title="BlogDog - Simple CMS" />
                                 <Home theme="dark" users={users} />
@@ -70,7 +64,7 @@ const RouteSwitch = () => {
                             </div> :
                             <div className={"App dark-accent"}>
                                 <Header theme="dark" title="BlogDog - Simple CMS" />
-                                <Home theme="dark" users={users} />
+                                
                                 <Footer theme="dark" />
                             </div>    
                     } />
