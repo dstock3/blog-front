@@ -19,6 +19,8 @@ const RouteSwitch = () => {
     const [layout, setLayout] = useState(false)
     const [users, setUsers] = useState(false)
 
+    const [user, setUser] = useState("")
+
     useEffect(() => {
         document.title = "BlogDog - Simple CMS"
         
@@ -93,7 +95,7 @@ const RouteSwitch = () => {
                     <Route path="/login" element={
                         <div className={"App dark-accent"}>
                             <Header userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
-                            <Login />
+                            <Login setUser={setUser}/>
                             <Footer theme={"dark"} />
                         </div>
                     } />
