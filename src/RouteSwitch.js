@@ -19,8 +19,7 @@ const RouteSwitch = () => {
     const [theme, setTheme] = useState(false)
     const [layout, setLayout] = useState(false)
     const [users, setUsers] = useState(false)
-    const [isLoading, setIsLoading] = useState(false);
-
+    const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState("")
 
     useEffect(() => {
@@ -30,8 +29,6 @@ const RouteSwitch = () => {
 
     
     useEffect(()=> {
-        setIsLoading(true)
-
         let apiCall = 'https://stormy-waters-34046.herokuapp.com/'
 
         fetch(apiCall)
