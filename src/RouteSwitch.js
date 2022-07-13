@@ -11,6 +11,7 @@ import './App.css';
 import Home from './components/Home';
 import Options from './components/Options';
 import Logout from './components/Logout';
+import Loading from './components/Loading'
 
 const RouteSwitch = () => {
     const [userInfo, setUserInfo] = useState(false)
@@ -18,6 +19,7 @@ const RouteSwitch = () => {
     const [theme, setTheme] = useState(false)
     const [layout, setLayout] = useState(false)
     const [users, setUsers] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
 
     const [user, setUser] = useState("")
 
@@ -28,28 +30,31 @@ const RouteSwitch = () => {
 
     
     useEffect(()=> {
-      let apiCall = 'https://stormy-waters-34046.herokuapp.com/'
-  
-      fetch(apiCall)
-        .then(
-            function(response) {
-                return response.json()
-            }
-        )
-        .then(
-            function(data) {
-                setUserInfo(data["users"][0])
-                setUsers(data["users"])
-                setTheme(data["users"][0]["themePref"])
-                setArticles(data["users"][0]["articles"])
-                setLayout(data["users"][0]["layoutPref"])
-            }
-        )
-        .catch(
-            function(err) {
-                console.log(err)
-            }
-        )
+        setIsLoading(true)
+
+        let apiCall = 'https://stormy-waters-34046.herokuapp.com/'
+
+        fetch(apiCall)
+            .then(
+                function(response) {
+                    return response.json()
+                }
+            )
+            .then(
+                function(data) {
+                    setUserInfo(data["users"][0])
+                    setUsers(data["users"])
+                    setTheme(data["users"][0]["themePref"])
+                    setArticles(data["users"][0]["articles"])
+                    setLayout(data["users"][0]["layoutPref"])
+                    setIsLoading(false)
+                }
+            )
+            .catch(
+                function(err) {
+                    console.log(err)
+                }
+            )
     }, []) 
 
     return (
@@ -58,17 +63,17 @@ const RouteSwitch = () => {
                     {/* Home */}
                     {/* Need to revise first condition to include user data if logged in */}
                     <Route path={"/"}  element={
-                        userInfo ?
+                        isLoading ?
+                            <div className={"App dark-accent"}>
+                                <Header theme="dark" title="BlogDog - Simple CMS" />
+                                <Loading />
+                                <Footer theme="dark" />
+                            </div> :
                             <div className={"App dark-accent"}>
                                 <Header userInfo={userInfo} theme="dark" title="BlogDog - Simple CMS" />
                                 <Home theme="dark" userInfo={userInfo} users={users} />
                                 <Footer theme="dark" />
-                            </div> :
-                            <div className={"App dark-accent"}>
-                                <Header theme="dark" title="BlogDog - Simple CMS" />
-                                
-                                <Footer theme="dark" />
-                            </div>    
+                            </div>
                     } />
                     
                     {/* Landing Pages for Each User */}
