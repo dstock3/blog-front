@@ -11,7 +11,7 @@ import './App.css';
 import Home from './components/Home';
 import Options from './components/Options';
 import Logout from './components/Logout';
-import Loading from './components/Loading'
+import Spinner from './components/Spinner'
 
 const RouteSwitch = () => {
     const [userInfo, setUserInfo] = useState(false)
@@ -63,7 +63,7 @@ const RouteSwitch = () => {
                         isLoading ?
                             <div className={"App dark-accent"}>
                                 <Header theme="dark" title="BlogDog - Simple CMS" />
-                                <Loading />
+                                <Spinner />
                                 <Footer theme="dark" />
                             </div> :
                             <div className={"App dark-accent"}>

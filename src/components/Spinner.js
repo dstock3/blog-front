@@ -3,10 +3,11 @@ import '../style/spinner.css'
 
 const Spinner = () => {
   return (
-    <div className="spinner-container">
-      <div className="spinner">
-      </div>
-    </div>
+    <main className="blog">
+        <div className="spinner-container">
+            <div className="spinner"></div>
+        </div>
+    </main>
   )
 }
 
