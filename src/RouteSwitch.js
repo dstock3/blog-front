@@ -42,7 +42,7 @@ const RouteSwitch = () => {
                 setUsers(data["users"])
                 setTheme(data["users"][0]["themePref"])
                 setArticles(data["users"][0]["articles"])
-                setLayout({"main": data["users"][0]["layoutPref"], "child": (data["users"][0]["layoutPref"] + "-child")})
+                setLayout(data["users"][0]["layoutPref"])
             }
         )
         .catch(
@@ -144,7 +144,7 @@ const RouteSwitch = () => {
                             <Route key={thisIndex} path={"/" + users[keyName]["profileName"] + "/" + thisIndex} element={
                                 <div className={"App " + users[keyName]["themePref"] + "-accent"}>
                                     <Header userInfo={userInfo} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} />
-                                    <Main userInfo={users[keyName]} landing={false} index={thisIndex} articles={users[keyName]["articles"]} theme={users[keyName]["themePref"]} layout={users[keyName]["themePref"]} />
+                                    <Main userInfo={users[keyName]} landing={false} index={thisIndex} articles={users[keyName]["articles"]} theme={users[keyName]["themePref"]} layout={users[keyName]["layoutPref"]} />
                                     <Footer theme={users[keyName]["themePref"]} />
                                 </div>
                             } /> 

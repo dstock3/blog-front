@@ -10,10 +10,10 @@ const Main = ({landing, articles, index, userInfo, theme, layout}) => {
             <main className="blog">
                 <Sidebar userInfo={userInfo} articles={articles} theme={theme} />
                 {!landing ?
-                    <div className={"articles-container " + layout.main}>
-                        <Article userInfo={userInfo} index={index} article={articles[index]} theme={theme} layout={{"main": "basic", "child": "basic-child"}} />
+                    <div className={"articles-container " + layout}>
+                        <Article userInfo={userInfo} index={index} article={articles[index]} theme={theme} layout={layout} />
                     </div> :
-                    <div className={"articles-container " + layout.main}>
+                    <div className={"articles-container " + layout}>
                         {Object.values(articles).map((article, artIndex) =>
                             <Article key={artIndex} index={artIndex} userInfo={userInfo} article={articles[artIndex]} theme={theme} layout={layout} limit={true} />
                         )}

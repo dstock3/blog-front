@@ -10,7 +10,7 @@ const Login = ({setUser}) => {
 
     const loginHandler = async (e) => {
         e.preventDefault();
-        
+        /*
         try {
             let res = await fetch('https://stormy-waters-34046.herokuapp.com/login', {
                 mode: 'no-cors',
@@ -37,8 +37,9 @@ const Login = ({setUser}) => {
             setMessage("Some error occured");
             console.log(err);
         }
+        */
+
         
-        /*
         axios
             .post('https://stormy-waters-34046.herokuapp.com/login', { username, pw })
             .then((res) => {
@@ -59,7 +60,7 @@ const Login = ({setUser}) => {
                 setMessage("Some error occured");
                 console.log(err);
             });
-        */
+        
         
             
     }
