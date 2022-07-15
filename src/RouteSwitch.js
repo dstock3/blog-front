@@ -24,10 +24,8 @@ const RouteSwitch = () => {
 
     useEffect(() => {
         document.title = "BlogDog - Simple CMS"
-        
     }, [])
 
-    
     useEffect(()=> {
         let apiCall = 'https://stormy-waters-34046.herokuapp.com/'
 

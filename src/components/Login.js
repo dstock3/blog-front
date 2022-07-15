@@ -1,54 +1,26 @@
 import axios from "axios";
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../style/login.css'
 
 const Login = ({setUser}) => {
     const [username, setUsername] = useState("")
-    const [pw, setPw] = useState("")
+    const [password, setPw] = useState("")
     const [message, setMessage] = useState("")
+    const nav = useNavigate()
 
     const loginHandler = async (e) => {
         e.preventDefault();
-        /*
-        try {
-            let res = await fetch('https://stormy-waters-34046.herokuapp.com/login', {
-                mode: 'no-cors',
-                method: "POST",
-                body: JSON.stringify({
-                    profileName: username,
-                    password: pw,
-                })
-            })
 
-            let resJson = await res.json();
-
-            if (res.status === 200) {
-                console.log(resJson)
-                localStorage.setItem("user", JSON.stringify(res.data));
-                setUsername("")
-                setPw("")
-                setMessage("Login successful");
-            } else {
-                console.log(resJson)
-                setMessage("Some error occurred")
-            }
-        } catch(err) {
-            setMessage("Some error occured");
-            console.log(err);
-        }
-        */
-
-        
         axios
-            .post('https://stormy-waters-34046.herokuapp.com/login', { username, pw })
+            .post('https://stormy-waters-34046.herokuapp.com/login', { username, password })
             .then((res) => {
                 localStorage.setItem("user", JSON.stringify(res.data));
                 setUser(res.data.user);
                 if (res.status === 200) {
                     setUsername("")
                     setPw("")
-                    setMessage("Login successful");
+                    nav('/')
                 } else {
                     setMessage("Some error occurred")
                 }
