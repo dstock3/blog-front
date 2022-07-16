@@ -2,8 +2,9 @@ import axios from "axios";
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../style/login.css'
+import { parseJwt } from '../auth/parseToken.js'
 
-const Login = ({setUser}) => {
+const Login = ({ setUser }) => {
     const [username, setUsername] = useState("")
     const [password, setPw] = useState("")
     const [message, setMessage] = useState("")
@@ -17,7 +18,9 @@ const Login = ({setUser}) => {
             .then((res) => {
                 localStorage.setItem("user", JSON.stringify(res.data));
                 setUser(res.data.user);
+                
                 if (res.status === 200) {
+                    console.log(parseJwt(res.data))
                     setUsername("")
                     setPw("")
                     nav('/')
@@ -28,13 +31,10 @@ const Login = ({setUser}) => {
             .catch((err) => {
                 if (err.response.status === 401) {
                     setMessage(err.response.data.message);
-                }
-                setMessage("Some error occured");
-                console.log(err);
-            });
-        
-        
-            
+                } else {
+                    setMessage("Some error occured");
+                }  
+            });  
     }
 
     return (
