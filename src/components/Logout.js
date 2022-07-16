@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useNavigate } from 'react'
 
 const Logout = () => {
-    const [logoutMessage, setLogoutMessage] = useState("")
+    const [logoutMessage, setLogoutMessage] = useState("");
+    const nav = useNavigate();
+
     useEffect(()=> {
         let apiCall = 'https://stormy-waters-34046.herokuapp.com/logout'
         
@@ -14,7 +16,9 @@ const Logout = () => {
         .then(
             function(data) {
                 if (data["message"] === "logout successful") {
-                    setLogoutMessage("You have successfully logged out.")
+                    localStorage.clear();
+                    setLogoutMessage("You have successfully logged out.");
+                    nav('/')
                 } else {
                     setLogoutMessage("There was a problem with your request.")
                 }
