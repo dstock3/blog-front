@@ -38,7 +38,6 @@ const RouteSwitch = () => {
             )
             .then(
                 function(data) {
-                    setUserInfo(data["users"][0])
                     setUsers(data["users"])
                     setTheme(data["users"][0]["themePref"])
                     setArticles(data["users"][0]["articles"])
@@ -47,8 +46,7 @@ const RouteSwitch = () => {
                     if (user) {
                         for (let prop in data["users"]) {
                             if (data["users"][prop]._id === user) {
-                                console.log(data["users"][prop])
-                                setUser(data["users"][prop])
+                                setUserInfo(data["users"][prop])
                             }   
                         }
                     }
@@ -72,12 +70,12 @@ const RouteSwitch = () => {
                     <Route path={"/"}  element={
                         isLoading ?
                             <div className={"App dark-accent"}>
-                                <Header user={user} theme="dark" title="BlogDog - Simple CMS" />
+                                <Header theme="dark" title="BlogDog - Simple CMS" />
                                 <Spinner />
                                 <Footer theme="dark" />
                             </div> :
                             <div className={"App dark-accent"}>
-                                <Header user={user} userInfo={userInfo} theme="dark" title="BlogDog - Simple CMS" />
+                                <Header userInfo={userInfo} theme="dark" title="BlogDog - Simple CMS" />
                                 <Home theme="dark" userInfo={userInfo} users={users} />
                                 <Footer theme="dark" />
                             </div>
@@ -87,7 +85,7 @@ const RouteSwitch = () => {
                     {Object.keys(users).map((keyName, index) =>
                         <Route path={"/" + users[keyName]["profileName"]}  element={
                             <div className={"App " + users[keyName]["themePref"] + "-accent"}>
-                                <Header user={user} userInfo={userInfo} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} />
+                                <Header userInfo={userInfo} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} />
                                 <Main landing={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["themePref"]} layout={users[keyName]["layoutPref"]} />
                                 <Footer theme={users[keyName]["themePref"]} />
                             </div>
@@ -97,7 +95,7 @@ const RouteSwitch = () => {
                     {/* Register */}
                     <Route path="/register" element={
                         <div className={"App dark-accent"}>
-                            <Header user={user} userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
+                            <Header userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
                             <Register />
                             <Footer theme={"dark"} />
                         </div>
@@ -106,7 +104,7 @@ const RouteSwitch = () => {
                     {/* Login */}
                     <Route path="/login" element={
                         <div className={"App dark-accent"}>
-                            <Header user={user} userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
+                            <Header userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
                             <Login setUser={setUser}/>
                             <Footer theme={"dark"} />
                         </div>
@@ -115,7 +113,7 @@ const RouteSwitch = () => {
                     {/* Logout */}
                     <Route path="/logout" element={
                         <div className={"App dark-accent"}>
-                            <Header user={user} userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
+                            <Header userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
                             <Logout />
                             <Footer theme={"dark"} />
                         </div>
@@ -124,7 +122,7 @@ const RouteSwitch = () => {
                     {/* Options */}
                     <Route path="/options" element={
                         <div className={"App dark-accent"}>
-                            <Header user={user} userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
+                            <Header userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
                             <Options userInfo={userInfo} theme={"dark"} />
                             <Footer theme={"dark"} />
                         </div>
@@ -134,7 +132,7 @@ const RouteSwitch = () => {
                     {Object.keys(users).map((keyName, index) =>
                         <Route key={index} path={"/" + users[keyName]["profileName"] + "/profile"} element={
                             <div className={"App " + users[keyName]["themePref"] + "-accent"}>
-                                <Header user={user} userInfo={userInfo} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} />
+                                <Header userInfo={userInfo} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} />
                                 <User userInfo={users[keyName]} articles={articles} theme={users[keyName]["themePref"]} />
                                 <Footer theme={users[keyName]["themePref"]} />
                             </div>
@@ -144,7 +142,7 @@ const RouteSwitch = () => {
                     {/* Compose */}
                     <Route path={"/compose"} element={
                         <div className={"App " + theme.accent}>
-                            <Header user={user} userInfo={userInfo} theme={theme} title={userInfo["blogTitle"]} />
+                            <Header userInfo={userInfo} theme={theme} title={userInfo["blogTitle"]} />
                             <Compose userInfo={userInfo} theme={theme} articles={articles} />
                             <Footer theme={theme} />
                         </div>
@@ -155,7 +153,7 @@ const RouteSwitch = () => {
                         Object.values(articles).map((val, thisIndex) =>
                             <Route key={thisIndex} path={"/" + users[keyName]["profileName"] + "/" + thisIndex} element={
                                 <div className={"App " + users[keyName]["themePref"] + "-accent"}>
-                                    <Header user={user} userInfo={userInfo} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} />
+                                    <Header userInfo={userInfo} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} />
                                     <Main userInfo={users[keyName]} landing={false} index={thisIndex} articles={users[keyName]["articles"]} theme={users[keyName]["themePref"]} layout={users[keyName]["layoutPref"]} />
                                     <Footer theme={users[keyName]["themePref"]} />
                                 </div>

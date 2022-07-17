@@ -67,6 +67,15 @@
     justify-content: center;
 }
 
+.login-prompt {
+    margin-top: 15px;
+}
+  
+.register-prompt {
+    margin-top: 15px;
+    margin-inline: 15px;
+}
+
 @media only screen and (max-width: 900px) {
     .sidebar {
         margin-bottom: 15px;
