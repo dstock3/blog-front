@@ -16,11 +16,8 @@ const Login = ({ setUser }) => {
         axios
             .post('https://stormy-waters-34046.herokuapp.com/login', { username, password })
             .then((res) => {
-                localStorage.setItem("user", JSON.stringify(res.data));
-                setUser(res.data.user);
-                
                 if (res.status === 200) {
-                    console.log(parseJwt(res.data))
+                    setUser(parseJwt(res.data)._id)
                     setUsername("")
                     setPw("")
                     nav('/')

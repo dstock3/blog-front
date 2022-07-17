@@ -38,6 +38,10 @@ main {
   visibility: visible;
 }
 
+.welcome {
+  margin-left: 5%;
+}
+
 /* Settings */
 
 .settings-icon {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useNavigate } from 'react'
+import React, { useEffect, useState, useNavigate } from 'react'
 
 const Logout = () => {
     const [logoutMessage, setLogoutMessage] = useState("");
