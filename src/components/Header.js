@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Settings from "./Settings";
 
-const Header = ({user, userInfo, theme, title}) => {
+const Header = ({userInfo, theme, title}) => {
     const [thisTheme, setThisTheme] = useState("light")
 
     useEffect(()=> {
@@ -13,7 +13,7 @@ const Header = ({user, userInfo, theme, title}) => {
     
     return (
         <header className={thisTheme}>
-            {user ? <div className="welcome">Welcome {user.profileName}</div> : null}
+            {userInfo ? <div className="welcome">Welcome {userInfo.profileName}</div> : null}
             <h1 className="title">
                 {title ?
                     <Link to = {{pathname: '/'}}>{title}</Link> :
