@@ -54,9 +54,31 @@ const Options = ({userInfo, theme}) => {
         }
     }
 
+    const handleDelete = async (e) => {
+        e.preventDefault();
+
+        try {
+            let res = await fetch("https://stormy-waters-34046.herokuapp.com/" + userInfo["profileName"] + "/delete", {
+                method: "DELETE",
+                body: JSON.stringify({profileName: profileName}),
+                headers: { 'Content-Type': 'application/json' }
+                });
+
+            let resJson = await res.json();
+
+            if (res.status === 200) {
+                setMessage("User sucessfully deleted");
+            }
+
+        } catch(err) {
+            setMessage("Some error occured");
+            console.log(err);
+        }
+    }
+
     return (
         <main className={"options-page " + theme}>
-            <form onSubmit={handleSubmit} className="optionsForm" action="" method="POST">
+            <form onSubmit={handleSubmit} className="optionsForm" action="" method="PUT">
                 <h2 className="form-head">Options</h2>
                 <div className="options-desc">Update your profile information and preferences</div>
                 <div className="user-register-container">
@@ -117,6 +139,9 @@ const Options = ({userInfo, theme}) => {
                 </div>
 
                 <button type="submit" className="submit-btn">Update Profile</button>
+            </form>
+            <form onSubmit={handleDelete} className="deleteForm" action="" method="DELETE">
+                <button type="submit" className="submit-btn">Delete Profile</button>
             </form>
             <div className="message">{message ? <p>{message}</p> : null}</div>
         </main>
