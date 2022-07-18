@@ -85,11 +85,26 @@ const Options = ({userInfo, theme}) => {
                 <div className="user-register-dropdowns">
                     <label className="reg-label-drop" htmlFor="themePref">Theme Preference: 
                         <select id="drop-one" name="themePref" value={themePref} onChange={(e) => setThemePref(e.target.value)}>
-                            <option selected value="light">Light</option>
-                            <option value="dark">Dark</option>
-                            <option value="artic">Artic</option>
-                            <option value="forest">Forest</option>
-                            <option value="azure">Azure</option>
+                            <option selected value="light">
+                                <div className="theme-option light-option"></div>
+                                <div className="option-text">Light</div>
+                            </option>
+                            <option value="dark">
+                                <div className="theme-option dark-option"></div>
+                                <div className="option-text">Dark</div>
+                            </option>
+                            <option value="artic">
+                                <div className="theme-option artic-option"></div>
+                                <div className="option-text">Artic</div>
+                            </option>
+                            <option value="forest">
+                                <div className="theme-option forest-option"></div>
+                                <div className="option-text">Forest</div>
+                            </option>
+                            <option value="azure">
+                                <div className="theme-option light-option"></div>
+                                <div className="option-text">Light</div>
+                            </option>
                         </select>
                     </label>
 

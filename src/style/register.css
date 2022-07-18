@@ -44,9 +44,11 @@
 }
 
 #drop-one, #pw-one, #drop-two {
+    width: 75px;
     margin-left: 5px;
     margin-right: 15px;
 }
+
 
 .prompt-container {
     display: flex;
