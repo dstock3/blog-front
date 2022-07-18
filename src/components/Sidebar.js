@@ -13,6 +13,7 @@ const Sidebar = ({articles, userInfo, theme, isHome}) => {
                         <Link className="compose-link" to="/compose">Compose New Article</Link>
                     </> : 
                     <>
+                        <div className="intro">Welcome to <b>BlogDog</b>, a content management system designed to maximize ease of use.</div>
                         <div className="login-prompt">
                             <Link to="/login">Login</Link> to access CMS features.
                         </div>
