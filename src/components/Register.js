@@ -8,8 +8,6 @@ const Register = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [blogTitle, setBlogTitle] = useState("");
     const [profileDesc, setProfileDesc] = useState("");
-    const [themePref, setThemePref] = useState("");
-    const [layoutPref, setLayoutPref] = useState("");
     const [message, setMessage] = useState("")
 
     let handleSubmit = async (e) => {
@@ -22,9 +20,7 @@ const Register = () => {
                     password: password,
                     confirmPassword: confirmPassword,
                     blogTitle: blogTitle,
-                    profileDesc: profileDesc,
-                    themePref: themePref,
-                    layoutPref: layoutPref,
+                    profileDesc: profileDesc
                     }),
                 headers: { 'Content-Type': 'application/json' }
                 });
@@ -38,8 +34,6 @@ const Register = () => {
                     setConfirmPassword("");
                     setBlogTitle("");
                     setProfileDesc("");
-                    setThemePref("");
-                    setLayoutPref("");
                     setMessage("User created successfully");
                 } else {
                     setMessage("Some error occured");
@@ -75,23 +69,6 @@ const Register = () => {
                 <div className="profile-desc-container">
                     <label className="reg-label" htmlFor="profileDesc">Profile Description: </label>
                     <textarea type="text" value={profileDesc} name="profileDesc" onChange={(e) => setProfileDesc(e.target.value)}></textarea>
-                </div>
-
-                <div className="user-register-dropdowns">
-                    <label className="reg-label-drop" htmlFor="themePref">Theme Preference: 
-                        <select id="drop-one" name="themePref" value={themePref} onChange={(e) => setThemePref(e.target.value)}>
-                            <option selected value="light">Light</option>
-                            <option value="dark">Dark</option>
-                            <option value="azure">Azure</option>
-                        </select>
-                    </label>
-
-                    <label className="reg-label-drop" htmlFor="layoutPref">Layout Preference: 
-                        <select id="drop-two" name="layoutPref" value={layoutPref} onChange={(e) => setLayoutPref(e.target.value)}>
-                            <option value="basic">Basic</option>
-                            <option value="card">Card</option>
-                        </select>
-                    </label>
                 </div>
 
                 <button type="submit" className="submit-btn reg-btn">Register</button>
