@@ -1,5 +1,11 @@
 .options-page {
     align-self: center;
+    display: flex;
+    justify-content: center;
     margin-block: 15px;
     width: 75%;
+}
+
+.options-desc {
+    margin-bottom: 15px;
 }

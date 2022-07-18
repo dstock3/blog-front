@@ -87,6 +87,8 @@ const Options = ({userInfo, theme}) => {
                         <select id="drop-one" name="themePref" value={themePref} onChange={(e) => setThemePref(e.target.value)}>
                             <option selected value="light">Light</option>
                             <option value="dark">Dark</option>
+                            <option value="artic">Artic</option>
+                            <option value="forest">Forest</option>
                             <option value="azure">Azure</option>
                         </select>
                     </label>
