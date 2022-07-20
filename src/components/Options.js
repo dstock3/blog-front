@@ -11,27 +11,38 @@ const Options = ({userInfo, theme}) => {
     const [themePref, setThemePref] = useState("");
     const [layoutPref, setLayoutPref] = useState("");
     const [dateJoined, setDateJoined] = useState("");
+    const [profilePic, setProfilePic] = useState("");
     const [message, setMessage] = useState("")
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        let body
+        if (profilePic) {
+            body = JSON.stringify({
+                profileName: profileName,
+                password: password,
+                confirmPassword: confirmPassword,
+                blogTitle: blogTitle,
+                profileDesc: profileDesc,
+                profilePic: profilePic
+            });
+        } else {
+            body = JSON.stringify({
+                profileName: profileName,
+                password: password,
+                confirmPassword: confirmPassword,
+                blogTitle: blogTitle,
+                profileDesc: profileDesc
+            });
+        }
          
         try {
             let token = localStorage.getItem('user');
 
             let res = await fetch("https://stormy-waters-34046.herokuapp.com/" + userInfo["profileName"] + "/update", {
                 method: "PUT",
-                body: JSON.stringify({
-                    userId: userInfo._id,
-                    profileName: profileName,
-                    password: password,
-                    confirmPassword: confirmPassword,
-                    blogTitle: blogTitle,
-                    profileDesc: profileDesc,
-                    themePref: themePref,
-                    layoutPref: layoutPref,
-                    dateJoined: dateJoined
-                    }),
+                body: body,
                 headers: { 'Content-Type': 'application/json', "login-token" : token }
                 });
 
@@ -47,6 +58,7 @@ const Options = ({userInfo, theme}) => {
                 setThemePref("");
                 setLayoutPref("");
                 setDateJoined("");
+                setProfilePic("");
                 setMessage("User updated successfully");
             } else {
                 console.log(res)
@@ -79,7 +91,6 @@ const Options = ({userInfo, theme}) => {
                 console.log(res)
             }
         } catch(err) {
-            
             setMessage("Some error occured");
             console.log(err);
         }
@@ -90,9 +101,11 @@ const Options = ({userInfo, theme}) => {
             <form onSubmit={handleSubmit} className="optionsForm" action="" method="PUT">
                 <h2 className="form-head">Options</h2>
                 <div className="options-desc">Update your profile information and preferences</div>
-                <div className="user-register-container">
+                <div className="user-register-container" id="primary-reg">
                     <label className="reg-label" htmlFor="profileName">Username: </label>
-                    <input type="text" value={profileName} name="profileName" onChange={(e) => setProfileName(e.target.value)}></input>
+                    <input className="reg-user-input" type="text" value={profileName} name="profileName" onChange={(e) => setProfileName(e.target.value)}></input>
+                    <label className="upload-img-label">Profile Pic:</label>
+                    <input className="upload-img-input" type="file" name="profilePic" onChange={(e) => setProfilePic(e.target.files[0])}></input>
                 </div>
 
                 <div className="user-pw-container">

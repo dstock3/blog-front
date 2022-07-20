@@ -42,7 +42,7 @@ const Register = () => {
                 });
 
                 let resJson = await res.json();
-                console.log(res)
+                
                 if (res.status === 200) {
                     console.log(resJson)
                     setProfileName("");
@@ -50,6 +50,7 @@ const Register = () => {
                     setConfirmPassword("");
                     setBlogTitle("");
                     setProfileDesc("");
+                    setProfilePic("");
                     setMessage("User created successfully");
                 } else {
                     console.log(res)
