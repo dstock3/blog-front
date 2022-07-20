@@ -12,6 +12,7 @@ import Home from './components/Home';
 import Options from './components/Options';
 import Logout from './components/Logout';
 import Spinner from './components/Spinner'
+import { parseJwt } from './auth/parseToken'
 
 const RouteSwitch = () => {
     const [userInfo, setUserInfo] = useState(false)
@@ -28,6 +29,7 @@ const RouteSwitch = () => {
     }, [])
 
     useEffect(()=> {
+        //localStorage.clear();
         let apiCall = 'https://stormy-waters-34046.herokuapp.com/'
 
         fetch(apiCall)
@@ -38,11 +40,17 @@ const RouteSwitch = () => {
             )
             .then(
                 function(data) {
+                    let newUser = localStorage.getItem('user');
+
+                    if (newUser) {
+                        setUser(parseJwt(newUser)._id)
+                    }
+
                     setUsers(data["users"])
                     setTheme(data["users"][0]["themePref"])
                     setArticles(data["users"][0]["articles"])
                     setLayout(data["users"][0]["layoutPref"])
-                    
+
                     if (user) {
                         for (let prop in data["users"]) {
                             if (data["users"][prop]._id === user) {
@@ -52,7 +60,6 @@ const RouteSwitch = () => {
                     }
 
                     setIsLoading(false)
-
                 }
             )
             .catch(

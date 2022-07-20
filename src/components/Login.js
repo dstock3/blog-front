@@ -2,9 +2,9 @@ import axios from "axios";
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../style/login.css'
-import { parseJwt } from '../auth/parseToken.js'
 
-const Login = ({ setUser }) => {
+
+const Login = () => {
     const [username, setUsername] = useState("")
     const [password, setPw] = useState("")
     const [message, setMessage] = useState("")
@@ -17,10 +17,10 @@ const Login = ({ setUser }) => {
             .post('https://stormy-waters-34046.herokuapp.com/login', { username, password })
             .then((res) => {
                 if (res.status === 200) {
-                    setUser(parseJwt(res.data)._id)
                     setUsername("")
                     setPw("")
-                    nav('/')
+                    localStorage.setItem('user', res.data);
+                    nav('/');
                 } else {
                     setMessage("Some error occurred")
                 }

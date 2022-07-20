@@ -5,6 +5,7 @@ const Logout = () => {
     const nav = useNavigate();
 
     useEffect(()=> {
+        localStorage.clear();
         let apiCall = 'https://stormy-waters-34046.herokuapp.com/logout'
         
         fetch(apiCall)
@@ -16,7 +17,7 @@ const Logout = () => {
         .then(
             function(data) {
                 if (data["message"] === "logout successful") {
-                    localStorage.clear();
+                    
                     setLogoutMessage("You have successfully logged out.");
                     nav('/')
                 } else {

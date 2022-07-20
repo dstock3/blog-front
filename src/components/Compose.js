@@ -15,17 +15,35 @@ const Compose = ({userInfo, articles, theme}) => {
         e.preventDefault();
 
         try {
-            let res = await fetch('https://stormy-waters-34046.herokuapp.com/article/compose', {
-                method: "POST",
-                body: JSON.stringify({
-                    title: title,
-                    img: img,
-                    imgDesc: imgDesc,
-                    date: date,
-                    content: content
-                })
-            })
+            let token = localStorage.getItem('user');
 
+            let res
+
+            if (img) {
+                res = await fetch('https://stormy-waters-34046.herokuapp.com/article/compose', {
+                    method: "POST",
+                    body: JSON.stringify({
+                        title: title,
+                        img: img,
+                        imgDesc: imgDesc,
+                        date: date,
+                        content: content
+                    }),
+                    headers: { 'Content-Type': 'application/json', "login-token" : token }
+                })
+
+            } else {
+                res = await fetch('https://stormy-waters-34046.herokuapp.com/article/compose', {
+                    method: "POST",
+                    body: JSON.stringify({
+                        title: title,
+                        date: date,
+                        content: content
+                    }),
+                    headers: { 'Content-Type': 'application/json', "login-token" : token }
+                })
+            }
+            
             let resJson = await res.json();
 
             if (res.status === 200) {
@@ -37,6 +55,7 @@ const Compose = ({userInfo, articles, theme}) => {
                 setContent("")
                 setMessage("Article created successfully");
             } else {
+                console.log(res)
                 setMessage("Some error occurred")
             }
         } catch(err) {

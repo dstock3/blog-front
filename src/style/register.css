@@ -23,6 +23,14 @@
     margin-bottom: 15px;
 }
 
+#primary-reg {
+    flex-direction: row;
+}
+
+.upload-img-label {
+    margin-inline: 15px;
+}
+
 .profile-desc-container {
     display: flex;
     flex-direction: column;
@@ -49,12 +57,16 @@
     margin-right: 15px;
 }
 
-
 .prompt-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     align-self: center;
+}
+
+.reg-user-input {
+    margin-left: 15px;
+    height: 1em;
 }
 
 @media only screen and (max-width: 900px) {

@@ -48,9 +48,11 @@ const Register = () => {
         <div className={"register dark"}>
             <form onSubmit={handleSubmit} className="registerForm" action="" method="POST">
                 <h2 className="form-head">Register</h2>
-                <div className="user-register-container">
+                <div className="user-register-container" id="primary-reg">
                     <label className="reg-label" htmlFor="profileName">Username: </label>
-                    <input type="text" value={profileName} name="profileName" onChange={(e) => setProfileName(e.target.value)}></input>
+                    <input className="reg-user-input" type="text" value={profileName} name="profileName" onChange={(e) => setProfileName(e.target.value)}></input>
+                    <label className="upload-img-label">Profile Pic:</label>
+                    <input className="upload-img-input" type="file" name="image"></input>
                 </div>
 
                 <div className="user-pw-container">

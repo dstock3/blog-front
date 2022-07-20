@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../style/options.css'
 import '../style/register.css'
 
@@ -17,9 +17,12 @@ const Options = ({userInfo, theme}) => {
         e.preventDefault();
          
         try {
+            let token = localStorage.getItem('user');
+
             let res = await fetch("https://stormy-waters-34046.herokuapp.com/" + userInfo["profileName"] + "/update", {
                 method: "PUT",
                 body: JSON.stringify({
+                    userId: userInfo._id,
                     profileName: profileName,
                     password: password,
                     confirmPassword: confirmPassword,
@@ -29,7 +32,7 @@ const Options = ({userInfo, theme}) => {
                     layoutPref: layoutPref,
                     dateJoined: dateJoined
                     }),
-                headers: { 'Content-Type': 'application/json' }
+                headers: { 'Content-Type': 'application/json', "login-token" : token }
                 });
 
             let resJson = await res.json();
@@ -46,6 +49,7 @@ const Options = ({userInfo, theme}) => {
                 setDateJoined("");
                 setMessage("User updated successfully");
             } else {
+                console.log(res)
                 setMessage("Some error occured");
             }
         } catch(err) {
@@ -58,19 +62,24 @@ const Options = ({userInfo, theme}) => {
         e.preventDefault();
 
         try {
+            let token = localStorage.getItem('user')
+
             let res = await fetch("https://stormy-waters-34046.herokuapp.com/" + userInfo["profileName"] + "/delete", {
+                
                 method: "DELETE",
-                body: JSON.stringify({profileName: profileName}),
-                headers: { 'Content-Type': 'application/json' }
+                body: JSON.stringify({ userId: userInfo._id }),
+                headers: { 'Content-Type': 'application/json', "login-token" : token }
                 });
 
             let resJson = await res.json();
 
             if (res.status === 200) {
                 setMessage("User sucessfully deleted");
+            } else {
+                console.log(res)
             }
-
         } catch(err) {
+            
             setMessage("Some error occured");
             console.log(err);
         }
