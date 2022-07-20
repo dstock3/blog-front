@@ -8,25 +8,41 @@ const Register = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [blogTitle, setBlogTitle] = useState("");
     const [profileDesc, setProfileDesc] = useState("");
+    const [profilePic, setProfilePic] = useState("");
     const [message, setMessage] = useState("")
 
     let handleSubmit = async (e) => {
         e.preventDefault();
+
+        let body
+        if (profilePic) {
+            body = JSON.stringify({
+                profileName: profileName,
+                password: password,
+                confirmPassword: confirmPassword,
+                blogTitle: blogTitle,
+                profileDesc: profileDesc,
+                profilePic: profilePic
+            });
+        } else {
+            body = JSON.stringify({
+                profileName: profileName,
+                password: password,
+                confirmPassword: confirmPassword,
+                blogTitle: blogTitle,
+                profileDesc: profileDesc
+            });
+        }
+        
         try {
             let res = await fetch('https://stormy-waters-34046.herokuapp.com/register', {
                 method: "POST",
-                body: JSON.stringify({
-                    profileName: profileName,
-                    password: password,
-                    confirmPassword: confirmPassword,
-                    blogTitle: blogTitle,
-                    profileDesc: profileDesc
-                    }),
+                body: body,
                 headers: { 'Content-Type': 'application/json' }
                 });
 
                 let resJson = await res.json();
-
+                console.log(res)
                 if (res.status === 200) {
                     console.log(resJson)
                     setProfileName("");
@@ -36,6 +52,7 @@ const Register = () => {
                     setProfileDesc("");
                     setMessage("User created successfully");
                 } else {
+                    console.log(res)
                     setMessage("Some error occured");
                 }
         } catch(err) {
@@ -46,13 +63,13 @@ const Register = () => {
 
     return (
         <div className={"register dark"}>
-            <form onSubmit={handleSubmit} className="registerForm" action="" method="POST">
+            <form onSubmit={handleSubmit} className="registerForm" action="" method="POST" encType="multipart/form-data">
                 <h2 className="form-head">Register</h2>
                 <div className="user-register-container" id="primary-reg">
                     <label className="reg-label" htmlFor="profileName">Username: </label>
                     <input className="reg-user-input" type="text" value={profileName} name="profileName" onChange={(e) => setProfileName(e.target.value)}></input>
                     <label className="upload-img-label">Profile Pic:</label>
-                    <input className="upload-img-input" type="file" name="image"></input>
+                    <input className="upload-img-input" type="file" name="profilePic" onChange={(e) => setProfilePic(e.target.files[0])}></input>
                 </div>
 
                 <div className="user-pw-container">
