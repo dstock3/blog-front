@@ -71,7 +71,7 @@ const Compose = ({userInfo, articles, theme}) => {
             <main className="compose-page">
                 <Sidebar userInfo={userInfo} articles={articles} theme={theme} />
 
-                <form onSubmit={handleSubmit} className={"composeForm " + theme.main} action="" method="POST">
+                <form onSubmit={handleSubmit} className={"composeForm " + theme} action="" method="POST">
                     <div className="message">{message ? <p>{message}</p> : null}</div>
                     <div className="compose-subcontainer compose-title">
                         <label className="compose-label" htmlFor="title">Title:</label>
