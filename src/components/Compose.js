@@ -23,6 +23,7 @@ const Compose = ({userInfo, articles, theme}) => {
                 res = await fetch('https://stormy-waters-34046.herokuapp.com/article/compose', {
                     method: "POST",
                     body: JSON.stringify({
+                        userId: userInfo._id,
                         title: title,
                         img: img,
                         imgDesc: imgDesc,
@@ -36,6 +37,7 @@ const Compose = ({userInfo, articles, theme}) => {
                 res = await fetch('https://stormy-waters-34046.herokuapp.com/article/compose', {
                     method: "POST",
                     body: JSON.stringify({
+                        userId: userInfo._id,
                         title: title,
                         date: date,
                         content: content
