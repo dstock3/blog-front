@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Prompt from "./Prompt";
 
-const CommentForm = ({userInfo, index, theme}) => {
+const CommentForm = ({userInfo, articleId, theme}) => {
     const [comment, setComment] = useState("")
     const [message, setMessage] = useState("")
 
@@ -11,11 +11,11 @@ const CommentForm = ({userInfo, index, theme}) => {
         try {
             let token = localStorage.getItem('user');
             
-            let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${index}`, {
+            let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${articleId}`, {
                 method: "POST",
                 body: JSON.stringify({
                     userId: userInfo._id,
-                    articleId: index,
+                    articleId: articleId,
                     comment: comment
                     }),
                 headers: { 'Content-Type': 'application/json', "login-token" : token }

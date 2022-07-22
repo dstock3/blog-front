@@ -137,12 +137,12 @@ const RouteSwitch = () => {
                     } />
 
                     {/* User Profile Pages */}
-                    {Object.keys(users).map((keyName, index) =>
-                        <Route key={index} path={"/" + users[keyName]["profileName"] + "/profile"} element={
-                            <div className={"App " + users[keyName]["themePref"] + "-accent"}>
-                                <Header userInfo={userInfo} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} />
-                                <User userInfo={users[keyName]} articles={articles} theme={users[keyName]["themePref"]} />
-                                <Footer theme={users[keyName]["themePref"]} />
+                    {Object.values(users).map((thisUser, index) =>
+                        <Route key={index} path={"/" + thisUser["profileName"] + "/profile"} element={
+                            <div className={"App " + thisUser["themePref"] + "-accent"}>
+                                <Header userInfo={userInfo} theme={thisUser["themePref"]} title={thisUser["blogTitle"]} />
+                                <User userInfo={thisUser} articles={thisUser.articles} theme={thisUser["themePref"]} />
+                                <Footer theme={thisUser["themePref"]} />
                             </div>
                         } />
                     )}
@@ -162,7 +162,7 @@ const RouteSwitch = () => {
                             <Route key={thisIndex} path={"/" + thisUser["profileName"] + "/" + val._id} element={
                                 <div className={"App " + thisUser["themePref"] + "-accent"}>
                                     <Header userInfo={userInfo} theme={thisUser["themePref"]} title={thisUser["blogTitle"]} />
-                                    <Main userInfo={thisUser} landing={false} index={val._id} articles={thisUser["articles"]} theme={thisUser["themePref"]} layout={thisUser["layoutPref"]} />
+                                    <Main userInfo={thisUser} landing={false} article={val} articles={thisUser["articles"]} theme={thisUser["themePref"]} layout={thisUser["layoutPref"]} />
                                     <Footer theme={thisUser["themePref"]} />
                                 </div>
                             } /> 

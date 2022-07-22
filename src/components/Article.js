@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
 
-const Article = ({article, userInfo, theme, layout, limit, index, author}) => {
+const Article = ({article, userInfo, theme, layout, limit, author}) => {
     const [abstract, setAbstract] = useState(article["content"])
 
     useEffect(()=> {
@@ -44,7 +44,7 @@ const Article = ({article, userInfo, theme, layout, limit, index, author}) => {
                     <div className="article-content">
                         {abstract}...
                         <div className="read-more"> 
-                            <Link to ={"/" + userInfo["profileName"] + "/" + index}>
+                            <Link to ={"/" + userInfo["profileName"] + "/" + article._id}>
                                 Read More
                             </Link>
                         </div>
@@ -53,7 +53,7 @@ const Article = ({article, userInfo, theme, layout, limit, index, author}) => {
                     <div className="article-content">
                         {article["content"]}
                     </div>
-                    <CommentForm userInfo={userInfo} index={index} theme={theme} />
+                    <CommentForm userInfo={userInfo} articleId={article._id} theme={theme} />
                     {Object.keys(article["comments"]).length > 0 ?
                         <ul className={"comments-container " + theme + "-accent"}>
                         <h3 className="comment-head">Comments</h3>

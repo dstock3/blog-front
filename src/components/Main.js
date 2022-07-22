@@ -4,18 +4,18 @@ import Prompt from './Prompt';
 import Sidebar from './Sidebar'
 import '../style/main.css'
 
-const Main = ({landing, articles, index, userInfo, theme, layout}) => {
+const Main = ({landing, article, articles, userInfo, theme, layout}) => {
     if (userInfo) {
         return (
             <main className="blog">
                 <Sidebar userInfo={userInfo} articles={articles} theme={theme} />
                 {!landing ?
                     <div className={"articles-container " + layout}>
-                        <Article userInfo={userInfo} index={index} article={articles[index]} theme={theme} layout={layout} />
+                        <Article userInfo={userInfo} articleId={article._id} article={article} theme={theme} layout={layout} />
                     </div> :
                     <div className={"articles-container " + layout}>
-                        {Object.values(articles).map((article, artIndex) =>
-                            <Article key={artIndex} index={article._id} userInfo={userInfo} article={articles[artIndex]} theme={theme} layout={layout} limit={true} />
+                        {Object.values(articles).map((thisArticle, artIndex) =>
+                            <Article key={artIndex} articleId={thisArticle._id} userInfo={userInfo} article={articles[artIndex]} theme={theme} layout={layout} limit={true} />
                         )}
                     </div>
                 }

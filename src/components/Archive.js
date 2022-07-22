@@ -20,7 +20,7 @@ const Archive = ({userInfo, articles, mode}) => {
                 {Object.values(articles).map((article, index) => {
                     return (
                         <li className="archive-link-item" key={index}>
-                            <Link to = {'/' + userInfo["profileName"] + '/' + index}>
+                            <Link to = {'/' + userInfo["profileName"] + '/' + article._id}>
                                 {article["title"]}
                             </Link>
                         </li>)
