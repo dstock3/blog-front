@@ -71,25 +71,18 @@ const Compose = ({userInfo, articles, theme}) => {
             <main className="compose-page">
                 <Sidebar userInfo={userInfo} articles={articles} theme={theme} />
 
-                <form onSubmit={handleSubmit} className={"composeForm " + theme} action="" method="POST">
+                <form onSubmit={handleSubmit} className={"composeForm " + theme} action="" method="POST" encType="multipart/form-data">
                     <div className="message">{message ? <p>{message}</p> : null}</div>
                     <div className="compose-subcontainer compose-title">
                         <label className="compose-label" htmlFor="title">Title:</label>
                         <input className="compose-title-input" value={title} type="text" htmlFor="title" name="title" onChange={(e) => setTitle(e.target.value)}></input>
                     </div>
 
-                    <div className="compose-subcontainer compose-date">
-                        <label className="compose-label" htmlFor="date">Date:</label>
-                        <input className="compose-title-input" value={date} type="text" htmlFor="date" name="date" onChange={(e) => setDate(e.target.value)}></input>
-                    </div>
-
                     <div className="compose-subcontainer compose-img">
-                        <label className="compose-label" htmlFor="img">Image:</label>
-                        <input className="compose-title-input" value={img} type="text" htmlFor="img" name="img" onChange={(e) => setImg(e.target.value)}></input>
-                    </div>
+                        <label className="upload-img-label" htmlFor="img">Image:</label>
+                        <input className="upload-img-input" type="file" value={img} htmlFor="img" name="img" onChange={(e) => setImg(e.target.files[0])}></input>
 
-                    <div className="compose-subcontainer compose-img-desc">
-                        <label className="compose-label" htmlFor="imgDesc">Image Caption:</label>
+                        <label className="compose-label" htmlFor="imgDesc">Image Caption (if applicable):</label>
                         <input className="compose-title-input" value={imgDesc} type="text" htmlFor="imgDesc" name="imgDesc" onChange={(e) => setImgDesc(e.target.value)}></input>
                     </div>
 

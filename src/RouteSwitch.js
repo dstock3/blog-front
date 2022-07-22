@@ -47,6 +47,7 @@ const RouteSwitch = () => {
                     }
 
                     setUsers(data["users"])
+
                     setTheme(data["users"][0]["themePref"])
                     setArticles(data["users"][0]["articles"])
                     setLayout(data["users"][0]["layoutPref"])
@@ -156,13 +157,13 @@ const RouteSwitch = () => {
                     } />
 
                     {/* Articles for Each User */}
-                    {Object.keys(users).map((keyName, index) =>
-                        Object.values(articles).map((val, thisIndex) =>
-                            <Route key={thisIndex} path={"/" + users[keyName]["profileName"] + "/" + thisIndex} element={
-                                <div className={"App " + users[keyName]["themePref"] + "-accent"}>
-                                    <Header userInfo={userInfo} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} />
-                                    <Main userInfo={users[keyName]} landing={false} index={thisIndex} articles={users[keyName]["articles"]} theme={users[keyName]["themePref"]} layout={users[keyName]["layoutPref"]} />
-                                    <Footer theme={users[keyName]["themePref"]} />
+                    {Object.values(users).map((thisUser, index) =>
+                        Object.values(thisUser["articles"]).map((val, thisIndex) =>
+                            <Route key={thisIndex} path={"/" + thisUser["profileName"] + "/" + val._id} element={
+                                <div className={"App " + thisUser["themePref"] + "-accent"}>
+                                    <Header userInfo={userInfo} theme={thisUser["themePref"]} title={thisUser["blogTitle"]} />
+                                    <Main userInfo={thisUser} landing={false} index={val._id} articles={thisUser["articles"]} theme={thisUser["themePref"]} layout={thisUser["layoutPref"]} />
+                                    <Footer theme={thisUser["themePref"]} />
                                 </div>
                             } /> 
                         )

@@ -10,13 +10,12 @@ const CommentForm = ({userInfo, index, theme}) => {
         
         try {
             let token = localStorage.getItem('user');
-            //need to revise link based on whatever the appropriate route is
             
-            let res = await fetch(`https://stormy-waters-34046.herokuapp.com/${userInfo["profileName"]}/${index}`, {
+            let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${index}`, {
                 method: "POST",
-                //need to convey comment author info
                 body: JSON.stringify({
                     userId: userInfo._id,
+                    articleId: index,
                     comment: comment
                     }),
                 headers: { 'Content-Type': 'application/json', "login-token" : token }
