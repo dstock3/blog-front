@@ -14,7 +14,7 @@ const CommentForm = ({userInfo, articleId, theme}) => {
             let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${articleId}`, {
                 method: "POST",
                 body: JSON.stringify({
-                    userId: userInfo._id,
+                    profileName: userInfo._id,
                     articleId: articleId,
                     comment: comment
                     }),
