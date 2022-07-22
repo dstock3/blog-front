@@ -52,14 +52,6 @@ const RouteSwitch = () => {
                     setArticles(data["users"][0]["articles"])
                     setLayout(data["users"][0]["layoutPref"])
 
-                    if (user) {
-                        for (let prop in data["users"]) {
-                            if (data["users"][prop]._id === user) {
-                                setUserInfo(data["users"][prop])
-                            }   
-                        }
-                    }
-
                     setIsLoading(false)
                 }
             )
@@ -69,6 +61,20 @@ const RouteSwitch = () => {
                 }
             )
     }, [user]) 
+
+    useEffect(()=> {
+        if (user) {
+            for (let prop in users) {
+                if (users[prop]._id === user) {
+                    let thisUser = users[prop]
+                    setUserInfo(thisUser)
+                    setTheme(thisUser["themePref"])
+                    setArticles(thisUser["articles"])
+                    setLayout(thisUser["layoutPref"])
+                }   
+            }
+        }
+    }, [user])
 
     return (
         <BrowserRouter>
