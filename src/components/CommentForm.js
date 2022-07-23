@@ -41,9 +41,8 @@ const CommentForm = ({users, userInfo, articleId, theme, fetchArticle}) => {
             let resJson = await res.json();
             
             if (res.status === 200) {
-                nav(`/${userInfo.profileName}/${articleId}`)
                 setComment("");
-                setMessage("Comment has been posted");
+                window.location.reload(false);
             } else {
                 setMessage("Some error occured");
             }
