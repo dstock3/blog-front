@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
+import { useNavigate } from 'react-router-dom';
 
 const DeletePortal = ({userInfo, toDelete, setToDelete}) => {
     const [message, setMessage] = useState("")
+    const nav = useNavigate()
 
     const handleDelete = async (e) => {
         e.preventDefault();
@@ -21,7 +23,7 @@ const DeletePortal = ({userInfo, toDelete, setToDelete}) => {
             let resJson = await res.json();
 
             if (res.status === 200) {
-                setMessage("User sucessfully deleted");
+                nav('/');
             } else {
                 console.log(res)
             }
@@ -34,6 +36,7 @@ const DeletePortal = ({userInfo, toDelete, setToDelete}) => {
     if (!toDelete) return null
     return ReactDOM.createPortal(
         <form onSubmit={handleDelete} className="confirmDelete" action="" method="DELETE">
+            <div className="message">{message ? <p>{message}</p> : null}</div>
             <div className="delete-user-prompt">
                 Are you sure you want to delete your account?
             </div>
