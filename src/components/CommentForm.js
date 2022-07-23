@@ -17,7 +17,7 @@ const CommentForm = ({users, userInfo, articleId, theme, fetchArticle}) => {
             for (let prop in users) {
                 if (users[prop]._id === parsedUser._id) {
                     let thisUser = users[prop]
-                    setAuthor(thisUser.profileName)
+                    setAuthor(thisUser)
                 }   
             }
         }
@@ -32,8 +32,8 @@ const CommentForm = ({users, userInfo, articleId, theme, fetchArticle}) => {
             let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${articleId}`, {
                 method: "POST",
                 body: JSON.stringify({
-                    profileName: author,
-                    userId: userInfo._id,
+                    profileName: author.profileName,
+                    userId: author._id,
                     content: comment
                     }),
                 headers: { 'Content-Type': 'application/json', "login-token" : token }
