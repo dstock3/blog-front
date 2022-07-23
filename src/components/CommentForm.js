@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Prompt from "./Prompt";
 
-const CommentForm = ({userInfo, articleId, theme}) => {
+const CommentForm = ({userInfo, articleId, theme, fetchArticle}) => {
     const [comment, setComment] = useState("")
     const [message, setMessage] = useState("")
 
@@ -16,13 +16,14 @@ const CommentForm = ({userInfo, articleId, theme}) => {
                 body: JSON.stringify({
                     profileName: userInfo._id,
                     articleId: articleId,
-                    comment: comment
+                    content: comment
                     }),
                 headers: { 'Content-Type': 'application/json', "login-token" : token }
                 });
             let resJson = await res.json();
             
             if (res.status === 200) {
+                fetchArticle()
                 setComment("");
                 setMessage("Comment has been posted");
             } else {
