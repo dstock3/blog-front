@@ -1,13 +1,22 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
+import { parseJwt } from '../auth/parseToken'
 
-const Article = ({ article, userInfo, theme, layout, limit, author}) => {
+const Article = ({ users, article, userInfo, theme, layout, limit, author}) => {
     const [articleData, setArticleData] = useState(article)
     const [abstract, setAbstract] = useState(article["content"])
     const [message, setMessage] = useState("")
-    
+    const [isAuthorized, setIsAuthorized] = useState(false)
+    const [comments, setComments] = useState([])
+    const nav = useNavigate()
+
+    useEffect(()=> {
+        console.log(articleData.comments)
+
+    }, [articleData])
+
     const fetchArticle = async () => {
         try {
             let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${article._id}`, {
@@ -27,18 +36,87 @@ const Article = ({ article, userInfo, theme, layout, limit, author}) => {
         }
     }
 
+    const editArticle = () => {
+        /* need to create props passed to Compose to enable editing functionality */
+        nav('/')
+
+    }
+
+    const deleteArticle = async() => {
+        let token = localStorage.getItem('user');
+        if (token) {
+            try {
+                let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${article._id}`, {
+                    method: "DELETE",
+                    body: JSON.stringify({
+                        userId: userInfo._id,
+                        articleId: article._id
+                    }),
+                    headers: { 'Content-Type': 'application/json', "login-token" : token }
+                    });
+                
+                let resJson = await res.json();
+
+            } catch(err) {
+                setMessage("Some error occured");
+            }
+        } else {
+            setMessage("Invalid credentials");
+        }
+    }
+
     useEffect(()=> {
+        /* check if this is an article authored by the user */
+        let token = localStorage.getItem('user');
+        if (token) {
+            let userData = parseJwt(token)
+            if (userData._id === userInfo._id) {
+                setIsAuthorized(true)
+            }
+        }
+        /* create an article preview */
         if (article["content"].length > 400) {
             let dif = article["content"].length - 400;
             setAbstract(article["content"].substring(0, article["content"].length - dif))
         }
-
     }, [])
 
+    useEffect(()=> {
+        /* get comments */
+        if (articleData.comments.length > 0) {
+            const fetchComments = (async() => {
+                    try {
+                        let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${article._id}/comments`, {
+                            method: "GET"
+                            });
+                        let resJson = await res.json();
+                        
+                        if (res.status === 200) {
+                            console.log(resJson)
+                            setComments(resJson.comments)
+                        } else {
+                            setMessage("Some error occured");
+                        }
+                    } catch(err) {
+                        setMessage("Some error occured");
+                        console.log(err);
+                    }
+                })();
+            }
+    }, [articleData.comments])
 
+    useEffect(()=> {}, [comments])
 
     return (
         <article className={theme + " " + layout + "-child"}>
+            {limit ? 
+                null :
+                    isAuthorized ?
+                        <div className="article-dashboard">
+                            <button onClick={editArticle}>Edit</button>
+                            <button onClick={deleteArticle}>Delete</button>
+                        </div> : null
+            }
             <div className="article-head">
                 <h1 className="article-name">{articleData["title"]}</h1>
                 {author ?
@@ -77,12 +155,12 @@ const Article = ({ article, userInfo, theme, layout, limit, author}) => {
                     <div className="article-content">
                         {article["content"]}
                     </div>
-                    <CommentForm userInfo={userInfo} articleId={articleData._id} theme={theme} fetchArticle={fetchArticle} />
+                    <CommentForm users={users} userInfo={userInfo} articleId={articleData._id} theme={theme} fetchArticle={fetchArticle} />
                     
-                    {Object.keys(articleData["comments"]).length > 0 ?
+                    {comments ?
                         <ul className={"comments-container " + theme + "-accent"}>
                         <h3 className="comment-head">Comments</h3>
-                        {Object.values(articleData["comments"]).map((comment, thisIndex) =>
+                        {Object.values(comments).map((comment, thisIndex) =>
                             <Comment key={thisIndex} username={comment.profileName} content={comment.content} />
                         )}
                         </ul> : 

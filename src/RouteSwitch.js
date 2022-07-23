@@ -168,7 +168,7 @@ const RouteSwitch = () => {
                             <Route key={thisIndex} path={"/" + thisUser["profileName"] + "/" + val._id} element={
                                 <div className={"App " + thisUser["themePref"] + "-accent"}>
                                     <Header userInfo={userInfo} theme={thisUser["themePref"]} title={thisUser["blogTitle"]} />
-                                    <Main userInfo={thisUser} landing={false} article={val} articles={thisUser["articles"]} theme={thisUser["themePref"]} layout={thisUser["layoutPref"]} />
+                                    <Main users={users} userInfo={thisUser} landing={false} article={val} articles={thisUser["articles"]} theme={thisUser["themePref"]} layout={thisUser["layoutPref"]} />
                                     <Footer theme={thisUser["themePref"]} />
                                 </div>
                             } /> 

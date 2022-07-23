@@ -35,14 +35,14 @@ const DeletePortal = ({userInfo, toDelete, setToDelete}) => {
 
     if (!toDelete) return null
     return ReactDOM.createPortal(
-        <form onSubmit={handleDelete} className="confirmDelete" action="" method="DELETE">
+        <>
             <div className="message">{message ? <p>{message}</p> : null}</div>
             <div className="delete-user-prompt">
-                Are you sure you want to delete your account?
+                We're sorry to see you go. Are you sure you want to delete your account? This will result in the permanent deletion of all your data.
             </div>
             <button onClick={handleDelete}>Confirm</button>
             <button onClick={() => setToDelete(false)}>Cancel</button>
-        </form>,
+        </>,
         document.getElementById('user-delete-modal')
     )
 }

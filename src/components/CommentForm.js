@@ -1,9 +1,27 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Prompt from "./Prompt";
+import { parseJwt } from "../auth/parseToken";
 
-const CommentForm = ({userInfo, articleId, theme, fetchArticle}) => {
+const CommentForm = ({users, userInfo, articleId, theme, fetchArticle}) => {
     const [comment, setComment] = useState("")
     const [message, setMessage] = useState("")
+    const [author, setAuthor] = useState("")
+    const nav = useNavigate();
+
+    useEffect(()=> {
+        let newUser = localStorage.getItem('user');
+        
+        if (newUser) {
+            let parsedUser = parseJwt(newUser)
+            for (let prop in users) {
+                if (users[prop]._id === parsedUser._id) {
+                    let thisUser = users[prop]
+                    setAuthor(thisUser.profileName)
+                }   
+            }
+        }
+    }, [])
 
     const commentHandler = async(e) => {
         e.preventDefault();
@@ -14,8 +32,8 @@ const CommentForm = ({userInfo, articleId, theme, fetchArticle}) => {
             let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${articleId}`, {
                 method: "POST",
                 body: JSON.stringify({
-                    profileName: userInfo._id,
-                    articleId: articleId,
+                    profileName: author,
+                    userId: userInfo._id,
                     content: comment
                     }),
                 headers: { 'Content-Type': 'application/json', "login-token" : token }
@@ -23,7 +41,7 @@ const CommentForm = ({userInfo, articleId, theme, fetchArticle}) => {
             let resJson = await res.json();
             
             if (res.status === 200) {
-                fetchArticle()
+                nav(`/${userInfo.profileName}/${articleId}`)
                 setComment("");
                 setMessage("Comment has been posted");
             } else {
