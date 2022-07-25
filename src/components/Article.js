@@ -159,7 +159,7 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author}) => {
                         <ul className={"comments-container " + theme + "-accent"}>
                         <h3 className="comment-head">Comments</h3>
                         {Object.values(comments).map((comment, thisIndex) =>
-                            <Comment key={thisIndex} comment={comment} />
+                            <Comment key={thisIndex} comment={comment} articleId={articleData._id} />
                         )}
                         </ul> : 
                         null
