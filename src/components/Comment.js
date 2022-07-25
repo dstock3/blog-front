@@ -30,6 +30,7 @@ const Comment = ({comment, articleAuthor, articleId}) => {
             
             if (res.status === 200) {
                 console.log(resJson)
+                window.location.reload();
             } else {
                 console.log(resJson)
                 setMessage("Some error occurred")
