@@ -64,6 +64,7 @@ const Register = () => {
 
     return (
         <div className={"register dark"}>
+            <div className="message">{message ? <p>{message}</p> : null}</div>
             <form onSubmit={handleSubmit} className="registerForm" action="" method="POST" encType="multipart/form-data">
                 <h2 className="form-head">Register</h2>
                 <div className="user-register-container" id="primary-reg">
@@ -93,7 +94,7 @@ const Register = () => {
 
                 <button type="submit" className="submit-btn reg-btn">Register</button>
             </form>
-            <div className="message">{message ? <p>{message}</p> : null}</div>
+            
             <div className="prompt-container">
                 <div className="login-prompt">Already Have a Profile?</div>
                 <Link className="login-link" to = {{pathname: '/login'}}>Sign In</Link>

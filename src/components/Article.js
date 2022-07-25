@@ -90,7 +90,6 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author}) => {
                         let resJson = await res.json();
                         
                         if (res.status === 200) {
-                            console.log(resJson)
                             setComments(resJson.comments)
                         } else {
                             setMessage("Some error occured");
@@ -159,7 +158,7 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author}) => {
                         <ul className={"comments-container " + theme + "-accent"}>
                         <h3 className="comment-head">Comments</h3>
                         {Object.values(comments).map((comment, thisIndex) =>
-                            <Comment key={thisIndex} comment={comment} articleId={articleData._id} />
+                            <Comment key={thisIndex} articleAuthor={userInfo} comment={comment} articleId={articleData._id} />
                         )}
                         </ul> : 
                         null
