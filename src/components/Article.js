@@ -13,8 +13,6 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author}) => {
     const nav = useNavigate()
 
     useEffect(()=> {
-        console.log(articleData.comments)
-
     }, [articleData])
 
     const fetchArticle = async () => {
@@ -161,7 +159,7 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author}) => {
                         <ul className={"comments-container " + theme + "-accent"}>
                         <h3 className="comment-head">Comments</h3>
                         {Object.values(comments).map((comment, thisIndex) =>
-                            <Comment key={thisIndex} username={comment.profileName} content={comment.content} />
+                            <Comment key={thisIndex} comment={comment} />
                         )}
                         </ul> : 
                         null
