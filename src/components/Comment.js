@@ -24,9 +24,6 @@ const Comment = ({comment, articleAuthor, articleId}) => {
         try {
             let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${articleId}/${comment._id}`, {
                 method: "DELETE",
-                body: JSON.stringify({
-                    userId: token._id
-                }),
                 headers: { 'Content-Type': 'application/json', "login-token" : token }
                 });
             let resJson = await res.json();

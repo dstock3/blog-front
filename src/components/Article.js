@@ -46,14 +46,11 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author}) => {
             try {
                 let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${article._id}`, {
                     method: "DELETE",
-                    body: JSON.stringify({
-                        userId: userInfo._id,
-                        articleId: article._id
-                    }),
                     headers: { 'Content-Type': 'application/json', "login-token" : token }
                     });
                 
                 let resJson = await res.json();
+                nav(`/${userInfo.profileName}`)
 
             } catch(err) {
                 setMessage("Some error occured");
@@ -81,6 +78,7 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author}) => {
 
     useEffect(()=> {
         /* get comments */
+        setComments({})
         if (articleData.comments.length > 0) {
             const fetchComments = (async() => {
                     try {
@@ -154,12 +152,12 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author}) => {
                     </div>
                     <CommentForm users={users} userInfo={userInfo} articleId={articleData._id} theme={theme} fetchArticle={fetchArticle} />
                     
-                    {comments ?
+                    {Object.keys(comments).length !== 0 ?
                         <ul className={"comments-container " + theme + "-accent"}>
-                        <h3 className="comment-head">Comments</h3>
-                        {Object.values(comments).map((comment, thisIndex) =>
-                            <Comment key={thisIndex} articleAuthor={userInfo} comment={comment} articleId={articleData._id} />
-                        )}
+                            <h3 className="comment-head">Comments</h3>
+                            {Object.values(comments).map((comment, thisIndex) =>
+                                <Comment key={thisIndex} articleAuthor={userInfo} comment={comment} articleId={articleData._id} />
+                            )}
                         </ul> : 
                         null
                     }
