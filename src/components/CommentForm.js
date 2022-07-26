@@ -3,11 +3,21 @@ import { useNavigate } from "react-router-dom";
 import Prompt from "./Prompt";
 import { parseJwt } from "../auth/parseToken";
 
-const CommentForm = ({users, userInfo, articleId, theme }) => {
+const CommentForm = ({users, userInfo, articleId, theme, update }) => {
     const [comment, setComment] = useState("")
     const [message, setMessage] = useState("")
     const [author, setAuthor] = useState("")
+    const [method, setMethod] = useState("POST")
+    const [request, setRequest] = useState(`https://stormy-waters-34046.herokuapp.com/article/${articleId}`)
     const nav = useNavigate();
+
+    useEffect(()=> {
+        if (update) {
+            setComment(update.content)
+            setMethod("PUT")
+            setRequest(`https://stormy-waters-34046.herokuapp.com/article/${articleId}/${update.commentId}`)
+        }
+    }, [update])
 
     useEffect(()=> {
         let newUser = localStorage.getItem('user');
@@ -29,11 +39,10 @@ const CommentForm = ({users, userInfo, articleId, theme }) => {
         try {
             let token = localStorage.getItem('user');
             
-            let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${articleId}`, {
-                method: "POST",
+            let res = await fetch(request, {
+                method: method,
                 body: JSON.stringify({
                     profileName: author.profileName,
-                    userId: author._id,
                     content: comment
                     }),
                 headers: { 'Content-Type': 'application/json', "login-token" : token }

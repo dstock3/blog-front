@@ -10,6 +10,7 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author}) => {
     const [message, setMessage] = useState("")
     const [isAuthorized, setIsAuthorized] = useState(false)
     const [comments, setComments] = useState([])
+    const [commentUpdate, setCommentUpdate] = useState(false)
     const nav = useNavigate()
 
     useEffect(()=> {
@@ -150,13 +151,13 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author}) => {
                     <div className="article-content">
                         {article["content"]}
                     </div>
-                    <CommentForm users={users} userInfo={userInfo} articleId={articleData._id} theme={theme} />
+                    <CommentForm users={users} userInfo={userInfo} articleId={articleData._id} theme={theme} update={commentUpdate} />
                     
                     {Object.keys(comments).length !== 0 ?
                         <ul className={"comments-container " + theme + "-accent"}>
                             <h3 className="comment-head">Comments</h3>
                             {Object.values(comments).map((comment, thisIndex) =>
-                                <Comment key={thisIndex} articleAuthor={userInfo} comment={comment} articleId={articleData._id} />
+                                <Comment key={thisIndex} articleAuthor={userInfo} comment={comment} articleId={articleData._id} setUpdate={setCommentUpdate} />
                             )}
                         </ul> : 
                         null

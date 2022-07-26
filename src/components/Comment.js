@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { parseJwt } from "../auth/parseToken";
 
-const Comment = ({comment, articleAuthor, articleId}) => {
+const Comment = ({comment, articleAuthor, articleId, setUpdate }) => {
     const [message, setMessage] = useState("")
     const [authorized, setAuthorized] = useState(false)
 
@@ -15,7 +15,7 @@ const Comment = ({comment, articleAuthor, articleId}) => {
     }, [])
 
     const editComment = async () => {
-
+        setUpdate({"content": comment.content, "commentId": comment._id})
     }
     
     const deleteComment = async () => {
