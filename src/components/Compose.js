@@ -7,7 +7,6 @@ const Compose = ({userInfo, articles, theme}) => {
     const [title, setTitle] = useState("")
     const [img, setImg] = useState("")
     const [imgDesc, setImgDesc] = useState("")
-    const [date, setDate] = useState("")
     const [content, setContent] = useState("")
     const [message, setMessage] = useState("")
 
@@ -25,7 +24,6 @@ const Compose = ({userInfo, articles, theme}) => {
                         title: title,
                         img: img,
                         imgDesc: imgDesc,
-                        date: date,
                         content: content
                     }),
                     headers: { 'Content-Type': 'application/json', "login-token" : token }
@@ -36,7 +34,6 @@ const Compose = ({userInfo, articles, theme}) => {
                     method: "POST",
                     body: JSON.stringify({
                         title: title,
-                        date: date,
                         content: content
                     }),
                     headers: { 'Content-Type': 'application/json', "login-token" : token }
@@ -50,7 +47,6 @@ const Compose = ({userInfo, articles, theme}) => {
                 setTitle("")
                 setImg("")
                 setImgDesc("")
-                setDate("")
                 setContent("")
                 setMessage("Article created successfully");
             } else {

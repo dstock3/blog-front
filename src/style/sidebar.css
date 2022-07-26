@@ -67,8 +67,19 @@
     justify-content: center;
 }
 
+.intro-container {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 15px;;
+}
+
 .intro {
     margin-block: 15px;
+    margin-inline: 15px;
     text-align: center;
 }
 

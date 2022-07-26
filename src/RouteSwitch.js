@@ -29,7 +29,7 @@ const RouteSwitch = () => {
     }, [])
 
     useEffect(()=> {
-        //localStorage.clear();
+        localStorage.clear();
         let apiCall = 'https://stormy-waters-34046.herokuapp.com/'
 
         fetch(apiCall)
