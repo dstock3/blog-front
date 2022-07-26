@@ -11,7 +11,6 @@ const Options = ({userInfo, theme}) => {
     const [profileDesc, setProfileDesc] = useState("");
     const [themePref, setThemePref] = useState("");
     const [layoutPref, setLayoutPref] = useState("");
-    const [dateJoined, setDateJoined] = useState("");
     const [profilePic, setProfilePic] = useState("");
     const [message, setMessage] = useState("")
     const [toDelete, setToDelete] = useState(false)
@@ -59,7 +58,6 @@ const Options = ({userInfo, theme}) => {
                 setProfileDesc("");
                 setThemePref("");
                 setLayoutPref("");
-                setDateJoined("");
                 setProfilePic("");
                 setMessage("User updated successfully");
             } else {
@@ -78,6 +76,7 @@ const Options = ({userInfo, theme}) => {
                 <form onSubmit={handleSubmit} className="optionsForm" action="" method="PUT">
                     <h2 className="form-head">Options</h2>
                     <div className="options-desc">Update your profile information and preferences</div>
+                    <div className="message">{message ? <p>{message}</p> : null}</div>
                     <div className="user-register-container" id="primary-reg">
                         <label className="reg-label" htmlFor="profileName">Username: </label>
                         <input className="reg-user-input" type="text" value={profileName} name="profileName" onChange={(e) => setProfileName(e.target.value)}></input>
@@ -142,7 +141,6 @@ const Options = ({userInfo, theme}) => {
                 <div className="deleteForm">
                     <button className="submit-btn" onClick={()=> setToDelete(true)}>Delete Profile</button>
                 </div>
-                <div className="message">{message ? <p>{message}</p> : null}</div>
             </main>
             <>
                 {toDelete ?
