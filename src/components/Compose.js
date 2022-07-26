@@ -18,12 +18,10 @@ const Compose = ({userInfo, articles, theme}) => {
             let token = localStorage.getItem('user');
 
             let res
-
             if (img) {
                 res = await fetch('https://stormy-waters-34046.herokuapp.com/article/compose', {
                     method: "POST",
                     body: JSON.stringify({
-                        userId: userInfo._id,
                         title: title,
                         img: img,
                         imgDesc: imgDesc,
@@ -37,7 +35,6 @@ const Compose = ({userInfo, articles, theme}) => {
                 res = await fetch('https://stormy-waters-34046.herokuapp.com/article/compose', {
                     method: "POST",
                     body: JSON.stringify({
-                        userId: userInfo._id,
                         title: title,
                         date: date,
                         content: content

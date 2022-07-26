@@ -29,10 +29,9 @@ const Comment = ({comment, articleAuthor, articleId}) => {
             let resJson = await res.json();
             
             if (res.status === 200) {
-                console.log(resJson)
                 window.location.reload();
             } else {
-                console.log(resJson)
+
                 setMessage("Some error occurred")
             }
         } catch(err) {

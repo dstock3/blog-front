@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Prompt from "./Prompt";
 import { parseJwt } from "../auth/parseToken";
 
-const CommentForm = ({users, userInfo, articleId, theme, fetchArticle}) => {
+const CommentForm = ({users, userInfo, articleId, theme }) => {
     const [comment, setComment] = useState("")
     const [message, setMessage] = useState("")
     const [author, setAuthor] = useState("")

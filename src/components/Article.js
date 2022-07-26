@@ -150,7 +150,7 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author}) => {
                     <div className="article-content">
                         {article["content"]}
                     </div>
-                    <CommentForm users={users} userInfo={userInfo} articleId={articleData._id} theme={theme} fetchArticle={fetchArticle} />
+                    <CommentForm users={users} userInfo={userInfo} articleId={articleData._id} theme={theme} />
                     
                     {Object.keys(comments).length !== 0 ?
                         <ul className={"comments-container " + theme + "-accent"}>
