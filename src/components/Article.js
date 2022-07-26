@@ -4,7 +4,7 @@ import Comment from "./Comment";
 import CommentForm from "./CommentForm";
 import { parseJwt } from '../auth/parseToken'
 
-const Article = ({ users, article, userInfo, theme, layout, limit, author}) => {
+const Article = ({ users, article, userInfo, theme, layout, limit, author, setUpdate }) => {
     const [articleData, setArticleData] = useState(article)
     const [abstract, setAbstract] = useState(article["content"])
     const [message, setMessage] = useState("")
@@ -36,9 +36,8 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author}) => {
     }
 
     const editArticle = () => {
-        /* need to create props passed to Compose to enable editing functionality */
-        nav('/')
-
+        setUpdate({"content": article["content"], "title": articleData["title"], "articleId": article._id})
+        nav('/compose')
     }
 
     const deleteArticle = async() => {

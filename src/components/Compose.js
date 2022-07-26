@@ -1,14 +1,25 @@
 import Prompt from './Prompt';
 import Sidebar from './Sidebar';
 import '../style/compose.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const Compose = ({userInfo, articles, theme}) => {
+const Compose = ({userInfo, articles, theme, update }) => {
     const [title, setTitle] = useState("")
     const [img, setImg] = useState("")
     const [imgDesc, setImgDesc] = useState("")
     const [content, setContent] = useState("")
     const [message, setMessage] = useState("")
+    const [method, setMethod] = useState("POST")
+    const [request, setRequest] = useState('https://stormy-waters-34046.herokuapp.com/article/compose')
+
+    useEffect(()=> {
+        if (update) {
+            setContent(update.content)
+            setTitle(update.title)
+            setMethod("PUT")
+            setRequest(`https://stormy-waters-34046.herokuapp.com/article/${update.articleId}`)
+        }
+    }, [update])
 
     let handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,8 +29,8 @@ const Compose = ({userInfo, articles, theme}) => {
 
             let res
             if (img) {
-                res = await fetch('https://stormy-waters-34046.herokuapp.com/article/compose', {
-                    method: "POST",
+                res = await fetch(request, {
+                    method: method,
                     body: JSON.stringify({
                         title: title,
                         img: img,
@@ -30,8 +41,8 @@ const Compose = ({userInfo, articles, theme}) => {
                 })
 
             } else {
-                res = await fetch('https://stormy-waters-34046.herokuapp.com/article/compose', {
-                    method: "POST",
+                res = await fetch(request, {
+                    method: method,
                     body: JSON.stringify({
                         title: title,
                         content: content
@@ -48,7 +59,12 @@ const Compose = ({userInfo, articles, theme}) => {
                 setImg("")
                 setImgDesc("")
                 setContent("")
-                setMessage("Article created successfully");
+
+                if (update) { 
+                    setMessage("Article updated successfully") 
+                } else {
+                    setMessage("Article created successfully")
+                }
             } else {
                 console.log(res)
                 setMessage("Some error occurred")

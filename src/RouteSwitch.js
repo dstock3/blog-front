@@ -22,6 +22,7 @@ const RouteSwitch = () => {
     const [users, setUsers] = useState(false)
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState("")
+    const [articleUpdate, setArticleUpdate] = useState(false)
 
     useEffect(() => {
         document.title = "BlogDog - Simple CMS"
@@ -157,7 +158,7 @@ const RouteSwitch = () => {
                     <Route path={"/compose"} element={
                         <div className={"App " + theme.accent}>
                             <Header userInfo={userInfo} theme={theme} title={userInfo["blogTitle"]} />
-                            <Compose userInfo={userInfo} theme={theme} articles={articles} />
+                            <Compose userInfo={userInfo} theme={theme} articles={articles} update={articleUpdate} />
                             <Footer theme={theme} />
                         </div>
                     } />
@@ -168,7 +169,7 @@ const RouteSwitch = () => {
                             <Route key={thisIndex} path={"/" + thisUser["profileName"] + "/" + val._id} element={
                                 <div className={"App " + thisUser["themePref"] + "-accent"}>
                                     <Header userInfo={userInfo} theme={thisUser["themePref"]} title={thisUser["blogTitle"]} />
-                                    <Main users={users} userInfo={thisUser} landing={false} article={val} articles={thisUser["articles"]} theme={thisUser["themePref"]} layout={thisUser["layoutPref"]} />
+                                    <Main users={users} userInfo={thisUser} landing={false} article={val} articles={thisUser["articles"]} theme={thisUser["themePref"]} layout={thisUser["layoutPref"]} setUpdate={setArticleUpdate} />
                                     <Footer theme={thisUser["themePref"]} />
                                 </div>
                             } /> 
