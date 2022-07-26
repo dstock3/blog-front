@@ -2,6 +2,7 @@ import Prompt from './Prompt';
 import Sidebar from './Sidebar';
 import '../style/compose.css'
 import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const Compose = ({userInfo, articles, theme, update }) => {
     const [title, setTitle] = useState("")
@@ -11,6 +12,7 @@ const Compose = ({userInfo, articles, theme, update }) => {
     const [message, setMessage] = useState("")
     const [method, setMethod] = useState("POST")
     const [request, setRequest] = useState('https://stormy-waters-34046.herokuapp.com/article/compose')
+    const nav = useNavigate()
 
     useEffect(()=> {
         if (update) {
@@ -60,11 +62,14 @@ const Compose = ({userInfo, articles, theme, update }) => {
                 setImgDesc("")
                 setContent("")
 
+                
+
                 if (update) { 
                     setMessage("Article updated successfully") 
                 } else {
                     setMessage("Article created successfully")
                 }
+                nav(`/${userInfo.profileName}`)
             } else {
                 console.log(res)
                 setMessage("Some error occurred")

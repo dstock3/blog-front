@@ -24,6 +24,7 @@ const RouteSwitch = () => {
     const [user, setUser] = useState("")
     const [articleUpdate, setArticleUpdate] = useState(false)
 
+
     useEffect(() => {
         document.title = "BlogDog - Simple CMS"
 
