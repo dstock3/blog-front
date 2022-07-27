@@ -17,14 +17,18 @@ const Archive = ({userInfo, articles, mode}) => {
                 null
             }
             <ul className={"archive-list " + thisClass.list}>
-                {Object.values(articles).map((article, index) => {
-                    return (
-                        <li className="archive-link-item" key={index}>
-                            <Link to={'/' + userInfo["profileName"] + '/' + article._id}>
-                                    {article["title"]}
-                            </Link>
-                        </li>)
-                })}
+                {articles.length === 0 ?
+                    <div>You currently haven't composed any articles.</div> :
+                    Object.values(articles).map((article, index) => {
+                        return (
+                            <li className="archive-link-item" key={index}>
+                                <Link to={'/' + userInfo["profileName"] + '/' + article._id}>
+                                        {article["title"]}
+                                </Link>
+                            </li>)
+                    })
+                }
+                
             </ul>
         </div>
     );

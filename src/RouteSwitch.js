@@ -48,12 +48,15 @@ const RouteSwitch = () => {
                         setUser(parseJwt(newUser)._id)
                     }
 
+                    for (let prop in data["users"]) {
+                        if (data["users"][prop]._id === user) {
+                            setTheme(data["users"][prop]["themePref"])
+                            setArticles(data["users"][prop]["articles"])
+                            setLayout(data["users"][prop]["layoutPref"])
+                        }
+                    }
+
                     setUsers(data["users"])
-
-                    setTheme(data["users"][0]["themePref"])
-                    setArticles(data["users"][0]["articles"])
-                    setLayout(data["users"][0]["layoutPref"])
-
                     setIsLoading(false)
                 }
             )
@@ -148,7 +151,7 @@ const RouteSwitch = () => {
                     {Object.values(users).map((thisUser, index) =>
                         <Route key={index} path={"/" + thisUser["profileName"] + "/profile"} element={
                             <div className={"App " + thisUser["themePref"] + "-accent"}>
-                                <Header userInfo={userInfo} theme={thisUser["themePref"]} title={thisUser["blogTitle"]} />
+                                <Header userInfo={userInfo} profileName={thisUser["profileName"]} theme={thisUser["themePref"]} title={thisUser["blogTitle"]} />
                                 <User userInfo={thisUser} articles={thisUser.articles} theme={thisUser["themePref"]} />
                                 <Footer theme={thisUser["themePref"]} />
                             </div>
@@ -169,7 +172,7 @@ const RouteSwitch = () => {
                         Object.values(thisUser["articles"]).map((val, thisIndex) =>
                             <Route key={thisIndex} path={"/" + thisUser["profileName"] + "/" + val._id} element={
                                 <div className={"App " + thisUser["themePref"] + "-accent"}>
-                                    <Header userInfo={userInfo} theme={thisUser["themePref"]} title={thisUser["blogTitle"]} />
+                                    <Header userInfo={userInfo} profileName={thisUser["profileName"]} theme={thisUser["themePref"]} title={thisUser["blogTitle"]} />
                                     <Main users={users} userInfo={thisUser} landing={false} article={val} articles={thisUser["articles"]} theme={thisUser["themePref"]} layout={thisUser["layoutPref"]} setUpdate={setArticleUpdate} />
                                     <Footer theme={thisUser["themePref"]} />
                                 </div>

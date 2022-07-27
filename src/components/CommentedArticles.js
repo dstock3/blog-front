@@ -19,7 +19,6 @@ const CommentedArticles = ({theme}) => {
                 if (res.status === 200) {
                     setArticleList(resJson.mostCommented)
                     setIsLoading(false)
-                    console.log(articleList)
                 } else {
                     setMessage("Some error occured");
                 }
