@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
 
     margin-block: 15px;
     width: 75%;
@@ -37,6 +38,10 @@
 
 .azure-option {
     background-color: rgb(0, 142, 251);
+}
+
+.deleteForm {
+    margin-top: 5%;
 }
 
 #user-delete-modal {

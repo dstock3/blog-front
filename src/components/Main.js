@@ -23,7 +23,6 @@ const Main = ({users, landing, article, articles, userInfo, theme, layout, setUp
                                 <Link className="compose-link" to="/compose">Compose Article</Link>
                             </div>   
                         }
-
                     </div>
                 }
             </main>

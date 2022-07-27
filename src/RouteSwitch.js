@@ -23,6 +23,7 @@ const RouteSwitch = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState("")
     const [articleUpdate, setArticleUpdate] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
 
 
     useEffect(() => {
@@ -45,15 +46,16 @@ const RouteSwitch = () => {
                     let newUser = localStorage.getItem('user');
 
                     if (newUser) {
-                        setUser(parseJwt(newUser)._id)
-                    }
-
-                    for (let prop in data["users"]) {
-                        if (data["users"][prop]._id === user) {
-                            setTheme(data["users"][prop]["themePref"])
-                            setArticles(data["users"][prop]["articles"])
-                            setLayout(data["users"][prop]["layoutPref"])
+                        for (let prop in data["users"]) {
+                            if (data["users"][prop]._id === parseJwt(newUser)._id) {
+                                setUser(data["users"][prop])
+                                setTheme(data["users"][prop]["themePref"])
+                                setArticles(data["users"][prop]["articles"])
+                                setLayout(data["users"][prop]["layoutPref"])
+                            }
                         }
+                        
+                        setIsLoggedIn(true)
                     }
 
                     setUsers(data["users"])
@@ -67,25 +69,10 @@ const RouteSwitch = () => {
             )
     }, [user]) 
 
-    useEffect(()=> {
-        if (user) {
-            for (let prop in users) {
-                if (users[prop]._id === user) {
-                    let thisUser = users[prop]
-                    setUserInfo(thisUser)
-                    setTheme(thisUser["themePref"])
-                    setArticles(thisUser["articles"])
-                    setLayout(thisUser["layoutPref"])
-                }   
-            }
-        }
-    }, [user])
-
     return (
         <BrowserRouter>
                 <Routes>
                     {/* Home */}
-                    {/* Need to revise first condition to include user data if logged in */}
                     <Route path={"/"}  element={
                         isLoading ?
                             <div className={"App dark-accent"}>
@@ -93,18 +80,25 @@ const RouteSwitch = () => {
                                 <Spinner />
                                 <Footer theme="dark" />
                             </div> :
-                            <div className={"App dark-accent"}>
-                                <Header userInfo={userInfo} theme="dark" title="BlogDog - Simple CMS" />
-                                <Home theme="dark" userInfo={userInfo} users={users} />
-                                <Footer theme="dark" />
-                            </div>
+                            isLoggedIn ?
+                                <div className={"App " + theme + "-accent"}>
+                                    <Header userInfo={user} theme={theme} title={user.blogTitle} />
+                                    <Home theme="dark" userInfo={user} users={users} />
+                                    <Footer theme="dark" />
+                                </div> :
+                                <div className={"App dark-accent"}>
+                                    <Header userInfo={userInfo} theme="dark" title="BlogDog - Simple CMS" />
+                                    <Home theme="dark" userInfo={userInfo} users={users} />
+                                    <Footer theme="dark" />
+                                </div>
+                                
                     } />
                     
                     {/* Landing Pages for Each User */}
                     {Object.keys(users).map((keyName, index) =>
                         <Route path={"/" + users[keyName]["profileName"]}  element={
                             <div className={"App " + users[keyName]["themePref"] + "-accent"}>
-                                <Header userInfo={userInfo} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} />
+                                <Header userInfo={userInfo} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} profileName={users[keyName]["profileName"]} />
                                 <Main landing={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["themePref"]} layout={users[keyName]["layoutPref"]} />
                                 <Footer theme={users[keyName]["themePref"]} />
                             </div>
@@ -131,7 +125,7 @@ const RouteSwitch = () => {
 
                     {/* Logout */}
                     <Route path="/logout" element={
-                        <div className={"App dark-accent"}>
+                        <div className={"App " + theme + "-accent"}>
                             <Header userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
                             <Logout />
                             <Footer theme={"dark"} />
@@ -140,10 +134,10 @@ const RouteSwitch = () => {
 
                     {/* Options */}
                     <Route path="/options" element={
-                        <div className={"App dark-accent"}>
-                            <Header userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
-                            <Options userInfo={userInfo} theme={"dark"} />
-                            <Footer theme={"dark"} />
+                        <div className={"App " + theme + "-accent"}>
+                            <Header userInfo={user} theme={theme} title={user.blogTitle} profileName={user.profileName} />
+                            <Options userInfo={userInfo} theme={theme} />
+                            <Footer theme={theme} />
                         </div>
                     } />
 
@@ -151,7 +145,7 @@ const RouteSwitch = () => {
                     {Object.values(users).map((thisUser, index) =>
                         <Route key={index} path={"/" + thisUser["profileName"] + "/profile"} element={
                             <div className={"App " + thisUser["themePref"] + "-accent"}>
-                                <Header userInfo={userInfo} profileName={thisUser["profileName"]} theme={thisUser["themePref"]} title={thisUser["blogTitle"]} />
+                                <Header userInfo={thisUser} profileName={thisUser["profileName"]} theme={thisUser["themePref"]} title={thisUser["blogTitle"]} />
                                 <User userInfo={thisUser} articles={thisUser.articles} theme={thisUser["themePref"]} />
                                 <Footer theme={thisUser["themePref"]} />
                             </div>
@@ -160,9 +154,9 @@ const RouteSwitch = () => {
 
                     {/* Compose */}
                     <Route path={"/compose"} element={
-                        <div className={"App " + theme.accent}>
-                            <Header userInfo={userInfo} theme={theme} title={userInfo["blogTitle"]} />
-                            <Compose userInfo={userInfo} theme={theme} articles={articles} update={articleUpdate} />
+                        <div className={"App " + theme + "-accent"}>
+                            <Header userInfo={user} theme={theme} title={user.blogTitle} profileName={user.profileName} />
+                            <Compose userInfo={user} theme={theme} articles={articles} update={articleUpdate} />
                             <Footer theme={theme} />
                         </div>
                     } />
