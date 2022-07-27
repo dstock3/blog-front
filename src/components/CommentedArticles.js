@@ -14,7 +14,8 @@ const CommentedArticles = () => {
                 let resJson = await res.json();
                 
                 if (res.status === 200) {
-                    setArticleList(resJson.commentedArticles)
+                    setArticleList(resJson.mostCommented)
+                    console.log(articleList)
                 } else {
                     setMessage("Some error occured");
                 }
@@ -35,9 +36,11 @@ const CommentedArticles = () => {
             <>
                 <h3>Most Commented</h3>
                 <ul className="most-commented-articles">
-                    {Object.values(articleList).map((article, index) =>
+                    {Object.values(articleList).map((listObj, index) =>
                         <li key={index} className="commented-article-item">
-                            <Link to={'/'}>{article.title}</Link>
+                            <Link to= {{pathname: `/${listObj.user}/${listObj.article._id}`}}>
+                                {listObj.article.title}
+                            </Link>
                         </li>
                     )}
                 </ul>
