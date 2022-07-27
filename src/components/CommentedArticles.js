@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Spinner from './Spinner'
 
-const CommentedArticles = () => {
+const CommentedArticles = ({theme}) => {
     const [articleList, setArticleList] = useState([])
     const [message, setMessage] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(()=> {
         const getArticles = async () => {
+            setIsLoading(true)
             try {
                 let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/`, {
                     method: "GET"
@@ -15,6 +18,7 @@ const CommentedArticles = () => {
                 
                 if (res.status === 200) {
                     setArticleList(resJson.mostCommented)
+                    setIsLoading(false)
                     console.log(articleList)
                 } else {
                     setMessage("Some error occured");
@@ -26,25 +30,27 @@ const CommentedArticles = () => {
         }
 
         getArticles()
-        
-
-
     }, [])
 
     if (articleList) {
         return (
-            <>
-                <h3>Most Commented</h3>
-                <ul className="most-commented-articles">
-                    {Object.values(articleList).map((listObj, index) =>
-                        <li key={index} className="commented-article-item">
-                            <Link to= {{pathname: `/${listObj.user}/${listObj.article._id}`}}>
-                                {listObj.article.title}
-                            </Link>
-                        </li>
-                    )}
-                </ul>
-            </>
+            <div className={"sidebar-articles-container " + theme + "-accent"}>
+                {isLoading ?
+                    <Spinner isMini={true} /> :
+                    <>
+                        <h3 className="most-commented-header">Most Commented</h3>
+                        <ul className={"most-commented-articles " + theme}>
+                            {Object.values(articleList).map((listObj, index) =>
+                                <li key={index} className="commented-article-item">
+                                    <Link to= {{pathname: `/${listObj.user}/${listObj.article._id}`}}>
+                                        {listObj.article.title}
+                                    </Link>
+                                </li>
+                            )}
+                        </ul>
+                    </>
+                }
+            </div>
         )
     } else {
         return (

@@ -92,7 +92,34 @@
     margin-inline: 15px;
 }
 
+.sidebar-articles-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-top: 15px;
+    border-radius: 15px;
+}
 
+.most-commented-header {
+    text-align: center;
+    margin-block-end: 15px;
+}
+
+.most-commented-articles {
+    padding-inline-start: unset;
+    width: 75%;
+    padding: 15px;
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-inline: 5px;
+    border-radius: 5px;
+}
+
+.commented-article-item {
+    margin-bottom: 5px;
+}
 
 @media only screen and (max-width: 900px) {
     .sidebar {

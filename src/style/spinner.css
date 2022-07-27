@@ -16,11 +16,29 @@
     min-height: 80vh;
 }
 
+.mini-spinner-container {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 25vh;
+}
+
 .spinner {
     width: 75px;
     height: 75px;
-    border: 10px solid #f3f3f3; /* Light grey */
-    border-top: 10px solid #383636; /* Black */
+    border: 10px solid #f3f3f3; 
+    border-top: 10px solid #383636; 
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+}
+
+.mini-spinner {
+    width: 50px;
+    height: 50px;
+    border: 10px solid #f3f3f3; 
+    border-top: 10px solid #383636; 
     border-radius: 50%;
     animation: spinner 1.5s linear infinite;
 }

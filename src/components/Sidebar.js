@@ -13,11 +13,11 @@ const Sidebar = ({articles, userInfo, theme, isHome}) => {
                     <>
                         <Profile mode="prof-side" isHome={isHome} userInfo={userInfo} />
                         <Link className="compose-link" to="/compose">Compose New Article</Link>
-                        <CommentedArticles />
+                        <CommentedArticles theme={theme} />
                     </> : 
                     <>
                         <Intro theme={theme}/>
-                        <CommentedArticles />
+                        <CommentedArticles theme={theme} />
                     </>
                 }
             </div>
@@ -27,7 +27,7 @@ const Sidebar = ({articles, userInfo, theme, isHome}) => {
             <div className={"sidebar " + theme}>
                 <Profile mode="prof-side" userInfo={userInfo} />
                 <Archive userInfo={userInfo} articles={articles} />
-                <CommentedArticles />
+                <CommentedArticles theme={theme} />
             </div>
         );
     }
