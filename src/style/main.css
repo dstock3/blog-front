@@ -125,6 +125,26 @@ article {
     margin-bottom: 15px;
 }
 
+.compose-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 75vh;
+    border-radius: 5px;
+    box-shadow: 2px 5px 10px rgba(22, 22, 22, 0.857);
+}
+
+.compose-prompt > p {
+    font-size: 1.25em;
+}
+
+.compose-prompt > a {
+    font-size: 1.33em;
+    font-weight: bold;
+    
+}
+
+
 @media only screen and (max-width: 900px) {        
     article {
         width: 100%;

@@ -7,6 +7,8 @@ const Profile = ({userInfo, mode, isHome}) => {
     useEffect(()=> {
         if (mode === "prof-main") {
             setThisClass({picContainer: "main-pic-container", pic: "main-pic", profInfo: "main-prof-info"})
+        } else {
+            setThisClass({picContainer: "side-pic-container", pic: "side-pic", profInfo: "side-prof-info"})
         }
     }, [mode])
 
