@@ -4,12 +4,22 @@ import '../style/sidebar.css'
 import { Link } from 'react-router-dom';
 import Intro from './Intro';
 import CommentedArticles from './CommentedArticles';
+import { useEffect } from 'react';
 
-const Sidebar = ({articles, userInfo, theme, isHome}) => {
+
+const Sidebar = ({isLoggedIn, articles, userInfo, theme, isHome}) => {
+    useEffect(()=> {
+        if (isLoggedIn) {
+            //window.location.reload();
+
+        }
+        
+    }, [isLoggedIn])
+    
     if (isHome) {
         return (
             <div className={"sidebar " + theme}>
-                {userInfo ? 
+                {isLoggedIn ? 
                     <>
                         <Profile mode="prof-side" isHome={isHome} userInfo={userInfo} />
                         <Link className="compose-link" to="/compose">Compose New Article</Link>

@@ -19,7 +19,7 @@ const Header = ({userInfo, theme, title, profileName}) => {
                 </Link>
             </div> : null}
             <h1 className="title">
-                {title ?
+                {profileName ?
                     <Link to = {{pathname: `/${profileName}`}}>{title}</Link> :
                     <Link to = {{pathname: '/'}}>BlogDog - Simple CMS</Link>
                 }

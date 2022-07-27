@@ -25,7 +25,6 @@ const RouteSwitch = () => {
     const [articleUpdate, setArticleUpdate] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-
     useEffect(() => {
         document.title = "BlogDog - Simple CMS"
 
@@ -83,7 +82,7 @@ const RouteSwitch = () => {
                             isLoggedIn ?
                                 <div className={"App " + theme + "-accent"}>
                                     <Header userInfo={user} theme={theme} title={user.blogTitle} />
-                                    <Home theme="dark" userInfo={user} users={users} />
+                                    <Home isLoggedIn={isLoggedIn} theme="dark" userInfo={user} users={users} />
                                     <Footer theme="dark" />
                                 </div> :
                                 <div className={"App dark-accent"}>

@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Article from './Article'
 import Sidebar from './Sidebar';
-const Home = ({userInfo, theme, users}) => {
+const Home = ({isLoggedIn, userInfo, theme, users}) => {
     const [articleList, setArticleList] = useState(false)
+
+    useEffect(()=> {
+
+    }, [isLoggedIn])
 
     function randomizeList(articleList) {
         for (let i = articleList.length - 1; i > 0; i--) {
@@ -27,7 +31,7 @@ const Home = ({userInfo, theme, users}) => {
     if (articleList) {
         return (
             <main className={"home " + theme + "-accent"}>
-                <Sidebar userInfo={userInfo} theme={theme} isHome={true} />
+                <Sidebar isLoggedIn={isLoggedIn} userInfo={userInfo} theme={theme} isHome={true} />
                 <div className={"articles-container basic"}>
                     {articleList.map((val, artIndex) => (
                          <Article key={artIndex} index={val["ind"]} author={val["author"]["profileName"]} userInfo={val["author"]} article={val["article"]} theme={theme} layout={"basic"} limit={true} />

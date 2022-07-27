@@ -16,7 +16,6 @@ const DeletePortal = ({userInfo, toDelete, setToDelete}) => {
             let res = await fetch("https://stormy-waters-34046.herokuapp.com/" + userInfo["profileName"] + "/delete", {
                 
                 method: "DELETE",
-                body: JSON.stringify({ userId: userInfo._id }),
                 headers: { 'Content-Type': 'application/json', "login-token" : token }
                 });
 
