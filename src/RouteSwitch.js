@@ -98,7 +98,7 @@ const RouteSwitch = () => {
                     {Object.keys(users).map((keyName, index) =>
                         <Route path={"/" + users[keyName]["profileName"]}  element={
                             <div className={"App " + users[keyName]["themePref"] + "-accent"}>
-                                <Header userInfo={userInfo} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} profileName={users[keyName]["profileName"]} />
+                                <Header userInfo={user} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} profileName={users[keyName]["profileName"]} />
                                 <Main landing={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["themePref"]} layout={users[keyName]["layoutPref"]} />
                                 <Footer theme={users[keyName]["themePref"]} />
                             </div>
@@ -145,7 +145,7 @@ const RouteSwitch = () => {
                     {Object.values(users).map((thisUser, index) =>
                         <Route key={index} path={"/" + thisUser["profileName"] + "/profile"} element={
                             <div className={"App " + thisUser["themePref"] + "-accent"}>
-                                <Header userInfo={thisUser} profileName={thisUser["profileName"]} theme={thisUser["themePref"]} title={thisUser["blogTitle"]} />
+                                <Header userInfo={user} profileName={thisUser["profileName"]} theme={thisUser["themePref"]} title={thisUser["blogTitle"]} />
                                 <User userInfo={thisUser} articles={thisUser.articles} theme={thisUser["themePref"]} />
                                 <Footer theme={thisUser["themePref"]} />
                             </div>
