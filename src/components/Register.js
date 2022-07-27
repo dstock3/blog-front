@@ -44,7 +44,6 @@ const Register = () => {
                 let resJson = await res.json();
                 
                 if (res.status === 200) {
-                    console.log(resJson)
                     setProfileName("");
                     setPassword("");
                     setConfirmPassword("");

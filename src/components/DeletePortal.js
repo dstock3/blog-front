@@ -2,13 +2,12 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import { useNavigate } from 'react-router-dom';
 
-const DeletePortal = ({userInfo, toDelete, setToDelete}) => {
+const DeletePortal = ({setIsLoggedIn, theme, userInfo, toDelete, setToDelete}) => {
     const [message, setMessage] = useState("")
     const nav = useNavigate()
 
     const handleDelete = async (e) => {
         e.preventDefault();
-        console.log(userInfo)
 
         try {
             let token = localStorage.getItem('user')
@@ -22,6 +21,7 @@ const DeletePortal = ({userInfo, toDelete, setToDelete}) => {
             let resJson = await res.json();
 
             if (res.status === 200) {
+                setIsLoggedIn(false)
                 nav('/');
             } else {
                 console.log(res)
@@ -34,14 +34,16 @@ const DeletePortal = ({userInfo, toDelete, setToDelete}) => {
 
     if (!toDelete) return null
     return ReactDOM.createPortal(
-        <>
+        <div className={"delete-prompt " + theme + "-accent"}>
             <div className="message">{message ? <p>{message}</p> : null}</div>
             <div className="delete-user-prompt">
                 We're sorry to see you go. Are you sure you want to delete your account? This will result in the permanent deletion of all your data.
             </div>
-            <button onClick={handleDelete}>Confirm</button>
-            <button onClick={() => setToDelete(false)}>Cancel</button>
-        </>,
+            <div className="delete-options">
+                <button onClick={handleDelete}>Confirm</button>
+                <button onClick={() => setToDelete(false)}>Cancel</button>
+            </div>
+        </div>,
         document.getElementById('user-delete-modal')
     )
 }

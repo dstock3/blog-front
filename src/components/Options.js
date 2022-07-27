@@ -3,7 +3,7 @@ import '../style/options.css'
 import '../style/register.css'
 import DeletePortal from './DeletePortal';
 
-const Options = ({userInfo, theme}) => {
+const Options = ({userInfo, theme, setIsLoggedIn}) => {
     const [profileName, setProfileName] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -144,7 +144,7 @@ const Options = ({userInfo, theme}) => {
             </main>
             <>
                 {toDelete ?
-                    <DeletePortal userInfo={userInfo} toDelete={toDelete} setToDelete={setToDelete} />
+                    <DeletePortal setIsLoggedIn={setIsLoggedIn} theme={theme} userInfo={userInfo} toDelete={toDelete} setToDelete={setToDelete} />
                     : null}
             </>
         </>

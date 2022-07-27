@@ -51,6 +51,21 @@
     transform: translate(-50%, -50%);
     padding: 65px;
     z-index: 1000;
+    width: 20vw;
+
+}
+
+.delete-prompt {
     display: flex;
     flex-direction: column;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+.delete-options {
+    margin-top: 15px;
+    align-self: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }

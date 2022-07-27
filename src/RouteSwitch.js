@@ -82,8 +82,8 @@ const RouteSwitch = () => {
                             isLoggedIn ?
                                 <div className={"App " + theme + "-accent"}>
                                     <Header userInfo={user} theme={theme} title={user.blogTitle} />
-                                    <Home isLoggedIn={isLoggedIn} theme="dark" userInfo={user} users={users} />
-                                    <Footer theme="dark" />
+                                    <Home isLoggedIn={isLoggedIn} theme={theme} userInfo={user} users={users} />
+                                    <Footer theme={theme} />
                                 </div> :
                                 <div className={"App dark-accent"}>
                                     <Header userInfo={userInfo} theme="dark" title="BlogDog - Simple CMS" />
@@ -126,7 +126,7 @@ const RouteSwitch = () => {
                     <Route path="/logout" element={
                         <div className={"App " + theme + "-accent"}>
                             <Header userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
-                            <Logout />
+                            <Logout setIsLoggedIn={setIsLoggedIn} />
                             <Footer theme={"dark"} />
                         </div>
                     } />
@@ -135,7 +135,7 @@ const RouteSwitch = () => {
                     <Route path="/options" element={
                         <div className={"App " + theme + "-accent"}>
                             <Header userInfo={user} theme={theme} title={user.blogTitle} profileName={user.profileName} />
-                            <Options userInfo={userInfo} theme={theme} />
+                            <Options userInfo={user} theme={theme} setIsLoggedIn={setIsLoggedIn} />
                             <Footer theme={theme} />
                         </div>
                     } />

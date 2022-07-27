@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
-const Logout = () => {
+const Logout = ({setIsLoggedIn}) => {
     const [logoutMessage, setLogoutMessage] = useState("");
 
     useEffect(()=> {
         localStorage.clear();
+        setIsLoggedIn(false)
         setLogoutMessage("You are now logged out.")
 
     }, [])
