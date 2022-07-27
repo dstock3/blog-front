@@ -21,6 +21,7 @@ const DeletePortal = ({setIsLoggedIn, theme, userInfo, toDelete, setToDelete}) =
             let resJson = await res.json();
 
             if (res.status === 200) {
+                localStorage.clear();
                 setIsLoggedIn(false)
                 nav('/');
             } else {

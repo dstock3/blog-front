@@ -31,6 +31,10 @@ const RouteSwitch = () => {
     }, [])
 
     useEffect(()=> {
+
+    }, [isLoggedIn])
+
+    useEffect(()=> {
         //localStorage.clear();
         let apiCall = 'https://stormy-waters-34046.herokuapp.com/'
 
