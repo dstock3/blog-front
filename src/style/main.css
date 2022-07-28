@@ -26,19 +26,20 @@ article {
   
 .article-head {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     margin-inline: 25px;
     margin-bottom: 15px;
 }
-  
+
+.article-head-subcontainer {
+    display: flex;
+    flex-direction: column;
+}
+
 .date-posted {
     font-size: .75em;
 }
-  
-.article-name {
-    margin-block-end: 0.25em;
-}
-  
+    
 .article-content {
     margin-inline: 25px;
 }
@@ -61,6 +62,20 @@ article {
 
 .read-more {
     margin-top: 15px;
+}
+
+.article-dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 9%;
+}
+
+.article-edit-btn {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .comments-container {
@@ -134,7 +149,6 @@ article {
     margin-inline: 15px;
     display: flex;
     justify-content: flex-end;
-   
 }
 
 .comment-btn {

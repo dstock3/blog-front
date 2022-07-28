@@ -102,23 +102,27 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author, setUp
 
     return (
         <article className={theme + " " + layout + "-child"}>
-            {limit ? 
-                null :
-                    isAuthorized ?
-                        <div className="article-dashboard">
-                            <button onClick={editArticle}>Edit</button>
-                            <button onClick={deleteArticle}>Delete</button>
-                        </div> : null
-            }
             <div className="article-head">
-                <h1 className="article-name">{articleData["title"]}</h1>
-                {author ?
-                    <div className="article-author">
-                        <Link to ={"/" + userInfo["profileName"]}>
-                            {author}
-                        </Link>
-                    </div> : null}
-                <div className="date-posted">{articleData["date"]}</div>
+                <div className="article-head-subcontainer">
+                    <h1 className="article-name">{articleData["title"]}</h1>
+                    {author ?
+                        <div className="article-author">
+                            <Link to ={"/" + userInfo["profileName"]}>
+                                {author}
+                            </Link>
+                        </div> : null}
+                    <div className="date-posted">{articleData["date"]}</div>
+                </div>
+                <div className="article-dashboard">
+                    {limit ? 
+                        null :
+                            isAuthorized ?
+                                <>
+                                    <button className={"article-edit-btn " + theme + "-accent"} onClick={editArticle}>Edit</button>
+                                    <button className={"article-edit-btn " + theme + "-accent"} onClick={deleteArticle}>Delete</button>
+                                </> : null
+                    }
+                </div>
             </div>
 
             {article["img"] ?
