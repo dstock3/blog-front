@@ -79,13 +79,30 @@ article {
 }
 
 .comment {
-    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px;
+    margin-bottom: 5px;
     margin-inline: 15px;
+    border-radius: 5px;
 }
 
 .comment-username {
     font-weight: bold;
     margin-right: 5px;
+}
+
+.comment-dashboard {
+    display: flex;
+    justify-content: space-between;
+    width: 10%;
+}
+
+.comment-edit-btn {
+    padding: 5px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .comment-form {
@@ -123,6 +140,7 @@ article {
 .comment-btn {
     width: 75px;
     margin-bottom: 15px;
+    cursor: pointer;
 }
 
 .compose-prompt {

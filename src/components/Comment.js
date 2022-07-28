@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { parseJwt } from "../auth/parseToken";
 
-const Comment = ({comment, articleAuthor, articleId, setUpdate }) => {
+const Comment = ({ comment, articleAuthor, articleId, setUpdate, theme }) => {
     const [message, setMessage] = useState("")
     const [authorized, setAuthorized] = useState(false)
 
@@ -41,19 +41,24 @@ const Comment = ({comment, articleAuthor, articleId, setUpdate }) => {
     }
 
     return (
-        <li className="comment">
-            <div className="message">{message ? <p>{message}</p> : null}</div>
-            <div className="comment-primary-container">
-                <span className="comment-username">{comment.profileName}:</span>
-                <span className="comment-content">{comment.content}</span> 
-            </div>
-            {authorized ?
+        <>
+            {message ? <div className="message">{message}</div> : null }
+            <li className={"comment " + theme}>
+                <div className="comment-primary-container">
+                    <span className="comment-username">{comment.profileName}:</span>
+                    <span className="comment-content">{comment.content}</span> 
+                </div>
                 <div className="comment-dashboard">
-                    <button onClick={editComment}>Edit</button>
-                    <button onClick={deleteComment}>Delete</button>
-                </div> : null
-            }
-        </li>
+                    {authorized ?
+                        <>
+                            <button className={"comment-edit-btn " + theme + "-accent"} onClick={editComment}>Edit</button>
+                            <button className={"comment-edit-btn " + theme + "-accent"} onClick={deleteComment}>Delete</button>
+                        </> : null
+                    }
+                </div>
+            </li>
+        </>
+
     );
 }
 
