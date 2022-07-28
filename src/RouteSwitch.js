@@ -57,8 +57,6 @@ const RouteSwitch = () => {
                                 setLayout(data["users"][prop]["layoutPref"])
                             }
                         }
-                        
-                        setIsLoggedIn(true)
                     }
 
                     setUsers(data["users"])
@@ -121,7 +119,7 @@ const RouteSwitch = () => {
                     <Route path="/login" element={
                         <div className={"App dark-accent"}>
                             <Header userInfo={userInfo} theme={"dark"} title={"BlogDog - Simple CMS"} />
-                            <Login setUser={setUser}/>
+                            <Login setIsLoggedIn={setIsLoggedIn} setUser={setUser}/>
                             <Footer theme={"dark"} />
                         </div>
                     } />

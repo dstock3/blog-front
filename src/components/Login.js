@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../style/login.css'
 
 
-const Login = () => {
+const Login = ({setIsLoggedIn}) => {
     const [username, setUsername] = useState("")
     const [password, setPw] = useState("")
     const [message, setMessage] = useState("")
@@ -20,6 +20,7 @@ const Login = () => {
                     setUsername("")
                     setPw("")
                     localStorage.setItem('user', res.data);
+                    setIsLoggedIn(true)
                     nav('/');
                 } else {
                     setMessage("Some error occurred")
@@ -41,7 +42,8 @@ const Login = () => {
                 <div className="message">{message ? <p>{message}</p> : null}</div>
                 <div className="user-login-container">
                     <label className="log-label" htmlFor="username">Username: </label>
-                    <input 
+                    <input
+                        autoFocus
                         type="text" 
                         name="username" 
                         onChange={(e) => setUsername(e.target.value)}

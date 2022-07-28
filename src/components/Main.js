@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Article from './Article'
 import Prompt from './Prompt';
 import Sidebar from './Sidebar'
@@ -6,6 +6,7 @@ import '../style/main.css'
 import { Link } from 'react-router-dom';
 
 const Main = ({users, landing, article, articles, userInfo, theme, layout, setUpdate}) => {
+
     if (userInfo) {
         return (
             <main className="blog">

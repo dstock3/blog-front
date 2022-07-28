@@ -9,12 +9,9 @@ import { useEffect } from 'react';
 
 const Sidebar = ({isLoggedIn, articles, userInfo, theme, isHome}) => {
     useEffect(()=> {
-        if (isLoggedIn) {
-            //window.location.reload();
 
-        }
-        
-    }, [isLoggedIn])
+    }, [userInfo])
+
     
     if (isHome) {
         return (
