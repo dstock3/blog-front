@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
 import { parseJwt } from '../auth/parseToken'
@@ -14,9 +14,6 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author, setUp
     const [showComments, setShowComments] = useState(true)
     const nav = useNavigate()
 
-    useEffect(()=> {
-    }, [articleData])
-
     const fetchArticle = async () => {
         try {
             let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${article._id}`, {
@@ -25,7 +22,6 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author, setUp
             let resJson = await res.json();
             
             if (res.status === 200) {
-                console.log(resJson)
                 setArticleData(resJson)
             } else {
                 setMessage("Some error occured");
@@ -94,13 +90,13 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author, setUp
             console.log(err);
         }
     }
-
+    
     useEffect(()=> {
         if (articleData.comments.length > 0) {
             fetchComments()
         }
-    }, [article.comments])
-
+    }, [article])
+    
     return (
         <article className={theme + " " + layout + "-child"}>
             <div className="article-head">
@@ -165,7 +161,7 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author, setUp
                             </div>
                             {showComments ? 
                                 Object.values(comments).map((comment, thisIndex) =>
-                                    <Comment key={thisIndex} articleAuthor={userInfo} comment={comment} articleId={articleData._id} setUpdate={setCommentUpdate} theme={theme} />
+                                    <Comment onClick={fetchArticle} key={thisIndex} articleAuthor={userInfo} comment={comment} articleId={articleData._id} setUpdate={setCommentUpdate} theme={theme} />
                                 ) : null
                             }
                         </ul> : 

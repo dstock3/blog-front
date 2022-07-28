@@ -142,17 +142,6 @@ const RouteSwitch = () => {
                         </div>
                     } />
 
-                    {/* User Profile Pages */}
-                    {Object.values(users).map((thisUser, index) =>
-                        <Route key={index} path={"/" + thisUser["profileName"] + "/profile"} element={
-                            <div className={"App " + thisUser["themePref"] + "-accent"}>
-                                <Header userInfo={user} profileName={thisUser["profileName"]} theme={thisUser["themePref"]} title={thisUser["blogTitle"]} />
-                                <User userInfo={thisUser} articles={thisUser.articles} theme={thisUser["themePref"]} />
-                                <Footer theme={thisUser["themePref"]} />
-                            </div>
-                        } />
-                    )}
-
                     {/* Compose */}
                     <Route path={"/compose"} element={
                         <div className={"App " + theme + "-accent"}>

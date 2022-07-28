@@ -9,7 +9,6 @@ const CommentForm = ({users, userInfo, articleId, theme, update }) => {
     const [author, setAuthor] = useState("")
     const [method, setMethod] = useState("POST")
     const [request, setRequest] = useState(`https://stormy-waters-34046.herokuapp.com/article/${articleId}`)
-    const nav = useNavigate();
 
     useEffect(()=> {
         if (update) {
