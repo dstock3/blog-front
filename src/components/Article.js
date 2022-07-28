@@ -76,31 +76,29 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author, setUp
         }
     }, [])
 
-    useEffect(()=> {
-        /* get comments */
-        setComments({})
-        if (articleData.comments.length > 0) {
-            const fetchComments = (async() => {
-                    try {
-                        let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${article._id}/comments`, {
-                            method: "GET"
-                            });
-                        let resJson = await res.json();
-                        
-                        if (res.status === 200) {
-                            setComments(resJson.comments)
-                        } else {
-                            setMessage("Some error occured");
-                        }
-                    } catch(err) {
-                        setMessage("Some error occured");
-                        console.log(err);
-                    }
-                })();
+    const fetchComments = async () => {
+        try {
+            let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${article._id}/comments`, {
+                method: "GET"
+                });
+            let resJson = await res.json();
+            
+            if (res.status === 200) {
+                setComments(resJson.comments)
+            } else {
+                setMessage("Some error occured");
             }
-    }, [articleData.comments])
+        } catch(err) {
+            setMessage("Some error occured");
+            console.log(err);
+        }
+    }
 
-    useEffect(()=> {}, [comments])
+    useEffect(()=> {
+        if (articleData.comments.length > 0) {
+            fetchComments()
+        }
+    }, [article.comments])
 
     return (
         <article className={theme + " " + layout + "-child"}>
