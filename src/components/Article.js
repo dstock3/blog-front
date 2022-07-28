@@ -11,6 +11,7 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author, setUp
     const [isAuthorized, setIsAuthorized] = useState(false)
     const [comments, setComments] = useState([])
     const [commentUpdate, setCommentUpdate] = useState(false)
+    const [showComments, setShowComments] = useState(true)
     const nav = useNavigate()
 
     useEffect(()=> {
@@ -152,14 +153,21 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author, setUp
                     <div className="article-content">
                         {article["content"]}
                     </div>
-                    <CommentForm users={users} userInfo={userInfo} articleId={articleData._id} theme={theme} update={commentUpdate} />
+                    <CommentForm users={users} userInfo={userInfo} articleId={articleData._id} theme={theme} update={commentUpdate} setShowComments={setShowComments} />
                     
                     {Object.keys(comments).length !== 0 ?
                         <ul className={"comments-container " + theme + "-accent"}>
-                            <h3 className="comment-head">Comments</h3>
-                            {Object.values(comments).map((comment, thisIndex) =>
-                                <Comment key={thisIndex} articleAuthor={userInfo} comment={comment} articleId={articleData._id} setUpdate={setCommentUpdate} theme={theme} />
-                            )}
+                            <div className="comment-head-container">
+                                <h3 className="comment-head">Comments {"(" + comments.length + ")"}</h3>
+                                <button className={"show-comments-btn " + theme} onClick={()=> setShowComments(!showComments)}>
+                                    {showComments ? "Minimize Comments" : "Show Comments"}
+                                </button>
+                            </div>
+                            {showComments ? 
+                                Object.values(comments).map((comment, thisIndex) =>
+                                    <Comment key={thisIndex} articleAuthor={userInfo} comment={comment} articleId={articleData._id} setUpdate={setCommentUpdate} theme={theme} />
+                                ) : null
+                            }
                         </ul> : 
                         null
                     }

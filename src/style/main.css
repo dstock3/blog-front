@@ -78,6 +78,20 @@ article {
     border-radius: 5px;
 }
 
+.comment-head-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: 15px;
+}
+
+.show-comments-btn {
+    padding: 10px;
+    height: fit-content;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
 .comments-container {
     margin: auto;
     width: 85%;
@@ -87,6 +101,7 @@ article {
     flex-direction: column;
     list-style: none;
     padding-inline-start: 0;
+    padding-bottom: 15px;
 }
 
 .comment-head {
