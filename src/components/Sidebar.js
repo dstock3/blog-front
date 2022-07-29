@@ -4,11 +4,8 @@ import '../style/sidebar.css'
 import { Link } from 'react-router-dom';
 import Intro from './Intro';
 import CommentedArticles from './CommentedArticles';
-import { useEffect } from 'react';
 
-
-const Sidebar = ({isLoggedIn, articles, userInfo, theme, isHome}) => {
-
+const Sidebar = ({isLoggedIn, articles, userInfo, theme, isHome, fetchArticle}) => {
     if (isHome) {
         return (
             <div className={"sidebar " + theme}>
@@ -29,8 +26,8 @@ const Sidebar = ({isLoggedIn, articles, userInfo, theme, isHome}) => {
         return (
             <div className={"sidebar " + theme}>
                 <Profile mode="prof-side" userInfo={userInfo} />
-                <Archive userInfo={userInfo} articles={articles} />
-                <CommentedArticles theme={theme} />
+                <Archive userInfo={userInfo} articles={articles} fetchArticle={fetchArticle}/>
+                <CommentedArticles theme={theme} fetchArticle={fetchArticle}/>
             </div>
         );
     }

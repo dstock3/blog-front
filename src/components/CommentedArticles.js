@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Spinner from './Spinner'
 
-const CommentedArticles = ({theme}) => {
+const CommentedArticles = ({theme, fetchArticle}) => {
     const [articleList, setArticleList] = useState([])
     const [message, setMessage] = useState("")
     const [isLoading, setIsLoading] = useState(false)
@@ -41,7 +41,7 @@ const CommentedArticles = ({theme}) => {
                         <ul className={"most-commented-articles " + theme}>
                             {Object.values(articleList).map((listObj, index) =>
                                 <li key={index} className="commented-article-item">
-                                    <Link to= {{pathname: `/${listObj.user}/${listObj.article._id}`}}>
+                                    <Link onClick={()=>fetchArticle(listObj.article.article._id)} to= {{pathname: `/${listObj.user}/${listObj.article._id}`}}>
                                         {listObj.article.title}
                                     </Link>
                                 </li>

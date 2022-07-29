@@ -28,7 +28,7 @@ const RouteSwitch = () => {
 
     }, [])
 
-    useEffect(()=> {
+    const getUserData = () => {
         let apiCall = 'https://stormy-waters-34046.herokuapp.com/'
 
         fetch(apiCall)
@@ -61,26 +61,12 @@ const RouteSwitch = () => {
                     console.log(err)
                 }
             )
-    }, [])
-    /*
-    const fetchArticle = async (articleId) => {
-        try {
-            let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${articleId}`, {
-                method: "GET"
-                });
-            let resJson = await res.json();
-            
-            if (res.status === 200) {
-                
-            } else {
-                //setMessage("Some error occured");
-            }
-        } catch(err) {
-            //setMessage("Some error occured");
-            console.log(err);
-        }
+
     }
-    */
+
+    useEffect(()=> {
+        getUserData()
+    }, [])
 
     return (
         <BrowserRouter>
@@ -147,7 +133,7 @@ const RouteSwitch = () => {
                     <Route path={"/compose"} element={
                         <div className={"App " + theme + "-accent"}>
                             <Header userInfo={user} theme={theme} title={user.blogTitle} profileName={user.profileName} />
-                            <Compose userInfo={user} theme={theme} articles={articles} update={articleUpdate} />
+                            <Compose getUserData={getUserData} userInfo={user} theme={theme} articles={articles} update={articleUpdate} />
                             <Footer theme={theme} />
                         </div>
                     } />
@@ -170,7 +156,7 @@ const RouteSwitch = () => {
                         <Route path={"/" + users[keyName]["profileName"]}  element={
                             <div className={"App " + users[keyName]["themePref"] + "-accent"}>
                                 <Header thisUser={user} userInfo={users[keyName]} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} profileName={users[keyName]["profileName"]} />
-                                <Main landing={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["themePref"]} layout={users[keyName]["layoutPref"]} />
+                                <Main getUserData={getUserData} landing={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["themePref"]} layout={users[keyName]["layoutPref"]} />
                                 <Footer theme={users[keyName]["themePref"]} />
                             </div>
                         } />

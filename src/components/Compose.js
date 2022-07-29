@@ -3,8 +3,9 @@ import Sidebar from './Sidebar';
 import '../style/compose.css'
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { set } from 'lodash';
 
-const Compose = ({userInfo, articles, theme, update }) => {
+const Compose = ({getUserData, userInfo, articles, theme, update }) => {
     const [title, setTitle] = useState("")
     const [img, setImg] = useState("")
     const [imgDesc, setImgDesc] = useState("")
@@ -56,20 +57,18 @@ const Compose = ({userInfo, articles, theme, update }) => {
             let resJson = await res.json();
 
             if (res.status === 200) {
-                console.log(resJson)
                 setTitle("")
                 setImg("")
                 setImgDesc("")
                 setContent("")
-
-                
 
                 if (update) { 
                     setMessage("Article updated successfully") 
                 } else {
                     setMessage("Article created successfully")
                 }
-                nav(`/${userInfo.profileName}`)
+                getUserData()
+                nav(`/${userInfo.profileName}/${resJson.articleId}`)
             } else {
                 console.log(res)
                 setMessage("Some error occurred")
@@ -85,7 +84,7 @@ const Compose = ({userInfo, articles, theme, update }) => {
             <main className="compose-page">
                 <Sidebar userInfo={userInfo} articles={articles} theme={theme} />
 
-                <form onSubmit={handleSubmit} className={"composeForm " + theme} action="" method="POST" encType="multipart/form-data">
+                <form className={"composeForm " + theme} action="" method="POST" encType="multipart/form-data">
                     <div className="message">{message ? <p>{message}</p> : null}</div>
                     <div className="compose-subcontainer compose-title">
                         <label className="compose-label" htmlFor="title">Title:</label>
@@ -106,7 +105,7 @@ const Compose = ({userInfo, articles, theme, update }) => {
                     </div>
 
                     <div className="compose-subcontainer compose-options">
-                        <div type="submit" className={"submit-btn " + theme + "-accent"}>Submit</div>
+                        <div onClick={handleSubmit} className={"submit-btn " + theme + "-accent"}>Submit</div>
                     </div>
                 </form>
                 

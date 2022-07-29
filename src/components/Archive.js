@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Archive = ({userInfo, articles, mode}) => {
+const Archive = ({userInfo, articles, mode, fetchArticle}) => {
     const [thisClass, setThisClass] = useState({list: null})
 
     useEffect(()=> {
@@ -22,7 +22,7 @@ const Archive = ({userInfo, articles, mode}) => {
                     Object.values(articles).map((article, index) => {
                         return (
                             <li className="archive-link-item" key={index}>
-                                <Link to={'/' + userInfo["profileName"] + '/' + article._id}>
+                                <Link onClick={()=>fetchArticle(article._id)} to={'/' + userInfo["profileName"] + '/' + article._id}>
                                         {article["title"]}
                                 </Link>
                             </li>)

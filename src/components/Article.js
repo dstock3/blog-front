@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
 import { parseJwt } from '../auth/parseToken'
+import DeleteArticle from "./DeleteArticle";
 
 const Article = ({ users, article, articleId, userInfo, theme, layout, limit, author, setUpdate }) => {
     const [abstract, setAbstract] = useState(article["content"])
@@ -11,31 +12,12 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
     const [comments, setComments] = useState([])
     const [commentUpdate, setCommentUpdate] = useState(false)
     const [showComments, setShowComments] = useState(true)
+    const [toDelete, setToDelete] = useState(false)
     const nav = useNavigate()
 
     const editArticle = () => {
         setUpdate({"content": article["content"], "title": article["title"], "articleId": article._id})
         nav('/compose')
-    }
-
-    const deleteArticle = async() => {
-        let token = localStorage.getItem('user');
-        if (token) {
-            try {
-                let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${article._id}`, {
-                    method: "DELETE",
-                    headers: { 'Content-Type': 'application/json', "login-token" : token }
-                    });
-                
-                let resJson = await res.json();
-                nav(`/${userInfo.profileName}`)
-
-            } catch(err) {
-                setMessage("Some error occured");
-            }
-        } else {
-            setMessage("Invalid credentials");
-        }
     }
 
     useEffect(()=> {
@@ -95,7 +77,7 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
                             isAuthorized ?
                                 <>
                                     <div className={"article-edit-btn " + theme + "-accent"} onClick={editArticle}>Edit</div>
-                                    <div className={"article-edit-btn " + theme + "-accent"} onClick={deleteArticle}>Delete</div>
+                                    <div className={"article-edit-btn " + theme + "-accent"} onClick={() => setToDelete(true)}>Delete</div>
                                 </> : null
                     }
                 </div>
@@ -113,6 +95,10 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
                 </div> :
                 null
             }
+            <>
+                {toDelete ?
+                    <DeleteArticle theme={theme} toDelete={toDelete} userInfo={userInfo} articleId={articleId} setToDelete={setToDelete}/> : null}
+            </>
             {limit ?
                 article["content"].length < 400 ?
                     <div className="article-content">{article["content"]}</div> :
