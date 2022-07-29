@@ -50,7 +50,7 @@ const CommentForm = ({users, userInfo, articleId, theme, update, fetchComments }
             
             if (res.status === 200) {
                 setComment("");
-                fetchComments()
+                fetchComments(articleId)
                 //window.location.reload(false);
             } else {
                 setMessage("Some error occured");

@@ -5,16 +5,15 @@ import CommentForm from "./CommentForm";
 import { parseJwt } from '../auth/parseToken'
 import DeleteArticle from "./DeleteArticle";
 
-const Article = ({ users, article, articleId, userInfo, theme, layout, limit, author, setUpdate }) => {
+const Article = ({ users, article, articleId, userInfo, theme, layout, limit, author, setUpdate, fetchComments, comments, commentMessage }) => {
     const [abstract, setAbstract] = useState(article["content"])
     const [message, setMessage] = useState("")
     const [isAuthorized, setIsAuthorized] = useState(false)
-    const [comments, setComments] = useState([])
     const [commentUpdate, setCommentUpdate] = useState(false)
     const [showComments, setShowComments] = useState(true)
     const [toDelete, setToDelete] = useState(false)
     const nav = useNavigate()
-
+    
     const editArticle = () => {
         setUpdate({"content": article["content"], "title": article["title"], "articleId": article._id})
         nav('/compose')
@@ -35,29 +34,7 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
             setAbstract(article["content"].substring(0, article["content"].length - dif))
         }
     }, [])
-
-    const fetchComments = async () => {
-        try {
-            let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${article._id}/comments`, {
-                method: "GET"
-                });
-            let resJson = await res.json();
-            
-            if (res.status === 200) {
-                setComments(resJson.comments)
-            } else {
-                setMessage("Some error occured");
-            }
-        } catch(err) {
-            setMessage("Some error occured");
-            console.log(err);
-        }
-    }
-    /*
-    useEffect(()=> {
-        fetchComments()
-    }, [articleId])
-    */
+    
     return (
         <article className={theme + " " + layout + "-child"}>
             <div className="article-head">
@@ -97,7 +74,7 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
             }
             <>
                 {toDelete ?
-                    <DeleteArticle theme={theme} toDelete={toDelete} userInfo={userInfo} articleId={articleId} setToDelete={setToDelete}/> : null}
+                    <DeleteArticle theme={theme} toDelete={toDelete} userInfo={userInfo} articleId={articleId} setToDelete={setToDelete} /> : null}
             </>
             {limit ?
                 article["content"].length < 400 ?
@@ -124,6 +101,7 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
                                     {showComments ? "Minimize Comments" : "Show Comments"}
                                 </div>
                             </div>
+                            <div className="message">{commentMessage ? <p>{commentMessage}</p> : null}</div>
                             {showComments ? 
                                 Object.values(comments).map((comment, thisIndex) =>
                                     <Comment key={thisIndex} articleAuthor={userInfo} comment={comment} articleId={article._id} setUpdate={setCommentUpdate} theme={theme} />

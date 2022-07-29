@@ -19,9 +19,7 @@ const DeleteArticle = ({theme, toDelete, userInfo, articleId, setToDelete}) => {
                 
                 if (res.status === 200) {
                     nav(`/${userInfo.profileName}`, { replace: true })
-                } else { setMessage("Some error occured") }
-
-                
+                } else { setMessage("Some error occured") };
 
             } catch(err) {
                 setMessage("Some error occured");

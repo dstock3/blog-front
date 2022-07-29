@@ -6,13 +6,13 @@ const Logout = ({setIsLoggedIn}) => {
     useEffect(()=> {
         localStorage.clear();
         setIsLoggedIn(false)
-        setLogoutMessage("You are now logged out.")
+        setLogoutMessage("Thanks for visiting! You are now logged out.")
 
     }, [])
 
     return (
-        <main className="logout-page">
-            <div className="logout-message">{logoutMessage}</div>
+        <main className="logout-page dark">
+            <div className="logout-message dark-accent">{logoutMessage}</div>
         </main>
         
     )

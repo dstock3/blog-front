@@ -65,6 +65,10 @@ const RouteSwitch = () => {
     }
 
     useEffect(()=> {
+        
+    }, [isLoggedIn, theme])
+
+    useEffect(()=> {
         getUserData()
     }, [])
 
@@ -89,8 +93,7 @@ const RouteSwitch = () => {
                                     <Header theme="dark" title="BlogDog - Simple CMS" />
                                     <Home theme="dark" users={users} />
                                     <Footer theme="dark" />
-                                </div>
-                                
+                                </div> 
                     } />
                     
                     {/* Register */}
