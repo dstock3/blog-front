@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Main = ({getUserData, users, landing, article, articles, userInfo, theme, layout, setUpdate}) => {
     const [thisArticle, setThisArticle] = useState(false)
+    const [message, setMessage] = useState(false)
 
     const fetchArticle =  async(articleId) => {
         try {
@@ -19,11 +20,10 @@ const Main = ({getUserData, users, landing, article, articles, userInfo, theme, 
                 setThisArticle(resJson.article)
                 
             } else {
-                //setMessage("Some error occured");
+                setMessage("Some error occured");
             }
         } catch(err) {
-            //setMessage("Some error occured");
-            console.log(err);
+            setMessage("Some error occured");
         }
     }
     
@@ -33,7 +33,6 @@ const Main = ({getUserData, users, landing, article, articles, userInfo, theme, 
         } else {
             getUserData()
         }
-        
     }, [])
 
     if (userInfo) {
@@ -42,6 +41,7 @@ const Main = ({getUserData, users, landing, article, articles, userInfo, theme, 
                 <Sidebar userInfo={userInfo} articles={articles} theme={theme} fetchArticle={fetchArticle} />
                 {!landing && thisArticle ?
                     <div className={"articles-container " + layout}>
+                        {message ? <div className="message">{message}</div> : null }
                         <Article getUserData={getUserData} users={users} userInfo={userInfo} articleId={thisArticle._id} article={thisArticle} theme={theme} layout={layout} setUpdate={setUpdate} />
                     </div> :
                     <div className={"articles-container " + layout}>
