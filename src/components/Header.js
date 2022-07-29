@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Settings from "./Settings";
 
-const Header = ({userInfo, theme, title, profileName}) => {
-    const [thisTheme, setThisTheme] = useState("light")
+const Header = ({thisUser, userInfo, theme, title, profileName}) => {
+    const [thisTheme, setThisTheme] = useState("dark")
 
     useEffect(()=> {
         if (theme) {
@@ -13,9 +13,9 @@ const Header = ({userInfo, theme, title, profileName}) => {
     
     return (
         <header className={thisTheme}>
-            {userInfo ? <div className="welcome">{"Welcome "} 
-                <Link to = {{pathname: `/${userInfo.profileName}`}} >
-                    {userInfo.profileName}
+            {thisUser ? <div className="welcome">{"Welcome "} 
+                <Link to = {{pathname: `/${thisUser.profileName}`}} >
+                    {thisUser.profileName}
                 </Link>
             </div> : null}
             <h1 className="title">

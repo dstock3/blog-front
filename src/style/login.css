@@ -34,8 +34,11 @@
 }
   
 .log-btn {
+    font-weight: bold;
+    padding: 7px;
     margin-top: 15px;
     margin-left: 77%;
+    border-radius: 5px;
 }
 
 @media only screen and (max-width: 900px) {

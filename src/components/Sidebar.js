@@ -8,11 +8,7 @@ import { useEffect } from 'react';
 
 
 const Sidebar = ({isLoggedIn, articles, userInfo, theme, isHome}) => {
-    useEffect(()=> {
 
-    }, [userInfo])
-
-    
     if (isHome) {
         return (
             <div className={"sidebar " + theme}>

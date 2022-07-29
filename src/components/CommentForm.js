@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Prompt from "./Prompt";
 import { parseJwt } from "../auth/parseToken";
 
-const CommentForm = ({users, userInfo, articleId, theme, update }) => {
+const CommentForm = ({users, userInfo, articleId, theme, update, fetchComments }) => {
     const [comment, setComment] = useState("")
     const [message, setMessage] = useState("")
     const [author, setAuthor] = useState("")
@@ -50,6 +50,7 @@ const CommentForm = ({users, userInfo, articleId, theme, update }) => {
             
             if (res.status === 200) {
                 setComment("");
+                fetchComments()
                 window.location.reload(false);
             } else {
                 setMessage("Some error occured");

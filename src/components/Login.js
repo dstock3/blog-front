@@ -19,8 +19,8 @@ const Login = ({setIsLoggedIn}) => {
                 if (res.status === 200) {
                     setUsername("")
                     setPw("")
-                    localStorage.setItem('user', res.data);
                     setIsLoggedIn(true)
+                    localStorage.setItem('user', res.data);
                     nav('/');
                 } else {
                     setMessage("Some error occurred")
@@ -61,7 +61,7 @@ const Login = ({setIsLoggedIn}) => {
                     </input>
                 </div>
 
-                <button type="submit" className="submit-btn log-btn">Login</button>
+                <button type="submit" className="log-btn dark-accent">Login</button>
             </form>
             <div className="prompt-container">
                 <div className="reg-prompt">Don't have an Account?</div>

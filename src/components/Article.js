@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
 import { parseJwt } from '../auth/parseToken'
 
-const Article = ({ users, article, userInfo, theme, layout, limit, author, setUpdate }) => {
-    const [articleData, setArticleData] = useState(article)
+const Article = ({ users, article, articleId, userInfo, theme, layout, limit, author, setUpdate }) => {
     const [abstract, setAbstract] = useState(article["content"])
     const [message, setMessage] = useState("")
     const [isAuthorized, setIsAuthorized] = useState(false)
@@ -14,26 +13,8 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author, setUp
     const [showComments, setShowComments] = useState(true)
     const nav = useNavigate()
 
-    const fetchArticle = async () => {
-        try {
-            let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${article._id}`, {
-                method: "GET"
-                });
-            let resJson = await res.json();
-            
-            if (res.status === 200) {
-                setArticleData(resJson)
-            } else {
-                setMessage("Some error occured");
-            }
-        } catch(err) {
-            setMessage("Some error occured");
-            console.log(err);
-        }
-    }
-
     const editArticle = () => {
-        setUpdate({"content": article["content"], "title": articleData["title"], "articleId": article._id})
+        setUpdate({"content": article["content"], "title": article["title"], "articleId": article._id})
         nav('/compose')
     }
 
@@ -92,23 +73,21 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author, setUp
     }
     
     useEffect(()=> {
-        if (articleData.comments.length > 0) {
-            fetchComments()
-        }
-    }, [article])
+        fetchComments()
+    }, [articleId])
     
     return (
         <article className={theme + " " + layout + "-child"}>
             <div className="article-head">
                 <div className="article-head-subcontainer">
-                    <h1 className="article-name">{articleData["title"]}</h1>
+                    <h1 className="article-name">{article["title"]}</h1>
                     {author ?
                         <div className="article-author">
                             <Link to ={"/" + userInfo["profileName"]}>
                                 {author}
                             </Link>
                         </div> : null}
-                    <div className="date-posted">{articleData["date"]}</div>
+                    <div className="date-posted">{article["date"]}</div>
                 </div>
                 <div className="article-dashboard">
                     {limit ? 
@@ -125,22 +104,22 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author, setUp
             {article["img"] ?
                 layout.main === "card" ?
                     <div className="img-container img-card-view">
-                        <img className="article-img" src={articleData["img"]} alt={articleData["img-desc"]}></img>
-                        <div className="article-img-caption">{articleData["img-desc"]}</div>
+                        <img className="article-img" src={article["img"]} alt={article["img-desc"]}></img>
+                        <div className="article-img-caption">{article["img-desc"]}</div>
                     </div> :
                 <div className="img-container">
-                    <img className="article-img" src={articleData["img"]} alt={articleData["img-desc"]}></img>
-                    <div className="article-img-caption">{articleData["img-desc"]}</div>
+                    <img className="article-img" src={article["img"]} alt={article["img-desc"]}></img>
+                    <div className="article-img-caption">{article["img-desc"]}</div>
                 </div> :
                 null
             }
             {limit ?
                 article["content"].length < 400 ?
-                    <div className="article-content">{articleData["content"]}</div> :
+                    <div className="article-content">{article["content"]}</div> :
                     <div className="article-content">
                         {abstract}...
                         <div className="read-more"> 
-                            <Link to ={"/" + userInfo["profileName"] + "/" + articleData._id}>
+                            <Link to ={"/" + userInfo["profileName"] + "/" + article._id}>
                                 Read More
                             </Link>
                         </div>
@@ -149,7 +128,7 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author, setUp
                     <div className="article-content">
                         {article["content"]}
                     </div>
-                    <CommentForm users={users} userInfo={userInfo} articleId={articleData._id} theme={theme} update={commentUpdate} setShowComments={setShowComments} />
+                    <CommentForm users={users} userInfo={userInfo} articleId={article._id} theme={theme} update={commentUpdate} setShowComments={setShowComments} fetchComments={fetchComments} />
                     
                     {Object.keys(comments).length !== 0 ?
                         <ul className={"comments-container " + theme + "-accent"}>
@@ -161,7 +140,7 @@ const Article = ({ users, article, userInfo, theme, layout, limit, author, setUp
                             </div>
                             {showComments ? 
                                 Object.values(comments).map((comment, thisIndex) =>
-                                    <Comment onClick={fetchArticle} key={thisIndex} articleAuthor={userInfo} comment={comment} articleId={articleData._id} setUpdate={setCommentUpdate} theme={theme} />
+                                    <Comment key={thisIndex} articleAuthor={userInfo} comment={comment} articleId={article._id} setUpdate={setCommentUpdate} theme={theme} />
                                 ) : null
                             }
                         </ul> : 

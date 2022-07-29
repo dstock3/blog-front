@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Article from './Article'
 import Prompt from './Prompt';
 import Sidebar from './Sidebar'

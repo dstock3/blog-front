@@ -4,10 +4,6 @@ import Sidebar from './Sidebar';
 const Home = ({isLoggedIn, userInfo, theme, users}) => {
     const [articleList, setArticleList] = useState(false)
 
-    useEffect(()=> {
-
-    }, [isLoggedIn])
-
     function randomizeList(articleList) {
         for (let i = articleList.length - 1; i > 0; i--) {
             const randomIndex = Math.floor(Math.random() * (i + 1));
@@ -33,8 +29,8 @@ const Home = ({isLoggedIn, userInfo, theme, users}) => {
             <main className={"home " + theme + "-accent"}>
                 <Sidebar isLoggedIn={isLoggedIn} userInfo={userInfo} theme={theme} isHome={true} />
                 <div className={"articles-container basic"}>
-                    {articleList.map((val, artIndex) => (
-                         <Article key={artIndex} index={val["ind"]} author={val["author"]["profileName"]} userInfo={val["author"]} article={val["article"]} theme={theme} layout={"basic"} limit={true} />
+                    {articleList.map((thisArticle, artIndex) => (
+                         <Article key={artIndex} index={thisArticle["ind"]} author={thisArticle["author"]["profileName"]} userInfo={thisArticle["author"]} article={thisArticle["article"]} theme={theme} layout="basic" limit={true} />
                     ))}
                 </div>
             </main>
