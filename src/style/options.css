@@ -44,6 +44,14 @@
     margin-top: 5%;
 }
 
+.options-btn {
+    font-weight: bold;
+    padding: 7px;
+    border-radius: 5px;
+    width: fit-content;
+    cursor: pointer;
+}
+
 #user-delete-modal {
     position: fixed;
     top: 50%;

@@ -136,10 +136,10 @@ const Options = ({userInfo, theme, setIsLoggedIn}) => {
                         </label>
                     </div>
 
-                    <button type="submit" className="submit-btn">Update Profile</button>
+                    <div type="submit" className={"options-btn " + theme + "-accent"}>Update Profile</div>
                 </form>
                 <div className="deleteForm">
-                    <button className="submit-btn" onClick={()=> setToDelete(true)}>Delete Profile</button>
+                    <div className={"submit-btn " + theme + "-accent"} onClick={()=> setToDelete(true)}>Delete Profile</div>
                 </div>
             </main>
             <>
