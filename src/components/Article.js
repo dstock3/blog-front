@@ -53,11 +53,11 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
             console.log(err);
         }
     }
-    
+    /*
     useEffect(()=> {
         fetchComments()
     }, [articleId])
-    
+    */
     return (
         <article className={theme + " " + layout + "-child"}>
             <div className="article-head">

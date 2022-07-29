@@ -28,10 +28,10 @@ const DeleteArticle = ({theme, toDelete, userInfo, articleId, setToDelete}) => {
 
     if (!toDelete) return null
     return ReactDOM.createPortal(
-        <div className={"delete-article-prompt " + theme + "-accent"}>
+        <div className={"delete-prompt " + theme + "-accent"}>
             <div className="message">{message ? <p>{message}</p> : null}</div>
             <div className="delete-article-prompt">
-                Are you sure you want to delete your article? This will result in the permanent deletion of all your data.
+                Are you sure you want to delete this article?
             </div>
             <div className="delete-options">
                 <div className={"delete-btn " + theme} onClick={handleDelete}>Confirm</div>
