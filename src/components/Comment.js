@@ -51,8 +51,8 @@ const Comment = ({ comment, articleAuthor, articleId, setUpdate, theme }) => {
                 <div className="comment-dashboard">
                     {authorized ?
                         <>
-                            <button className={"comment-edit-btn " + theme + "-accent"} onClick={editComment}>Edit</button>
-                            <button className={"comment-edit-btn " + theme + "-accent"} onClick={deleteComment}>Delete</button>
+                            <div className={"comment-edit-btn " + theme + "-accent"} onClick={editComment}>Edit</div>
+                            <div className={"comment-edit-btn " + theme + "-accent"} onClick={deleteComment}>Delete</div>
                         </> : null
                     }
                 </div>

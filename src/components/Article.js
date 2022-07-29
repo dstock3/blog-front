@@ -134,9 +134,9 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
                         <ul className={"comments-container " + theme + "-accent"}>
                             <div className="comment-head-container">
                                 <h3 className="comment-head">Comments {"(" + comments.length + ")"}</h3>
-                                <button className={"show-comments-btn " + theme} onClick={()=> setShowComments(!showComments)}>
+                                <div className={"show-comments-btn " + theme} onClick={()=> setShowComments(!showComments)}>
                                     {showComments ? "Minimize Comments" : "Show Comments"}
-                                </button>
+                                </div>
                             </div>
                             {showComments ? 
                                 Object.values(comments).map((comment, thisIndex) =>

@@ -71,7 +71,7 @@ const CommentForm = ({users, userInfo, articleId, theme, update, fetchComments }
                     <textarea className="comment-input" type="text" value={comment} htmlFor="comment" onChange={(e) => setComment(e.target.value)}></textarea>
                 </div>
                 <div className="comment-btn-subcontainer">
-                    <button onClick={commentHandler} className={"comment-btn " + theme}>Submit</button>
+                    <div onClick={commentHandler} className={"comment-btn " + theme}>Submit</div>
                 </div>
             </form>
         );

@@ -33,7 +33,10 @@
 }
 
 .submit-btn {
-    font-size: 1.25em;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 textarea {

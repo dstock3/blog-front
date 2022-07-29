@@ -91,6 +91,7 @@ article {
     height: fit-content;
     font-weight: bold;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .comments-container {
@@ -127,11 +128,12 @@ article {
 .comment-dashboard {
     display: flex;
     justify-content: space-between;
-    width: 10%;
+    width: 125px;
 }
 
 .comment-edit-btn {
-    padding: 5px;
+    padding: 7px;
+    border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -168,7 +170,6 @@ article {
 }
 
 .comment-btn {
-    width: 75px;
     margin-bottom: 15px;
     cursor: pointer;
     font-weight: bold;

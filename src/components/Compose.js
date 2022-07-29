@@ -106,7 +106,7 @@ const Compose = ({userInfo, articles, theme, update }) => {
                     </div>
 
                     <div className="compose-subcontainer compose-options">
-                        <button type="submit" className="submit-btn">Submit</button>
+                        <div type="submit" className={"submit-btn " + theme + "-accent"}>Submit</div>
                     </div>
                 </form>
                 
