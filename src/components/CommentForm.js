@@ -51,7 +51,7 @@ const CommentForm = ({users, userInfo, articleId, theme, update, fetchComments }
             if (res.status === 200) {
                 setComment("");
                 fetchComments()
-                window.location.reload(false);
+                //window.location.reload(false);
             } else {
                 setMessage("Some error occured");
             }
@@ -64,14 +64,14 @@ const CommentForm = ({users, userInfo, articleId, theme, update, fetchComments }
     
     if (userInfo) {
         return (
-            <form onSubmit={commentHandler} className={"comment-form " + theme + "-accent"} action="" method="POST">
+            <form className={"comment-form " + theme + "-accent"} action="" method="POST">
                 <div className="comment-subcontainer comment-prompt">
                     <label className="comment-label" htmlFor="comment">Leave a Comment Below:</label>
                     <div className="message">{message ? <p>{message}</p> : null}</div>
                     <textarea className="comment-input" type="text" value={comment} htmlFor="comment" onChange={(e) => setComment(e.target.value)}></textarea>
                 </div>
                 <div className="comment-btn-subcontainer">
-                    <button className="comment-btn">Submit</button>
+                    <button onClick={commentHandler} className={"comment-btn " + theme}>Submit</button>
                 </div>
             </form>
         );

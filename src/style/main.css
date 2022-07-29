@@ -68,14 +68,15 @@ article {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 8%;
+    width: 125px;
 }
 
 .article-edit-btn {
     font-weight: bold;
     cursor: pointer;
-    padding: 5px;
+    padding: 7px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .comment-head-container {
@@ -170,6 +171,9 @@ article {
     width: 75px;
     margin-bottom: 15px;
     cursor: pointer;
+    font-weight: bold;
+    padding: 7px;
+    border-radius: 5px;
 }
 
 .compose-prompt {

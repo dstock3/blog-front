@@ -43,6 +43,10 @@ main {
   margin-left: 5%;
 }
 
+.welcome > a {
+  font-weight: bold;
+}
+
 /* Settings */
 
 .settings-icon {

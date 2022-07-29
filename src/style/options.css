@@ -60,6 +60,7 @@
     flex-direction: column;
     padding: 25px;
     border-radius: 5px;
+    box-shadow: 2px 5px 10px rgba(22, 22, 22, 0.349);
 }
 
 .delete-options {
@@ -68,4 +69,11 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+.delete-btn {
+    font-weight: bold;
+    padding: 7px;
+    border-radius: 5px;
+    cursor: pointer;
 }

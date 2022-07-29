@@ -94,8 +94,8 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
                         null :
                             isAuthorized ?
                                 <>
-                                    <button className={"article-edit-btn " + theme + "-accent"} onClick={editArticle}>Edit</button>
-                                    <button className={"article-edit-btn " + theme + "-accent"} onClick={deleteArticle}>Delete</button>
+                                    <div className={"article-edit-btn " + theme + "-accent"} onClick={editArticle}>Edit</div>
+                                    <div className={"article-edit-btn " + theme + "-accent"} onClick={deleteArticle}>Delete</div>
                                 </> : null
                     }
                 </div>

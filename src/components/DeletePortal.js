@@ -41,8 +41,8 @@ const DeletePortal = ({setIsLoggedIn, theme, userInfo, toDelete, setToDelete}) =
                 We're sorry to see you go. Are you sure you want to delete your account? This will result in the permanent deletion of all your data.
             </div>
             <div className="delete-options">
-                <button onClick={handleDelete}>Confirm</button>
-                <button onClick={() => setToDelete(false)}>Cancel</button>
+                <div className={"delete-btn " + theme} onClick={handleDelete}>Confirm</div>
+                <div className={"delete-btn " + theme} onClick={() => setToDelete(false)}>Cancel</div>
             </div>
         </div>,
         document.getElementById('user-delete-modal')
