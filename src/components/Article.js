@@ -4,6 +4,7 @@ import Comment from "./Comment";
 import CommentForm from "./CommentForm";
 import { parseJwt } from '../auth/parseToken'
 import DeleteArticle from "./DeleteArticle";
+import expandComment from "../images/expand.svg"
 
 const Article = ({ users, article, articleId, userInfo, theme, layout, limit, author, setUpdate, fetchComments, comments, commentMessage }) => {
     const [abstract, setAbstract] = useState(article["content"])
@@ -105,7 +106,11 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
                             {showComments ? 
                                 Object.values(comments).map((comment, thisIndex) =>
                                     <Comment key={thisIndex} articleAuthor={userInfo} comment={comment} articleId={article._id} setUpdate={setCommentUpdate} theme={theme} />
-                                ) : null
+                                ) : 
+                                <div className="comment-icon-container">
+                                    <img src={expandComment} className={"comment-icon " + theme} alt="expand comments icon"></img>
+
+                                </div>
                             }
                         </ul> : 
                         null
