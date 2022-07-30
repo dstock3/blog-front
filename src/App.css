@@ -174,14 +174,21 @@ footer {
 }
 
 .attribution {
+  margin-top: 10px;
   font-weight: bold;
   margin-bottom: 15px;
 }
 
 .social-links {
+  margin-block: 10px;
   display: flex;
   justify-content: space-between;
   width: 10%;
+}
+
+.social-link img {
+  height: 35px;
+  width: 35px;
 }
 
 .message {
