@@ -53,6 +53,7 @@ const RouteSwitch = () => {
                     let newUser = localStorage.getItem('user');
 
                     if (newUser) {
+                        setIsLoggedIn(true)
                         for (let prop in data["users"]) {
                             if (data["users"][prop]._id === parseJwt(newUser)._id) {
                                 setUser(data["users"][prop])

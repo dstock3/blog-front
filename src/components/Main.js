@@ -5,15 +5,17 @@ import Sidebar from './Sidebar'
 import '../style/main.css'
 import { Link } from 'react-router-dom';
 
-const Main = ({getUserData, users, landing, article, articles, userInfo, theme, layout, setUpdate}) => {
+const Main = ({isLoggedIn, getUserData, users, landing, article, articles, userInfo, theme, layout, setUpdate}) => {
     const [thisArticle, setThisArticle] = useState(false)
     const [message, setMessage] = useState(false)
     const [commentMessage, setCommentMessage] = useState("")
     const [comments, setComments] = useState(false)
-
+    
     useEffect(() => {
         window.scrollTo(0, 0)
+        
     }, [])
+
 
     const fetchArticle =  async(articleId) => {
         try {
@@ -25,6 +27,9 @@ const Main = ({getUserData, users, landing, article, articles, userInfo, theme, 
             if (res.status === 200) {
                 setThisArticle(resJson.article)
                 
+            } else if (res.status === 400) {
+                setMessage("Your session has timed out. Please sign in again.")
+
             } else {
                 setMessage("Some error occured");
             }
@@ -62,7 +67,7 @@ const Main = ({getUserData, users, landing, article, articles, userInfo, theme, 
     if (userInfo) {
         return (
             <main className="blog">
-                <Sidebar userInfo={userInfo} articles={articles} theme={theme} fetchArticle={fetchArticle} />
+                <Sidebar isLoggedIn={isLoggedIn} userInfo={userInfo} articles={articles} theme={theme} fetchArticle={fetchArticle} />
                 {!landing && thisArticle ?
                     <div className={"articles-container " + layout}>
                         {message ? <div className="message">{message}</div> : null }
