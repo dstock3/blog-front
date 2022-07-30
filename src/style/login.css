@@ -36,10 +36,10 @@
 }
   
 .log-btn {
+    text-align: center;
     font-weight: bold;
     padding: 7px;
     margin-top: 15px;
-    margin-left: 77%;
     border-radius: 5px;
     cursor: pointer;
 }

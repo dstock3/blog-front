@@ -52,19 +52,17 @@ const Register = () => {
                     setProfilePic("");
                     setMessage("User created successfully");
                 } else {
-                    console.log(res)
                     setMessage("Some error occured");
                 }
         } catch(err) {
             setMessage("Some error occured");
-            console.log(err);
         }
     }
 
     return (
         <div className={"register dark"}>
             <div className="message">{message ? <p>{message}</p> : null}</div>
-            <form onSubmit={handleSubmit} className="registerForm" action="" method="POST" encType="multipart/form-data">
+            <form className="registerForm" action="" method="POST" encType="multipart/form-data">
                 <h2 className="form-head">Register</h2>
                 <div className="user-register-container" id="primary-reg">
                     <label className="reg-label" htmlFor="profileName">Username: </label>
@@ -91,7 +89,7 @@ const Register = () => {
                     <textarea type="text" value={profileDesc} name="profileDesc" onChange={(e) => setProfileDesc(e.target.value)}></textarea>
                 </div>
 
-                <button type="submit" className="submit-btn reg-btn">Register</button>
+                <div onClick={handleSubmit} className="submit-btn reg-btn dark-accent">Register</div>
             </form>
             
             <div className="prompt-container">

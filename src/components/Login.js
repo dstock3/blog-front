@@ -37,7 +37,7 @@ const Login = ({setIsLoggedIn}) => {
 
     return (
         <div className={"login dark"}>
-            <form onSubmit={loginHandler} className="loginForm" action="" method="POST">
+            <form className="loginForm" action="" method="POST">
                 <h2 className="form-head">Login</h2>
                 <div className="message">{message ? <p>{message}</p> : null}</div>
                 <div className="user-login-container">
@@ -61,7 +61,7 @@ const Login = ({setIsLoggedIn}) => {
                     </input>
                 </div>
 
-                <button type="submit" className="log-btn dark-accent">Login</button>
+                <div onClick={loginHandler} className="log-btn dark-accent">Login</div>
             </form>
             <div className="prompt-container">
                 <div className="reg-prompt">Don't have an Account?</div>

@@ -65,12 +65,8 @@ const RouteSwitch = () => {
     }
 
     useEffect(()=> {
-        
-    }, [isLoggedIn, theme])
-
-    useEffect(()=> {
         getUserData()
-    }, [])
+    }, [isLoggedIn])
 
     return (
         <BrowserRouter>

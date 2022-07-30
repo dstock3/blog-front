@@ -49,6 +49,7 @@
 .reg-btn {
     margin-top: 15px;
     margin-left: 85%;
+    cursor: pointer;
 }
 
 #drop-one, #pw-one, #drop-two {

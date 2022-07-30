@@ -103,7 +103,6 @@ article {
     flex-direction: column;
     list-style: none;
     padding-inline-start: 0;
-    padding-bottom: 15px;
 }
 
 .comment-head {
@@ -202,6 +201,7 @@ article {
     transform: translate(-50%, -50%);
     padding: 65px;
     width: 20vw;
+    z-index: 0;
 }
 
 .delete-prompt {
@@ -227,6 +227,8 @@ article {
 .comment-icon-container {
     display: flex;
     justify-content: center;
+    position: relative;
+    bottom: 25px;
 }
 
 .comment-icon {
