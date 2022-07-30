@@ -28,6 +28,17 @@ const RouteSwitch = () => {
 
     }, [])
 
+    useEffect(()=> {
+        let deleteUserModal = document.getElementById('user-delete-modal')
+        let deleteArticleModal = document.getElementById('user-delete-modal')
+        let rootElement = document.getElementById('root')
+
+        rootElement.style.filter = "unset"
+
+        deleteUserModal.style.zIndex = 0
+        deleteArticleModal.style.zIndex = 0
+    }, [])
+
     const getUserData = () => {
         let apiCall = 'https://stormy-waters-34046.herokuapp.com/'
 

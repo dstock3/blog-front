@@ -23,7 +23,7 @@ const Options = ({userInfo, theme, setIsLoggedIn}) => {
             rootElement.style.filter = 'brightness(65%)'
         } else {
             modal.style.zIndex = 0
-            rootElement.style.filter = 'brightness(100%)'
+            rootElement.style.filter = "unset"
         }
 
     }, [toDelete])

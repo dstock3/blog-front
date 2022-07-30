@@ -1,21 +1,42 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Comment from "./Comment";
 import CommentForm from "./CommentForm";
 import { parseJwt } from '../auth/parseToken'
 import DeleteArticle from "./DeleteArticle";
 import expandComment from "../images/expand.svg"
+import CommentSection from "./CommentSection";
 
-const Article = ({ users, article, articleId, userInfo, theme, layout, limit, author, setUpdate, fetchComments, comments, commentMessage }) => {
+const Article = ({ users, article, articleId, userInfo, theme, layout, limit, author, setUpdate, fetchComments, comments, setComments, commentMessage }) => {
     const [abstract, setAbstract] = useState(article["content"])
     const [message, setMessage] = useState("")
     const [isAuthorized, setIsAuthorized] = useState(false)
     const [commentUpdate, setCommentUpdate] = useState(false)
     const [showComments, setShowComments] = useState(true)
     const [toDelete, setToDelete] = useState(false)
-    
+
     const nav = useNavigate()
+    /*
+    useEffect(()=> {
+        console.log("render")
+        const fetchComments = async () => {
+            try {
+                let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${articleId}/comments`, {
+                    method: "GET"
+                    });
+                let resJson = await res.json();
+                
+                if (res.status === 200) {
+                    setComments(resJson.comments)
+                } else {
+                    setMessage("Some error occured");
+                }
+            } catch(err) {
     
+            }
+        }
+        fetchComments()
+    }, [article])
+    */
     useEffect(()=> {
         let modal = document.getElementById('article-delete-modal')
         let rootElement = document.getElementById('root')
@@ -24,7 +45,7 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
             rootElement.style.filter = 'brightness(65%)'
         } else {
             modal.style.zIndex = 0
-            rootElement.style.filter = 'brightness(100%)'
+            rootElement.style.filter = "unset"
         }
 
     }, [toDelete])
@@ -117,15 +138,7 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
                                 </div>
                             </div>
                             <div className="message">{commentMessage ? <p>{commentMessage}</p> : null}</div>
-                            {showComments ? 
-                                Object.values(comments).map((comment, thisIndex) =>
-                                    <Comment key={thisIndex} articleAuthor={userInfo} comment={comment} articleId={article._id} setUpdate={setCommentUpdate} theme={theme} />
-                                ) : 
-                                <div className="comment-icon-container">
-                                    <img src={expandComment} className={"comment-icon " + theme} alt="expand comments icon"></img>
-
-                                </div>
-                            }
+                            <CommentSection showComments={showComments} comments={comments} expandComment={expandComment} theme={theme} userInfo={userInfo} article={article} setCommentUpdate/>
                         </ul> : 
                         null
                     }
