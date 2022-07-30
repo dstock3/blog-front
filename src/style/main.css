@@ -201,7 +201,6 @@ article {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 65px;
-    z-index: 1000;
     width: 20vw;
 }
 

@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { useNavigate } from 'react-router-dom';
 
 const DeletePortal = ({setIsLoggedIn, theme, userInfo, toDelete, setToDelete}) => {
     const [message, setMessage] = useState("")
     const nav = useNavigate()
+
+
 
     const handleDelete = async (e) => {
         e.preventDefault();

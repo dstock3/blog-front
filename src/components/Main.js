@@ -11,6 +11,10 @@ const Main = ({getUserData, users, landing, article, articles, userInfo, theme, 
     const [commentMessage, setCommentMessage] = useState("")
     const [comments, setComments] = useState(false)
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     const fetchArticle =  async(articleId) => {
         try {
             let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${articleId}`, {

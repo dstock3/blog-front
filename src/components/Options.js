@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../style/options.css'
 import '../style/register.css'
 import DeletePortal from './DeletePortal';
@@ -14,6 +14,19 @@ const Options = ({userInfo, theme, setIsLoggedIn}) => {
     const [profilePic, setProfilePic] = useState("");
     const [message, setMessage] = useState("")
     const [toDelete, setToDelete] = useState(false)
+
+    useEffect(()=> {
+        let modal = document.getElementById('user-delete-modal')
+        let rootElement = document.getElementById('root')
+        if (toDelete) {
+            modal.style.zIndex = 1000
+            rootElement.style.filter = 'brightness(65%)'
+        } else {
+            modal.style.zIndex = 0
+            rootElement.style.filter = 'brightness(100%)'
+        }
+
+    }, [toDelete])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

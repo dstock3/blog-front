@@ -13,8 +13,22 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
     const [commentUpdate, setCommentUpdate] = useState(false)
     const [showComments, setShowComments] = useState(true)
     const [toDelete, setToDelete] = useState(false)
+    
     const nav = useNavigate()
     
+    useEffect(()=> {
+        let modal = document.getElementById('article-delete-modal')
+        let rootElement = document.getElementById('root')
+        if (toDelete) {
+            modal.style.zIndex = 1000
+            rootElement.style.filter = 'brightness(65%)'
+        } else {
+            modal.style.zIndex = 0
+            rootElement.style.filter = 'brightness(100%)'
+        }
+
+    }, [toDelete])
+
     const editArticle = () => {
         setUpdate({"content": article["content"], "title": article["title"], "articleId": article._id})
         nav('/compose')
