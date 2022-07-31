@@ -17,7 +17,7 @@ const CommentedArticles = ({theme, isHome, fetchArticle}) => {
             
             if (res.status === 200) {
                 setArticleList(resJson.mostCommented)
-                setIsLoading(false)
+                //setIsLoading(false)
             } else {
                 setMessage("Some error occured");
             }
@@ -29,13 +29,14 @@ const CommentedArticles = ({theme, isHome, fetchArticle}) => {
 
     useEffect(()=> {
         getArticles()
+        
     }, [])
 
     if (articleList) {
         return (
             <div className={"sidebar-articles-container " + theme + "-accent"}>
                 {isLoading ?
-                    <Spinner isMini={true} /> :
+                    <Spinner theme={theme} isMini={true} /> :
                     <>
                         <h3 className="most-commented-header">Most Commented</h3>
                         <ul className={"most-commented-articles " + theme}>

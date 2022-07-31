@@ -28,13 +28,14 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
                 setCommentMessage("Some error occured");
             }
         } catch(err) {
-            setCommentMessage("Some error occured");
+            console.log(err)
+            //setCommentMessage("Some error occured");
         }
     }
 
     useEffect(()=> {
         if (!landing) {
-            fetchComments(articleId)
+            //fetchComments(articleId)
         }
         
     }, [articleId, landing])
@@ -141,7 +142,7 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
                                 </div>
                             </div>
                             <div className="message">{commentMessage ? <p>{commentMessage}</p> : null}</div>
-                            <CommentSection fetchComments={fetchComments} showComments={showComments} comments={comments} expandComment={expandComment} theme={theme} userInfo={userInfo} article={article} setCommentUpdate={setCommentUpdate} />
+                            <CommentSection showComments={showComments} comments={comments} expandComment={expandComment} theme={theme} userInfo={userInfo} article={article} setCommentUpdate={setCommentUpdate} />
                         </ul> : 
                         null
                     }

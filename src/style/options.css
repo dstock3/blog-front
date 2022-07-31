@@ -15,9 +15,8 @@
 }
 
 .theme-option {
-    width: 15px;
+    width: 150px;
     height: 15px;
-    border-radius: 2px;
 }
 
 .dark-option {
@@ -42,6 +41,12 @@
 
 .deleteForm {
     margin-top: 5%;
+}
+
+#select-theme {
+    display: flex;
+    flex-direction: column;
+    min-width: 500px;
 }
 
 .options-btn {

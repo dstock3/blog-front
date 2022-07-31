@@ -87,7 +87,7 @@ const RouteSwitch = () => {
                         isLoading ?
                             <div className="App dark-accent">
                                 <Header theme="dark" title="BlogDog - Simple CMS" />
-                                <Spinner />
+                                <Spinner theme="dark"/>
                                 <Footer theme="dark" />
                             </div> :
                             isLoggedIn ?
@@ -134,7 +134,7 @@ const RouteSwitch = () => {
                     <Route path="/options" element={
                         <div className={"App " + theme + "-accent"}>
                             <Header userInfo={user} theme={theme} title={user.blogTitle} profileName={user.profileName} />
-                            <Options userInfo={user} theme={theme} setIsLoggedIn={setIsLoggedIn} />
+                            <Options setTheme={setTheme} userInfo={user} theme={theme} setIsLoggedIn={setIsLoggedIn} />
                             <Footer theme={theme} />
                         </div>
                     } />
