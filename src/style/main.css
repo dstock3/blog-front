@@ -221,11 +221,16 @@ article {
 }
 
 .logout-message{
-    width: 250px;
+    font-size: 1.25em;
+    width: 350px;
+    height: 250px;
     padding: 5px;
     font-weight: bold;
     text-align: center;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .comment-icon-container {

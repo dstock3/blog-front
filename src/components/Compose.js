@@ -69,6 +69,8 @@ const Compose = ({getUserData, userInfo, articles, theme, update }) => {
                 }
                 getUserData()
                 nav(`/${userInfo.profileName}/${resJson.articleId}`)
+            } else if (res.status === 400) {
+                setMessage("You session has timed out.")
             } else {
                 console.log(res)
                 setMessage("Some error occurred")

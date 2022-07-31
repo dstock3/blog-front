@@ -8,7 +8,6 @@ import CommentSection from "./CommentSection";
 
 const Article = ({ users, article, articleId, userInfo, theme, layout, limit, author, setUpdate, comments, setComments, commentMessage, setCommentMessage, landing }) => {
     const [abstract, setAbstract] = useState(article["content"])
-    const [message, setMessage] = useState("")
     const [isAuthorized, setIsAuthorized] = useState(false)
     const [commentUpdate, setCommentUpdate] = useState(false)
     const [showComments, setShowComments] = useState(true)
