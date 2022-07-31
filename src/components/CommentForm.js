@@ -9,6 +9,7 @@ const CommentForm = ({users, userInfo, articleId, theme, update, fetchComments }
     const [author, setAuthor] = useState("")
     const [method, setMethod] = useState("POST")
     const [request, setRequest] = useState(`https://stormy-waters-34046.herokuapp.com/article/${articleId}`)
+    const [commentLabel, setCommentLabel] = useState()
 
     useEffect(()=> {
         setRequest(`https://stormy-waters-34046.herokuapp.com/article/${articleId}`)
@@ -72,12 +73,20 @@ const CommentForm = ({users, userInfo, articleId, theme, update, fetchComments }
         return (
             <form className={"comment-form " + theme + "-accent"} action="" method="POST">
                 <div className="comment-subcontainer comment-prompt">
-                    <label className="comment-label" htmlFor="comment">Leave a Comment Below:</label>
+                    <label className="comment-label" htmlFor="comment">
+                        {update ?
+                            "Edit Your Comment" : "Leave a Comment Below"
+                        }
+                    </label>
                     <div className="message">{message ? <p>{message}</p> : null}</div>
                     <textarea className="comment-input" type="text" value={comment} htmlFor="comment" onChange={(e) => setComment(e.target.value)}></textarea>
                 </div>
                 <div className="comment-btn-subcontainer">
-                    <div onClick={commentHandler} className={"comment-btn " + theme}>Submit</div>
+                    <div onClick={commentHandler} className={"comment-btn " + theme}>
+                        {update ?
+                            "Edit Comment" : "Submit"
+                        }
+                    </div>
                 </div>
             </form>
         );

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { parseJwt } from "../auth/parseToken";
 
 const Comment = ({ comment, articleAuthor, articleId, setUpdate, theme }) => {
@@ -6,23 +7,28 @@ const Comment = ({ comment, articleAuthor, articleId, setUpdate, theme }) => {
     const [authorizedToDelete, setAuthorizedToDelete] = useState(false)
     const [fullyAuthorized, setFullyAuthorized] = useState(false)
 
-    useEffect(()=> {
+    const authorizeComment = () => {
         let thisUser = parseJwt(localStorage.getItem('user'))
 
         //if the user is the author of both the article and the comment itself, authorize to delete and edit
         if (thisUser._id === articleAuthor._id && thisUser._id === comment.userId) {
             setFullyAuthorized(true) 
-        } else if (thisUser._id === articleAuthor._id) { 
+        } else if (thisUser._id === articleAuthor._id && thisUser._id !== comment.userId) { 
             //if the user is the author of the article, authorize to delete
             setAuthorizedToDelete(true)
-        } else if (thisUser._id === comment.userId) {
+        } else if (thisUser._id === comment.userId && thisUser._id !== articleAuthor._id ) {
             //if user is author of the comment itself, authorize to delete and edit
             setFullyAuthorized(true)
         } else {
             setFullyAuthorized(false)
             setAuthorizedToDelete(false)
         }
-    }, [])
+    }
+
+    useEffect(()=> {
+        authorizeComment()
+
+    }, [comment, articleAuthor])
 
     const editComment = async () => {
         setUpdate({"content": comment.content, "commentId": comment._id})
@@ -55,7 +61,9 @@ const Comment = ({ comment, articleAuthor, articleId, setUpdate, theme }) => {
             {message ? <div className="message">{message}</div> : null }
             <li className={"comment " + theme}>
                 <div className="comment-primary-container">
-                    <span className="comment-username">{comment.profileName}:</span>
+                    
+                    <span className="comment-username">
+                        <Link to={`/${comment.profileName}`}>{comment.profileName}</Link>: </span>
                     <span className="comment-content">{comment.content}</span> 
                 </div>
                 <div className="comment-dashboard">
