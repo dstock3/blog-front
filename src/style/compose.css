@@ -9,6 +9,7 @@
     margin-bottom: 25px;
     border-radius: 5px;
     box-shadow: 2px 5px 10px rgba(22, 22, 22, 0.857);
+    z-index: 2;
 }
 
 .compose-subcontainer {

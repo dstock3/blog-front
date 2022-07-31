@@ -6,37 +6,40 @@ import DeleteArticle from "./DeleteArticle";
 import expandComment from "../images/expand.svg"
 import CommentSection from "./CommentSection";
 
-const Article = ({ users, article, articleId, userInfo, theme, layout, limit, author, setUpdate, fetchComments, comments, setComments, commentMessage }) => {
+const Article = ({ users, article, articleId, userInfo, theme, layout, limit, author, setUpdate, comments, setComments, commentMessage, setCommentMessage, landing }) => {
     const [abstract, setAbstract] = useState(article["content"])
     const [message, setMessage] = useState("")
     const [isAuthorized, setIsAuthorized] = useState(false)
     const [commentUpdate, setCommentUpdate] = useState(false)
     const [showComments, setShowComments] = useState(true)
     const [toDelete, setToDelete] = useState(false)
-
     const nav = useNavigate()
-    /*
-    useEffect(()=> {
-        console.log("render")
-        const fetchComments = async () => {
-            try {
-                let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${articleId}/comments`, {
-                    method: "GET"
-                    });
-                let resJson = await res.json();
-                
-                if (res.status === 200) {
-                    setComments(resJson.comments)
-                } else {
-                    setMessage("Some error occured");
-                }
-            } catch(err) {
-    
+
+    const fetchComments = async (articleId) => {
+        try {
+            let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/${articleId}/comments`, {
+                method: "GET"
+                });
+            let resJson = await res.json();
+            
+            if (res.status === 200) {
+                setComments(resJson.comments)
+            } else {
+                setCommentMessage("Some error occured");
             }
+        } catch(err) {
+            setCommentMessage("Some error occured");
         }
-        fetchComments()
-    }, [article])
-    */
+    }
+
+    useEffect(()=> {
+        if (!landing) {
+            fetchComments(articleId)
+        }
+        
+    }, [articleId, landing])
+    
+    
     useEffect(()=> {
         let modal = document.getElementById('article-delete-modal')
         let rootElement = document.getElementById('root')
@@ -70,7 +73,7 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
             setAbstract(article["content"].substring(0, article["content"].length - dif))
         }
     }, [])
-    
+
     return (
         <article className={theme + " " + layout + "-child"}>
             <div className="article-head">
@@ -138,7 +141,7 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
                                 </div>
                             </div>
                             <div className="message">{commentMessage ? <p>{commentMessage}</p> : null}</div>
-                            <CommentSection showComments={showComments} comments={comments} expandComment={expandComment} theme={theme} userInfo={userInfo} article={article} setCommentUpdate/>
+                            <CommentSection fetchComments={fetchComments} showComments={showComments} comments={comments} expandComment={expandComment} theme={theme} userInfo={userInfo} article={article} setCommentUpdate={setCommentUpdate} />
                         </ul> : 
                         null
                     }

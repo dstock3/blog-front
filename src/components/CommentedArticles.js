@@ -2,32 +2,32 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Spinner from './Spinner'
 
-const CommentedArticles = ({theme, fetchArticle}) => {
+const CommentedArticles = ({theme, isHome, fetchArticle}) => {
     const [articleList, setArticleList] = useState([])
     const [message, setMessage] = useState("")
     const [isLoading, setIsLoading] = useState(false)
+    
+    const getArticles = async () => {
+        setIsLoading(true)
+        try {
+            let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/`, {
+                method: "GET"
+                });
+            let resJson = await res.json();
+            
+            if (res.status === 200) {
+                setArticleList(resJson.mostCommented)
+                setIsLoading(false)
+            } else {
+                setMessage("Some error occured");
+            }
+        } catch(err) {
+            setMessage("Some error occured");
+            console.log(err);
+        }
+    }
 
     useEffect(()=> {
-        const getArticles = async () => {
-            setIsLoading(true)
-            try {
-                let res = await fetch(`https://stormy-waters-34046.herokuapp.com/article/`, {
-                    method: "GET"
-                    });
-                let resJson = await res.json();
-                
-                if (res.status === 200) {
-                    setArticleList(resJson.mostCommented)
-                    setIsLoading(false)
-                } else {
-                    setMessage("Some error occured");
-                }
-            } catch(err) {
-                setMessage("Some error occured");
-                console.log(err);
-            }
-        }
-
         getArticles()
     }, [])
 

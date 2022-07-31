@@ -13,11 +13,11 @@ const Sidebar = ({isLoggedIn, articles, userInfo, theme, isHome, fetchArticle}) 
                     <>
                         <Profile mode="prof-side" isHome={isHome} userInfo={userInfo} />
                         <Link className="compose-link" to="/compose">Compose New Article</Link>
-                        <CommentedArticles theme={theme} />
+                        <CommentedArticles isHome={isHome} theme={theme} />
                     </> : 
                     <>
                         <Intro theme={theme}/>
-                        <CommentedArticles theme={theme} />
+                        <CommentedArticles isHome={isHome} theme={theme} />
                     </>
                 }
             </div>

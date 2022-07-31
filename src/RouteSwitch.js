@@ -73,7 +73,6 @@ const RouteSwitch = () => {
                     console.log(err)
                 }
             )
-
     }
 
     useEffect(()=> {
@@ -124,7 +123,7 @@ const RouteSwitch = () => {
 
                     {/* Logout */}
                     <Route path="/logout" element={
-                        <div className={"App " + theme + "-accent"}>
+                        <div className="App dark-accent">
                             <Header theme="dark" title="BlogDog - Simple CMS" />
                             <Logout setIsLoggedIn={setIsLoggedIn} />
                             <Footer theme="dark" />

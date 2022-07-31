@@ -103,6 +103,7 @@ article {
     flex-direction: column;
     list-style: none;
     padding-inline-start: 0;
+    padding-bottom: 5px;
 }
 
 .comment-head {
@@ -216,12 +217,15 @@ article {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 15px;
 }
 
 .logout-message{
-    width: 25%;
+    width: 250px;
+    padding: 5px;
     font-weight: bold;
     text-align: center;
+    border-radius: 5px;
 }
 
 .comment-icon-container {

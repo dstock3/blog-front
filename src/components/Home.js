@@ -23,7 +23,6 @@ const Home = ({isLoggedIn, userInfo, theme, users}) => {
         setArticleList(list)
     }, [])
 
-
     if (articleList) {
         return (
             <main className={"home " + theme + "-accent"}>
