@@ -31,8 +31,6 @@ const Options = ({userInfo, theme, setTheme, setIsLoggedIn}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(themePref)
-
         let body
         if (profilePic) {
             body = JSON.stringify({
@@ -77,6 +75,8 @@ const Options = ({userInfo, theme, setTheme, setIsLoggedIn}) => {
                 setLayoutPref("");
                 setProfilePic("");
                 setMessage("User updated successfully");
+            } else if (res.status === 400) {
+                setMessage("Your session has timed out."); 
             } else {
                 setMessage("Some error occured");
             }
