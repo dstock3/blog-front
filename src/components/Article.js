@@ -28,14 +28,13 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
                 setCommentMessage("Some error occured");
             }
         } catch(err) {
-            console.log(err)
-            //setCommentMessage("Some error occured");
+            setCommentMessage("Some error occured");
         }
     }
 
     useEffect(()=> {
-        if (!landing) {
-            //fetchComments(articleId)
+        if (!landing && articleId) {
+            fetchComments(articleId)
         }
         
     }, [articleId, landing])

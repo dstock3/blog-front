@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Spinner from './Spinner'
 
-const CommentedArticles = ({theme, isHome, fetchArticle}) => {
+const CommentedArticles = ({theme, fetchArticle}) => {
     const [articleList, setArticleList] = useState([])
     const [message, setMessage] = useState("")
     const [isLoading, setIsLoading] = useState(false)
@@ -17,7 +17,7 @@ const CommentedArticles = ({theme, isHome, fetchArticle}) => {
             
             if (res.status === 200) {
                 setArticleList(resJson.mostCommented)
-                //setIsLoading(false)
+                setIsLoading(false)
             } else {
                 setMessage("Some error occured");
             }
