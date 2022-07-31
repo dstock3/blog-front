@@ -3,14 +3,24 @@ import { parseJwt } from "../auth/parseToken";
 
 const Comment = ({ comment, articleAuthor, articleId, setUpdate, theme }) => {
     const [message, setMessage] = useState("")
-    const [authorized, setAuthorized] = useState(false)
+    const [authorizedToDelete, setAuthorizedToDelete] = useState(false)
+    const [fullyAuthorized, setFullyAuthorized] = useState(false)
 
     useEffect(()=> {
         let thisUser = parseJwt(localStorage.getItem('user'))
 
-        //if the user is the author of either the article or the comment itself, authorize user.
-        if ((thisUser._id === comment.userId) || (thisUser._id === articleAuthor._id)) {
-            setAuthorized(true)
+        //if the user is the author of both the article and the comment itself, authorize to delete and edit
+        if (thisUser._id === articleAuthor._id && thisUser._id === comment.userId) {
+            setFullyAuthorized(true) 
+        } else if (thisUser._id === articleAuthor._id) { 
+            //if the user is the author of the article, authorize to delete
+            setAuthorizedToDelete(true)
+        } else if (thisUser._id === comment.userId) {
+            //if user is author of the comment itself, authorize to delete and edit
+            setFullyAuthorized(true)
+        } else {
+            setFullyAuthorized(false)
+            setAuthorizedToDelete(false)
         }
     }, [])
 
@@ -49,7 +59,9 @@ const Comment = ({ comment, articleAuthor, articleId, setUpdate, theme }) => {
                     <span className="comment-content">{comment.content}</span> 
                 </div>
                 <div className="comment-dashboard">
-                    {authorized ?
+                    {authorizedToDelete ?
+                        <div className={"comment-edit-btn " + theme + "-accent"} onClick={deleteComment}>Delete</div> : null}
+                    {fullyAuthorized ?
                         <>
                             <div className={"comment-edit-btn " + theme + "-accent"} onClick={editComment}>Edit</div>
                             <div className={"comment-edit-btn " + theme + "-accent"} onClick={deleteComment}>Delete</div>

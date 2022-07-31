@@ -22,7 +22,7 @@ const CommentForm = ({users, userInfo, articleId, theme, update, fetchComments }
             setMethod("PUT")
             setRequest(`https://stormy-waters-34046.herokuapp.com/article/${articleId}/${update.commentId}`)
         }
-    }, [update])
+    }, [update, articleId])
 
     useEffect(()=> {
         let newUser = localStorage.getItem('user');
