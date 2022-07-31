@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import Comment from './Comment'
 
-const CommentSection = ({showComments, comments, expandComment, theme, userInfo, article, setCommentUpdate}) => {
+const CommentSection = ({showComments, setShowComments, comments, expandComment, theme, userInfo, article, setCommentUpdate}) => {
+
     if (showComments) {
         return (
         Object.values(comments).map((comment, thisIndex) =>
@@ -11,7 +12,7 @@ const CommentSection = ({showComments, comments, expandComment, theme, userInfo,
     } else {
         return (
             <div className="comment-icon-container">
-                <img src={expandComment} className={"comment-icon " + theme} alt="expand comments icon"></img>
+                <img onClick={() => setShowComments(!showComments)} src={expandComment} className={"comment-icon " + theme} alt="expand comments icon"></img>
             </div>
         )
     };

@@ -163,7 +163,7 @@ const RouteSwitch = () => {
                     
                     {/* Landing Pages for Each User */}
                     {Object.keys(users).map((keyName, index) =>
-                        <Route path={"/" + users[keyName]["profileName"]}  element={
+                        <Route key={index} path={"/" + users[keyName]["profileName"]}  element={
                             <div className={"App " + users[keyName]["themePref"] + "-accent"}>
                                 <Header thisUser={user} userInfo={users[keyName]} theme={users[keyName]["themePref"]} title={users[keyName]["blogTitle"]} profileName={users[keyName]["profileName"]} />
                                 <Main getUserData={getUserData} landing={true} userInfo={users[keyName]} index={false} articles={users[keyName]["articles"]} theme={users[keyName]["themePref"]} layout={users[keyName]["layoutPref"]} />

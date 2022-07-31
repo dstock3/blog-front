@@ -126,7 +126,7 @@ const Options = ({userInfo, theme, setTheme, setIsLoggedIn}) => {
                     <div className="user-register-dropdowns">
                         <label className="reg-label-drop" htmlFor="themePref">Theme Preference: 
                             <select id="drop-one" name="themePref" value={themePref} onChange={(e) => setThemePref(e.target.value)}>
-                                <option selected className="theme-option light-option" value="light">
+                                <option defaultValue className="theme-option light-option" value="light">
                                     Light
                                 </option>
                                 <option className="theme-option dark-option" value="dark">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import CommentForm from "./CommentForm";
 import { parseJwt } from '../auth/parseToken'
 import DeleteArticle from "./DeleteArticle";
@@ -13,6 +13,7 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
     const [showComments, setShowComments] = useState(true)
     const [toDelete, setToDelete] = useState(false)
     const nav = useNavigate()
+    const location = useLocation()
 
     const fetchComments = async (articleId) => {
         try {
@@ -32,13 +33,24 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
     }
 
     useEffect(()=> {
-        if (!landing && articleId) {
+        if (articleId) {
             fetchComments(articleId)
         }
-        
-    }, [articleId, landing])
+    }, [articleId])
+
+    useEffect(()=> {
+        if (location) {
+            if (location.state.hasOwnProperty('state')) {
+
+            }
+
+        }
+
+
     
-    
+    }, [location.state])
+
+   
     useEffect(()=> {
         let modal = document.getElementById('article-delete-modal')
         let rootElement = document.getElementById('root')
@@ -142,7 +154,7 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
                                 </div>
                             </div>
                             <div className="message">{commentMessage ? <p>{commentMessage}</p> : null}</div>
-                            <CommentSection showComments={showComments} comments={comments} expandComment={expandComment} theme={theme} userInfo={userInfo} article={article} setCommentUpdate={setCommentUpdate} />
+                            <CommentSection showComments={showComments} setShowComments={setShowComments} comments={comments} expandComment={expandComment} theme={theme} userInfo={userInfo} article={article} setCommentUpdate={setCommentUpdate} />
                         </ul> : 
                         null
                     }

@@ -13,8 +13,8 @@ const Main = ({isLoggedIn, getUserData, users, landing, article, articles, userI
     
     useEffect(() => {
         window.scrollTo(0, 0)
+        
     }, [])
-
 
     const fetchArticle =  async(articleId) => {
         try {
