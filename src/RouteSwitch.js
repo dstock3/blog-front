@@ -34,7 +34,7 @@ const RouteSwitch = () => {
         let rootElement = document.getElementById('root')
 
         rootElement.style.filter = "unset"
-
+        rootElement.style.transition = "unset"
         deleteUserModal.style.zIndex = 0
         deleteArticleModal.style.zIndex = 0
     }, [])

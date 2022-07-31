@@ -11,6 +11,12 @@ const CommentForm = ({users, userInfo, articleId, theme, update, fetchComments }
     const [request, setRequest] = useState(`https://stormy-waters-34046.herokuapp.com/article/${articleId}`)
 
     useEffect(()=> {
+        setRequest(`https://stormy-waters-34046.herokuapp.com/article/${articleId}`)
+        setMethod("POST")
+        
+    }, [articleId])
+
+    useEffect(()=> {
         if (update) {
             setComment(update.content)
             setMethod("PUT")
@@ -51,7 +57,7 @@ const CommentForm = ({users, userInfo, articleId, theme, update, fetchComments }
             if (res.status === 200) {
                 setComment("");
                 fetchComments(articleId)
-                //window.location.reload(false);
+                window.location.reload(false);
             } else {
                 setMessage("Some error occured");
             }

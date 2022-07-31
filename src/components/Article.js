@@ -45,9 +45,11 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
         if (toDelete) {
             modal.style.zIndex = 1000
             rootElement.style.filter = 'brightness(65%)'
+            rootElement.style.transition = "all 0.75s ease-out"
         } else {
             modal.style.zIndex = 0
             rootElement.style.filter = "unset"
+            rootElement.style.transition = "unset"
         }
 
     }, [toDelete])

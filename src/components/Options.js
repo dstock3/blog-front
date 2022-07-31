@@ -18,12 +18,16 @@ const Options = ({userInfo, theme, setTheme, setIsLoggedIn}) => {
     useEffect(()=> {
         let modal = document.getElementById('user-delete-modal')
         let rootElement = document.getElementById('root')
+
         if (toDelete) {
             modal.style.zIndex = 1000
-            rootElement.style.filter = 'brightness(65%)'
+            rootElement.style.filter = 'brightness(55%)'
+            rootElement.style.transition = "all 0.75s ease-out"
+            
         } else {
             modal.style.zIndex = 0
             rootElement.style.filter = "unset"
+            rootElement.style.transform = "unset"
         }
 
     }, [toDelete])
