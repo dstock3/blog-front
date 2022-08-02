@@ -13,7 +13,12 @@ const Main = ({isLoggedIn, getUserData, users, landing, article, articles, userI
     
     useEffect(() => {
         window.scrollTo(0, 0)
-        
+
+        if (!landing) {
+            fetchArticle(article._id)
+        } else {
+            getUserData()
+        }
     }, [])
 
     const fetchArticle =  async(articleId) => {
@@ -36,14 +41,6 @@ const Main = ({isLoggedIn, getUserData, users, landing, article, articles, userI
             setMessage("Some error occured");
         }
     }
-
-    useEffect(()=> {
-        if (!landing) {
-            fetchArticle(article._id)
-        } else {
-            getUserData()
-        }
-    }, [])
 
     if (userInfo) {
         return (

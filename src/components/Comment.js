@@ -27,7 +27,7 @@ const Comment = ({ comment, articleAuthor, articleId, setUpdate, theme }) => {
 
     useEffect(()=> {
         authorizeComment()
-
+        
     }, [comment, articleAuthor])
 
     const editComment = async () => {

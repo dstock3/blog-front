@@ -14,13 +14,13 @@ const Header = ({thisUser, userInfo, theme, title, profileName}) => {
     return (
         <header className={thisTheme}>
             {thisUser ? <div className="welcome">{"Welcome "} 
-                <Link to = {{pathname: `/${thisUser.profileName}`}} state={{profile: 'profile'}} >
+                <Link to = {{pathname: `/${thisUser.profileName}`}}>
                     {thisUser.profileName}
                 </Link>
             </div> : null}
             <h1 className="title">
                 {profileName ?
-                    <Link to = {{pathname: `/${profileName}`}} state={{profile: 'profile'}}>{title}</Link> :
+                    <Link to = {{pathname: `/${profileName}`}}>{title}</Link> :
                     <Link to = {{pathname: '/'}}>BlogDog - Simple CMS</Link>
                 }
             </h1>

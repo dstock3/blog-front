@@ -38,19 +38,7 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
         }
     }, [articleId])
 
-    useEffect(()=> {
-        if (location) {
-            if (location.state.hasOwnProperty('state')) {
 
-            }
-
-        }
-
-
-    
-    }, [location.state])
-
-   
     useEffect(()=> {
         let modal = document.getElementById('article-delete-modal')
         let rootElement = document.getElementById('root')
@@ -154,7 +142,7 @@ const Article = ({ users, article, articleId, userInfo, theme, layout, limit, au
                                 </div>
                             </div>
                             <div className="message">{commentMessage ? <p>{commentMessage}</p> : null}</div>
-                            <CommentSection showComments={showComments} setShowComments={setShowComments} comments={comments} expandComment={expandComment} theme={theme} userInfo={userInfo} article={article} setCommentUpdate={setCommentUpdate} />
+                            <CommentSection showComments={showComments} setShowComments={setShowComments} comments={comments} expandComment={expandComment} theme={theme} userInfo={userInfo} article={article} setCommentUpdate={setCommentUpdate} articleId={articleId} />
                         </ul> : 
                         null
                     }
